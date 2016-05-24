@@ -28,7 +28,7 @@ export class Welcome {
 }
 
 export class UpperValueConverter {
-  toView(value) {
+  toView(value: any) {
     return value && value.toUpperCase();
   }
 }
