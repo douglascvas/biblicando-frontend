@@ -48,20 +48,25 @@
       "aurelia-fetch-client": "^1.0.0-beta.1.2.5",
       "aurelia-framework": "^1.0.0-beta.1.2.5",
       "aurelia-history-browser": "^1.0.0-beta.1.2.1",
+      "aurelia-http-client": "^1.0.0-beta.1.2.2",
       "aurelia-loader": "^1.0.0-beta.1.2.0",
       "aurelia-loader-default": "^1.0.0-beta.1.2.2",
       "aurelia-logging-console": "^1.0.0-beta.1.2.2",
       "aurelia-metadata": "^1.0.0-beta.1.2.1",
+      "aurelia-pal": "^1.0.0-beta.1.2.2",
+      "aurelia-pal-browser": "^1.0.0-beta.2.0.1",
       "aurelia-router": "^1.0.0-beta.1.2.3",
       "aurelia-templating": "^1.0.0-beta.1.2.7",
       "aurelia-templating-binding": "^1.0.0-beta.1.2.4",
       "aurelia-templating-resources": "^1.0.0-beta.1.2.6",
-      "aurelia-templating-router": "^1.0.0-beta.1.2.1"
+      "aurelia-templating-router": "^1.0.0-beta.1.2.1",
+      "fetch": "github:github/fetch@^1.0.0",
+      "webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.22"
     },
     "devDependencies": {
-      "babel": "babel-core@^5.1.13",
-      "babel-runtime": "^5.1.13",
-      "core-js": "^0.9.4"
+      "babel": "babel-core@^5.8.24",
+      "babel-runtime": "^5.8.24",
+      "core-js": "^1.1.4"
     }
   }
 }

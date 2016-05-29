@@ -1,7 +1,9 @@
 <template>
-  <div value.bind="aa">
+  <require from='./app/nav-bar.html'></require>
 
+  <nav-bar router.bind="router"></nav-bar>
+
+  <div class="page-host">
+    <router-view></router-view>
   </div>
-
-  <h1>${message}</h1>
 </template>

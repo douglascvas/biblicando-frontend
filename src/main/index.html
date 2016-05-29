@@ -5,11 +5,17 @@
     <!--<link rel="stylesheet" href="styles/styles.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body aurelia-app>
+<body aurelia-app="app">
 <script src="vendor/system.js"></script>
 <script src="config.js"></script>
 <script>
-    System.import('aurelia-bootstrapper');
+    SystemJS.import('aurelia-polyfills')
+            .then(function () {
+                return SystemJS.import('webcomponents/webcomponentsjs/MutationObserver');
+            })
+            .then(function () {
+                SystemJS.import('aurelia-bootstrapper');
+            });
 </script>
 </body>
 </html>
