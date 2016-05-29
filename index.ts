@@ -1,3 +1,5 @@
 import {Server} from './server';
 
-new Server().initialize();
+const server = Server.build();
+server.initialize()
+  .then(()=>server.start());
