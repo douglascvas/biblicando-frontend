@@ -1,32 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "dist/app",
-    "target": "ES5",
-    "module": "system",
-    "sourceMap": true,
+    "module": "amd",
+    "target": "es2015",
+    "moduleResolution": "node",
+    "outDir": "build",
+    "listFiles": true,
+    "watch": false,
+    "noLib": false,
+    "noResolve": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "removeComments": false,
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "declaration": false
   },
   "filesGlob": [
     "src/**/*.ts",
-    "typings/**/*.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts",
-    "node_modules/angular2/bundles/typings/**/*.ts",
-    "node_modules/@reactivex/rxjs/es6/R.d.ts"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "typings/browser.d.ts",
-    "typings/browser",
-    "src"
+    "src/**/*.tsx",
+    "build/vendor/**/*.d.ts",
+    "!node_modules/**",
+    "!typings/browser/es6-shim/**"
   ],
   "compileOnSave": false
 }

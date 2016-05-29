@@ -1,13 +1,13 @@
 const typescript = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
 const tslint = require('gulp-tslint');
+const tsconfig = require('../tsconfig.json');
 
 module.exports = function (gulp) {
   function compileTs(source, dest) {
     var tsProject = typescript.createProject('tsconfig.json');
     return function () {
-      var sourceTsFiles = ['src/' + source + '/**/*.ts', 'typings/browser/**/*.ts', 'typings/browser.d.ts',
-        'build/vendor/**/*.d.ts'];
+      var sourceTsFiles = tsconfig.filesGlob;
 
       var tsSourceResult = gulp.src(sourceTsFiles)
         .pipe(sourcemaps.init())
@@ -21,7 +21,6 @@ module.exports = function (gulp) {
   }
 
   return {
-    main: compileTs('main', 'build/main'),
-    test: compileTs('test', 'build/test')
+    main: compileTs('main', 'build')
   };
 };
