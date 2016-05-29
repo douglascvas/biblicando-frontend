@@ -17,6 +17,7 @@
   "filesGlob": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "*.ts",
     "build/vendor/**/*.d.ts",
     "!node_modules/**",
     "!typings/browser/es6-shim/**"
