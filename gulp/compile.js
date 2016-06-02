@@ -5,7 +5,7 @@ const tsconfig = require('../tsconfig.json');
 
 module.exports = function (gulp) {
   function compileTs(source, dest) {
-    var tsProject = typescript.createProject('tsconfig.json');
+    var tsProject = typescript.createProject(__dirname + '/../tsconfig.json');
     return function () {
       var sourceTsFiles = tsconfig.filesGlob;
 
@@ -21,6 +21,7 @@ module.exports = function (gulp) {
   }
 
   return {
-    main: compileTs('main', 'build')
+    main: compileTs('main', 'build'),
+    test: compileTs('test', 'build')
   };
 };

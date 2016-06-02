@@ -19,8 +19,14 @@
     "src/**/*.tsx",
     "*.ts",
     "build/vendor/**/*.d.ts",
+    "typings/globals/**/*.d.ts",
+    "typings/index.d.ts",
     "!node_modules/**",
     "!typings/browser/es6-shim/**"
+  ],
+  "files": [
+    "server.ts",
+    "typings/index.d.ts"
   ],
   "compileOnSave": false
 }

@@ -4,7 +4,7 @@ import * as Q from "q"
 import * as express from "express";
 
 const request = require('request-promise');
-const express = require('express');
+// const express = require('express');
 const compress = require('compression');
 const Configurator = require('configurator-js');
 const moduleInfo = require('./package.json');

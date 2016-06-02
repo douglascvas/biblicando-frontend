@@ -1,7 +1,15 @@
 {
-  "dependencies": {
-  },
-  "devDependencies": {},
-  "ambientDependencies": {
+  "name": "biblicando-frontend",
+  "dependencies": {},
+  "globalDependencies": {
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
+    "form-data": "registry:dt/form-data#0.0.0+20160316155526",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "node": "registry:dt/node#6.0.0+20160602155235",
+    "q": "registry:dt/q#0.0.0+20160417152954",
+    "request": "registry:dt/request#0.0.0+20160524135346",
+    "request-promise": "registry:dt/request-promise#0.4.2+20160316155526",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160501131543"
   }
 }

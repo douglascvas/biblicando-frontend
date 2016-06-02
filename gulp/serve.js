@@ -3,7 +3,7 @@ const reload = browserSync.reload;
 
 module.exports = function (gulp) {
   return {
-    serve: function (watchTask) {
+    serve: function (prefix) {
       return function () {
         browserSync({
           proxy: "http://localhost:3000",
@@ -12,9 +12,9 @@ module.exports = function (gulp) {
           //   baseDir: 'build'
           // }
         });
-        gulp.watch(['src/main/**/*'], ['build:main', reload]);
-        gulp.watch(['src/resource/**/*'], ['build:resource', reload]);
-        gulp.watch(['src/test/**/*'], ['build:test']);
+        gulp.watch(['src/main/**/*'], [prefix + 'build:main', reload]);
+        gulp.watch(['src/resource/**/*'], [prefix + 'build:resource', reload]);
+        gulp.watch(['src/test/**/*'], [prefix + 'build:test']);
       }
     }
   };
