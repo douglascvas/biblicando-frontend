@@ -2,7 +2,7 @@ const tslint = require('gulp-tslint');
 const TASK_PREFIX = 'fe-';
 
 function start() {
-  require('build/main/index.js');
+  return require('./index');
 }
 
 function task() {

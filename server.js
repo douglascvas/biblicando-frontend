@@ -1,20 +1,20 @@
 'use strict';
 
-import * as Q from "q"
-import * as express from "express";
+const Q = require('q');
+const express = require('express');
 
 const request = require('request-promise');
-// const express = require('express');
 const compress = require('compression');
 const Configurator = require('configurator-js');
 const moduleInfo = require('./package.json');
 
-export class Server {
-  constructor(private app,
-              private config) {
+module.exports = class Server {
+  constructor(app, config) {
+    this.app = app;
+    this.config = config;
   }
 
-  public static build() {
+  static build() {
     const CONFIG_PATH = process.env.CONFIG_PATH || __dirname + "/config.yml";
 
     const app = express();
@@ -23,14 +23,14 @@ export class Server {
     return new Server(app, config);
   }
 
-  private configureServer() {
+  configureServer() {
     this.app.use(compress());
     this.app.use(express.static('./build/main'));
     this.app.use(express.static('./build/resource'));
     this.app.use(express.static('./build'));
   }
 
-  private startServer(app, config) {
+  startServer(app, config) {
     var clientConfig = config.get('client');
     var port = clientConfig.port || 3000;
     return app.listen(port, function () {
@@ -38,12 +38,12 @@ export class Server {
     });
   }
 
-  public initialize() {
+  initialize() {
     this.configureServer();
     return Q.when();
   }
 
-  public start() {
+  start() {
     return this.startServer(this.app, this.config);
   }
-}
+};
