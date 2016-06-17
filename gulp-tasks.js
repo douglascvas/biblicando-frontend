@@ -1,9 +1,5 @@
-const tslint = require('gulp-tslint');
+// const tslint = require('gulp-tslint');
 const TASK_PREFIX = 'fe-';
-
-function start() {
-  return require('./index');
-}
 
 function task() {
   var dependencies = Array.prototype.slice.call(arguments);
@@ -29,8 +25,10 @@ function registerTasks(gulp, prefix, tasks) {
       if (taskNames.indexOf(dep) >= 0) {
         return prefix + dep;
       }
+      console.log(`## WARN: task not a local task: ${dep}`);
       return dep;
     });
+    console.log(`# DEBUG: registering task ${prefix + taskName}`);
     gulp.task(prefix + taskName, dependencies, description.handler);
   }
 }
@@ -41,6 +39,7 @@ module.exports = function (gulp) {
   const clean = require('./gulp/clean')(gulp);
   const watch = require('./gulp/watch')(gulp);
   const serve = require('./gulp/serve')(gulp);
+  const start = require('./gulp/start')(gulp);
   const taskMap = {
     'clean:main': task(copy.main),
     'clean:test': task(clean.test),
@@ -54,9 +53,9 @@ module.exports = function (gulp) {
     'build:resource': task('copy:resource'),
     'build:test': task('copy:test', 'compile:test'),
     'build': task('build:resource', 'build:main', 'build:test'),
-    'start': task('build', start),
+    'start': task('build', start.start),
     'watch': task('build', watch.watch(TASK_PREFIX)),
-    'serve': task('build', serve.serve(TASK_PREFIX))
+    'serve': task('build', 'start', serve.serve(TASK_PREFIX))
   };
   registerTasks(gulp, TASK_PREFIX, taskMap);
 };

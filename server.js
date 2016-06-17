@@ -34,7 +34,7 @@ module.exports = class Server {
     var clientConfig = config.get('client');
     var port = clientConfig.port || 3000;
     return app.listen(port, function () {
-      console.log(`Listening on port ${port}`);
+      console.log(`### Listening on port ${port}`);
     });
   }
 

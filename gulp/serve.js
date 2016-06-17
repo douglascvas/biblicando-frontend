@@ -1,4 +1,5 @@
 const browserSync = require('browser-sync');
+const nodemon = require('gulp-nodemon');
 const reload = browserSync.reload;
 
 module.exports = function (gulp) {
@@ -6,12 +7,11 @@ module.exports = function (gulp) {
     serve: function (prefix) {
       return function () {
         browserSync({
-          proxy: "http://localhost:3000",
+          proxy: "localhost:3000",
+          port: 3001,
           open: false
-          // server: {
-          //   baseDir: 'build'
-          // }
         });
+        gulp.watch(['config.js'], [prefix + 'build:main', reload]);
         gulp.watch(['src/main/**/*'], [prefix + 'build:main', reload]);
         gulp.watch(['src/resource/**/*'], [prefix + 'build:resource', reload]);
         gulp.watch(['src/test/**/*'], [prefix + 'build:test']);

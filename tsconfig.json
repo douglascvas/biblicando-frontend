@@ -1,32 +1,33 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "amd",
-    "target": "es2015",
-    "moduleResolution": "node",
+    "rootDir": "src",
     "outDir": "build",
-    "listFiles": true,
-    "watch": false,
-    "noLib": false,
-    "noResolve": false,
+    "sourceMap": true,
+    "target": "es5",
+    "module": "amd",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "declaration": false
+    "moduleResolution": "node",
+    "lib": ["es6", "dom"]
   },
   "filesGlob": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "*.ts",
-    "build/vendor/**/*.d.ts",
-    "typings/globals/**/*.d.ts",
-    "typings/index.d.ts",
-    "!node_modules/**",
-    "!typings/browser/es6-shim/**"
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "./build/vendor/**/*.ts",
+    "./typings/index.d.ts",
+    "./custom_typings/**/*.d.ts",
+    "./build/vendor/**/*.d.ts"
   ],
-  "files": [
-    "server.ts",
-    "typings/index.d.ts"
+  "exclude": [
+    "node_modules",
+    "build/vendor",
+    "test"
   ],
-  "compileOnSave": false
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }

@@ -9,12 +9,12 @@
 <script src="vendor/system.js"></script>
 <script src="config.js"></script>
 <script>
-    SystemJS.import('aurelia-polyfills')
+    System.import('aurelia-polyfills')
             .then(function () {
-                return SystemJS.import('webcomponents/webcomponentsjs/MutationObserver');
+                return System.import('webcomponents/webcomponentsjs/MutationObserver');
             })
             .then(function () {
-                SystemJS.import('aurelia-bootstrapper');
+                System.import('aurelia-bootstrapper');
             });
 </script>
 </body>
