@@ -38,10 +38,9 @@ module.exports = function (gulp) {
   const compile = require('./gulp/compile')(gulp);
   const clean = require('./gulp/clean')(gulp);
   const watch = require('./gulp/watch')(gulp);
-  const serve = require('./gulp/serve')(gulp);
   const start = require('./gulp/start')(gulp);
   const taskMap = {
-    'clean:main': task(copy.main),
+    'clean:main': task(clean.main),
     'clean:test': task(clean.test),
     'clean:resource': task(clean.resource),
     'compile:main': task(compile.main),
@@ -54,8 +53,8 @@ module.exports = function (gulp) {
     'build:test': task('copy:test', 'compile:test'),
     'build': task('build:resource', 'build:main', 'build:test'),
     'start': task('build', start.start),
-    'watch': task('build', watch.watch(TASK_PREFIX)),
-    'serve': task('build', 'start', serve.serve(TASK_PREFIX))
+    'watch': task(watch.watch(TASK_PREFIX)),
+    'dev': task('start', watch.watch(TASK_PREFIX))
   };
   registerTasks(gulp, TASK_PREFIX, taskMap);
 };

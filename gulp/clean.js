@@ -1,15 +1,16 @@
 const del = require('del');
+const paths = require('../paths');
 
-module.exports = function (gulp) {
+module.exports = function () {
   return {
     main: function () {
-      return del('build/main');
+      return del(paths.outputMain);
     },
     resource: function () {
-      return del('build/resource');
+      return del(paths.outputResource);
     },
     test: function () {
-      return del('build/test');
+      return del(paths.outputTest);
     }
   };
 };

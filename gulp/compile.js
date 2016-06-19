@@ -9,11 +9,11 @@ module.exports = function (gulp) {
     var typescriptCompiler = typescriptCompiler || null;
     return function () {
       if (!typescriptCompiler) {
-        typescriptCompiler = typescript.createProject(__dirname + '/../tsconfig.json', {
+        typescriptCompiler = typescript.createProject(paths.tsConfig, {
           "typescript": require('typescript')
         });
       }
-      return gulp.src(paths.dtsSrc.concat(paths.source))
+      return gulp.src(paths.dtsSrc.concat(source))
         .pipe(plumber())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(typescript(typescriptCompiler))
@@ -36,7 +36,7 @@ module.exports = function (gulp) {
   }
 
   return {
-    main: compileTs('main', 'build'),
-    test: compileTs('test', 'build')
+    main: compileTs(paths.source, 'build'),
+    test: compileTs(paths.test, 'build')
   };
 };

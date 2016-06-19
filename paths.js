@@ -1,24 +1,34 @@
-var srcRoot = 'src/main/';
-var resourceRoot = 'src/resource/';
-var testRoot = 'src/test/';
-var outputRoot = 'build/';
-var exporSrvtRoot = 'export/';
+const path = require('path');
+const srcRoot = absolutePath('src/');
+const mainRoot = `${srcRoot}/main`;
+const resourceRoot = absolutePath('src/resource/');
+const testRoot = absolutePath('src/test/');
+const outputRoot = absolutePath('build/');
+
+function absolutePath(relativePath) {
+  return path.resolve(`${__dirname}/${relativePath}`);
+}
 
 module.exports = {
   root: `${srcRoot}`,
-  config: `./config.js`,
-  source: `${srcRoot}**/*.ts`,
-  html: `${srcRoot}**/*.html`,
-  css: `${srcRoot}**/*.css`,
-  test: `${testRoot}test/**/*.ts`,
-  style: `styles/**/*.css`,
-  resource: `${resourceRoot}**/*`,
-  output: outputRoot,
-  exportSrv: exporSrvtRoot,
-  doc: './doc',
-  e2eSpecsSrc: 'test/e2e/src/**/*.ts',
-  e2eSpecsDist: 'test/e2e/dist/',
+  baseMain: `${mainRoot}`,
+  baseResource: `${resourceRoot}`,
+  baseTest: `${testRoot}`,
+  config: absolutePath(`config.js`),
+  tsConfig: absolutePath(`tsconfig.json`),
+  source: `${mainRoot}/**/*.ts`,
+  html: `${mainRoot}/**/*.html`,
+  css: `${mainRoot}/**/*.css`,
+  style: `${mainRoot}styles/**/*.css`,
+  test: `${testRoot}/test/**/*.ts`,
+  resource: `${resourceRoot}/**/*`,
+  output: `${outputRoot}`,
+  outputMain: `${outputRoot}/main`,
+  outputResource: `${outputRoot}/resource`,
+  outputTest: `${outputRoot}/test`,
+  e2eSpecsSrc: `${testRoot}/e2e/src/**/*.ts`,
+  e2eSpecsDist: `${testRoot}/e2e/dist/`,
   dtsSrc: [
-    './typings/**/*.d.ts'
+    absolutePath('typings/**/*.d.ts')
   ]
 };

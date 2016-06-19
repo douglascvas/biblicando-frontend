@@ -1,8 +1,0 @@
-biblicando:
-  '{0.0.1}':
-    client:
-      port: 3000
-    logger:
-      appenders:
-        - type: 'console'
-

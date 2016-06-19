@@ -14,10 +14,10 @@ module.exports = class Server {
     this.config = config;
   }
 
-  static build() {
+  static build(app) {
     const CONFIG_PATH = process.env.CONFIG_PATH || __dirname + "/config.yml";
 
-    const app = express();
+    app = app || express();
     const config = new Configurator(CONFIG_PATH, moduleInfo.name, moduleInfo.version);
 
     return new Server(app, config);
@@ -25,14 +25,14 @@ module.exports = class Server {
 
   configureServer() {
     this.app.use(compress());
-    this.app.use(express.static('./build/main'));
-    this.app.use(express.static('./build/resource'));
-    this.app.use(express.static('./build'));
+    this.app.use(express.static(`${__dirname}/build/main`));
+    this.app.use(express.static(`${__dirname}/build/resource`));
+    this.app.use(express.static(`${__dirname}/build`));
   }
 
   startServer(app, config) {
     var clientConfig = config.get('client');
-    var port = clientConfig.port || 3000;
+    var port = clientConfig.port || 3010;
     return app.listen(port, function () {
       console.log(`### Listening on port ${port}`);
     });

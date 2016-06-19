@@ -13,7 +13,7 @@ export class Page {
   }
 
   public textChanged(newValue, oldValue) {
-    this.httpClient.get('bibles')
+    this.httpClient.get('api/v1/bibles')
       .then(bibles => {
         console.log(bibles);
       });
