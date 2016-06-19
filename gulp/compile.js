@@ -13,12 +13,14 @@ module.exports = function (gulp) {
           "typescript": require('typescript')
         });
       }
-      return gulp.src(paths.dtsSrc.concat(source))
+      var result = gulp.src(paths.dtsSrc.concat(source))
         .pipe(plumber())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(typescript(typescriptCompiler))
         .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/src'}))
         .pipe(gulp.dest(paths.output));
+      result.on('error', error => console.log("## ERROR - ", error));
+      return result;
     };
     // var tsProject = typescript.createProject(__dirname + '/../tsconfig.json');
     // return function () {

@@ -1,10 +1,22 @@
 //import {computedFrom} from 'aurelia-framework';
 
+interface BibleConfig {
+  selectedBible:any;
+  selectedBook:any;
+  selectedChapter:any;
+  selectedVerse:any;
+}
+
 export class Welcome {
   heading = 'Welcome to the Aurelia Navigation App!';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
+  bibleConfig:BibleConfig;
+
+  public Welcome() {
+    this.bibleConfig = <BibleConfig>{};
+  }
 
   //Getters can't be directly observed, so they must be dirty checked.
   //However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
@@ -28,7 +40,7 @@ export class Welcome {
 }
 
 export class UpperValueConverter {
-  toView(value: any) {
+  toView(value:any) {
     return value && value.toUpperCase();
   }
 }

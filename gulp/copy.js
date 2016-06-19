@@ -3,21 +3,27 @@ const changed = require('gulp-changed');
 
 module.exports = function (gulp) {
   function processHtml() {
-    return gulp.src(paths.html)
+    var result = gulp.src(paths.html)
       .pipe(changed(paths.outputMain, {extension: '.html'}))
       .pipe(gulp.dest(paths.outputMain));
+    result.on('error', error => console.log("## ERROR - ", error));
+    return result;
   }
 
   function processConfig() {
-    return gulp.src(paths.config)
+    var result = gulp.src(paths.config)
       .pipe(changed(paths.outputMain))
       .pipe(gulp.dest(paths.outputMain));
+    result.on('error', error => console.log("## ERROR - ", error));
+    return result;
   }
 
   function processCss() {
-    return gulp.src(paths.css)
+    var result = gulp.src(paths.css)
       .pipe(changed(paths.outputMain, {extension: '.css'}))
       .pipe(gulp.dest(paths.outputMain));
+    result.on('error', error => console.log("## ERROR - ", error));
+    return result;
   }
 
   return {
@@ -27,9 +33,11 @@ module.exports = function (gulp) {
       processCss();
     },
     resource: function () {
-      return gulp.src(paths.resource)
+      var result = gulp.src(paths.resource)
         .pipe(changed(paths.outputMain))
         .pipe(gulp.dest(paths.outputMain));
+      result.on('error', error => console.log("## ERROR - ", error));
+      return result;
     },
     test: function () {
       // return gulp.src(paths.test)

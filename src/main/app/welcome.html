@@ -1,8 +1,13 @@
 <template>
     <section class="au-animate">
-        <require from="/page/page"></require>
+        <require from="/bibleList/bibleList"></require>
 
         <h2>${heading}</h2>
-        <bb-page chapter.bind="3" text="God created the world."></bb-page>
+        <div style="width: 300px; height: 300px; overflow: scroll; float: left">
+            <bible-list config.bind="bibleConfig"></bible-list>
+        </div>
+        <div style="width: 300px; height: 300px; overflow: scroll; float: left">
+            <book-list config.bind="bibleConfig" bibleId.bind="bibleConfig.selectedBible.id"></book-list>
+        </div>
     </section>
 </template>

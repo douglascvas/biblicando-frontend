@@ -1,0 +1,7 @@
+<template>
+    <div repeat.for="book of books">
+        <a href="#" click.delegate="selectBook(book.name)">
+            <span inner-text="${book.name}"></span>
+        </a>
+    </div>
+</template>

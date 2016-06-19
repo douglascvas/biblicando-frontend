@@ -1,0 +1,9 @@
+<template>
+    <div repeat.for="bible of bibles">
+        <a href="#" click.delegate="selectBible(bible._id)">
+            <span inner-text="${bible.languageCode}"></span>
+            <span> - </span>
+            <span inner-text="${bible.name}"></span>
+        </a>
+    </div>
+</template>
