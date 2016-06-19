@@ -6,16 +6,17 @@ import {HttpClient} from "aurelia-http-client";
 @inject(HttpClient)
 @customElement('bb-page')
 export class Page {
-  @bindable text:string;
-  @bindable chapter:string;
+  @bindable bibles:Array<any>;
 
   constructor(private httpClient:HttpClient) {
   }
 
-  public textChanged(newValue, oldValue) {
-    this.httpClient.get('api/v1/bibles')
-      .then(bibles => {
-        console.log(bibles);
+  public biblesChanged(newValue, oldValue) {
+    const self = this;
+    self.httpClient.get('api/v1/bibles')
+      .then(httpResponse => {
+        console.log(JSON.parse(httpResponse.response));
+        self.bibles = JSON.parse(httpResponse.response);
       });
     console.log(newValue, oldValue);
   }

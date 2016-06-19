@@ -1,5 +1,10 @@
 <template>
-    <div inner-text="${text}">
+    <div repeat.for="bible of bibles">
+        <span inner-text="${bible.languageCode}"></span>
+        <span> - </span>
+        <span inner-text="${bible.name}"></span>
+    </div>
+    <div inner-text="${chapter}">
 
     </div>
 </template>
