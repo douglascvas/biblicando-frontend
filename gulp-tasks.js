@@ -1,60 +1,23 @@
-// const tslint = require('gulp-tslint');
-const TASK_PREFIX = 'fe-';
+module.exports = function (gulp, options) {
+  const copy = require('./gulp/copy');
+  const compile = require('./gulp/compile');
+  const clean = require('./gulp/clean');
+  const watch = require('./gulp/watch');
+  const start = require('./gulp/start');
 
-function task() {
-  var dependencies = Array.prototype.slice.call(arguments);
-  var handler = null;
-  if (!dependencies.length) {
-    return;
-  }
-  if (typeof dependencies[dependencies.length - 1] === 'function') {
-    handler = dependencies[dependencies.length - 1];
-    dependencies.splice(dependencies.length - 1, 1);
-  }
-  return {
-    dependencies: dependencies,
-    handler: handler
-  };
-}
-
-function registerTasks(gulp, prefix, tasks) {
-  const taskNames = Reflect.ownKeys(tasks);
-  for (let taskName of taskNames) {
-    let description = tasks[taskName];
-    let dependencies = description.dependencies.map(dep=> {
-      if (taskNames.indexOf(dep) >= 0) {
-        return prefix + dep;
-      }
-      console.log(`## WARN: task not a local task: ${dep}`);
-      return dep;
-    });
-    console.log(`# DEBUG: registering task ${prefix + taskName}`);
-    gulp.task(prefix + taskName, dependencies, description.handler);
-  }
-}
-
-module.exports = function (gulp) {
-  const copy = require('./gulp/copy')(gulp);
-  const compile = require('./gulp/compile')(gulp);
-  const clean = require('./gulp/clean')(gulp);
-  const watch = require('./gulp/watch')(gulp);
-  const start = require('./gulp/start')(gulp);
-  const taskMap = {
-    'clean:main': task(clean.main),
-    'clean:test': task(clean.test),
-    'clean:resource': task(clean.resource),
-    'compile:main': task(compile.main),
-    'compile:test': task(compile.test),
-    'copy:main': task('clean:main', copy.main),
-    'copy:resource': task('clean:resource', copy.resource),
-    'copy:test': task('clean:test', copy.test),
-    'build:main': task('copy:main', 'compile:main'),
-    'build:resource': task('copy:resource'),
-    'build:test': task('copy:test', 'compile:test'),
-    'build': task('build:resource', 'build:main', 'build:test'),
-    'start': task('build', start.start),
-    'watch': task(watch.watch(TASK_PREFIX)),
-    'dev': task('start', watch.watch(TASK_PREFIX))
-  };
-  registerTasks(gulp, TASK_PREFIX, taskMap);
+  gulp.task('fe-clean:main', clean.main);
+  gulp.task('fe-clean:test', clean.test);
+  gulp.task('fe-clean:resource', clean.resource);
+  gulp.task('fe-compile:main', compile.main);
+  gulp.task('fe-compile:test', compile.test);
+  gulp.task('fe-copy:main', copy.main);
+  gulp.task('fe-copy:resource', copy.resource);
+  gulp.task('fe-copy:test', copy.test);
+  gulp.task('fe-build:main', gulp.series('fe-clean:main', 'fe-copy:main', 'fe-compile:main'));
+  gulp.task('fe-build:resource', gulp.series('fe-clean:resource', 'fe-copy:resource'));
+  gulp.task('fe-build:test', gulp.series('fe-clean:test', 'fe-copy:test', 'fe-compile:test'));
+  gulp.task('fe-build', gulp.parallel('fe-build:resource', 'fe-build:main', 'fe-build:test'));
+  gulp.task('fe-start', gulp.series('fe-build', start));
+  gulp.task('fe-watch', watch(gulp, options));
+  gulp.task('fe-dev', gulp.series('fe-start', watch(gulp, options)));
 };

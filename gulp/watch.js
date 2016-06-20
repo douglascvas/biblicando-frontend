@@ -1,22 +1,23 @@
 const browserSync = require('browser-sync');
 const nodemon = require('gulp-nodemon');
-const reload = browserSync.reload;
 const paths = require('../paths');
 
-module.exports = function (gulp) {
-  return {
-    watch: function (prefix) {
-      return function () {
-        console.log('### Watching changes.');
-        browserSync({
-          proxy: "http://localhost:3000",
-          open: false
-        });
-        gulp.watch([`${paths.output}/config.js`], [prefix + 'build:main', reload]);
-        gulp.watch([`${paths.baseMain}/**/*`], [prefix + 'build:main', reload]);
-        gulp.watch([`${paths.baseResource}/**/*`], [prefix + 'build:resource', reload]);
-        gulp.watch([`${paths.baseTest}/**/*`], [prefix + 'build:test']);
-      }
-    }
+function reload() {
+  browserSync.reload();
+  return Promise.resolve(true);
+}
+
+module.exports = function (gulp, options) {
+  options = options || {port: 3000};
+  return function () {
+    console.log('### Watching changes on port', options.port);
+    browserSync({
+      proxy: `http://localhost:${options.port}`,
+      open: false
+    });
+    gulp.watch([`${paths.output}/config.js`], gulp.series('fe-build:main', reload));
+    gulp.watch([`${paths.baseMain}/**/*.*`], gulp.series('fe-build:main', reload));
+    gulp.watch([`${paths.baseResource}/**/*.*`], gulp.series('fe-build:resource', reload));
+    gulp.watch([`${paths.baseTest}/**/*.*`], gulp.series('fe-build:test'));
   };
 };

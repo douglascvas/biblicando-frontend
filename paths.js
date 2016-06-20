@@ -14,7 +14,6 @@ module.exports = {
   baseMain: `${mainRoot}`,
   baseResource: `${resourceRoot}`,
   baseTest: `${testRoot}`,
-  config: absolutePath(`config.js`),
   tsConfig: absolutePath(`tsconfig.json`),
   source: `${mainRoot}/**/*.ts`,
   html: `${mainRoot}/**/*.html`,

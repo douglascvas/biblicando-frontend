@@ -1,21 +1,21 @@
 //import {computedFrom} from 'aurelia-framework';
 
-interface BibleConfig {
-  selectedBible:any;
-  selectedBook:any;
-  selectedChapter:any;
-  selectedVerse:any;
-}
+import {View} from "aurelia-templating";
+import {AppStatus} from "../appStatus";
+
 
 export class Welcome {
   heading = 'Welcome to the Aurelia Navigation App!';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
-  bibleConfig:BibleConfig;
+  appStatus:AppStatus;
+
+  public created(owningView:View, myView:View) {
+    this.appStatus = new AppStatus();
+  }
 
   public Welcome() {
-    this.bibleConfig = <BibleConfig>{};
   }
 
   //Getters can't be directly observed, so they must be dirty checked.

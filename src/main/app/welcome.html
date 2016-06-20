@@ -1,13 +1,22 @@
 <template>
     <section class="au-animate">
         <require from="/bibleList/bibleList"></require>
+        <require from="/bookList/bookList"></require>
+        <require from="/chapterList/chapterList"></require>
 
         <h2>${heading}</h2>
         <div style="width: 300px; height: 300px; overflow: scroll; float: left">
-            <bible-list config.bind="bibleConfig"></bible-list>
+            xx${appConfig.selectedBible}xx
+            <bible-list selectable.bind="appStatus.bible"></bible-list>
         </div>
         <div style="width: 300px; height: 300px; overflow: scroll; float: left">
-            <book-list config.bind="bibleConfig" bibleId.bind="bibleConfig.selectedBible.id"></book-list>
+            <book-list selectable.bind="appStatus.book" bible.bind="appStatus.bible.selectedValue"></book-list>
+        </div>
+        <div style="width: 300px; height: 300px; overflow: scroll; float: left">
+            <chapter-list selectable.bind="appStatus.chapter" book.bind="appStatus.book.selectedValue"></chapter-list>
+        </div>
+        <div style="width: 300px; height: 300px; overflow: scroll; float: left">
+            <verse-list chapter.bind="appStatus.chapter.selectedValue"></verse-list>
         </div>
     </section>
 </template>

@@ -19,8 +19,9 @@ var portInUse = function (port, callback) {
 function waitForApplication(port, callback) {
   const interval = setInterval(()=> {
     portInUse(port, used => {
-      console.log("### Port used:", used);
+      console.log("# Starting frontend server...");
       if (used) {
+        console.log("# Frontend server started.");
         clearInterval(interval);
         return callback();
       }
@@ -28,13 +29,9 @@ function waitForApplication(port, callback) {
   }, 500);
 }
 
-module.exports = function () {
-  return {
-    start: function (cb) {
-      var server = require('gulp-express');
-      server.run([__dirname + '/../index.js']);
+module.exports = function start(cb) {
+  var server = require('gulp-express');
+  server.run([__dirname + '/../index.js']);
 
-      waitForApplication(3000, cb);
-    }
-  };
+  waitForApplication(3000, cb);
 };
