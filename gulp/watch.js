@@ -17,7 +17,8 @@ module.exports = function (gulp, options) {
     });
     gulp.watch([`${paths.output}/config.js`], gulp.series('fe-build:main', reload));
     gulp.watch([`${paths.baseMain}/**/*.*`], gulp.series('fe-build:main', reload));
-    gulp.watch([`${paths.baseResource}/**/*.*`], gulp.series('fe-build:resource', reload));
+    gulp.watch([`${paths.baseSass}/**/*.*`], gulp.series('fe-sass', reload));
+    gulp.watch([`${paths.baseImg}/**/*.*`], gulp.series('fe-copy:img', reload));
     gulp.watch([`${paths.baseTest}/**/*.*`], gulp.series('fe-build:test'));
   };
 };

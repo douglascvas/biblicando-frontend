@@ -22,10 +22,10 @@ module.exports = {
   main: function () {
     return Promise.all([processHtml(), processCss()]);
   },
-  resource: function () {
-    var result = gulp.src(paths.resource)
-      .pipe(changed(paths.outputMain))
-      .pipe(gulp.dest(paths.outputMain));
+  img: function () {
+    var result = gulp.src(paths.img)
+      .pipe(changed(paths.outputImage))
+      .pipe(gulp.dest(paths.outputImage));
     result.on('error', error => console.log("## ERROR - ", error));
     return result;
   },

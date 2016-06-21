@@ -10,5 +10,11 @@ module.exports = {
   },
   test: function () {
     return del(paths.outputTest);
+  },
+  css: function () {
+    return del(paths.outputCss);
+  },
+  img: function () {
+    return del(paths.outputImage);
   }
 };

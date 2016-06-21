@@ -1,6 +1,7 @@
 const path = require('path');
 const srcRoot = absolutePath('src/');
 const mainRoot = `${srcRoot}/main`;
+const styleRoot = `${srcRoot}/style`;
 const resourceRoot = absolutePath('src/resource/');
 const testRoot = absolutePath('src/test/');
 const outputRoot = absolutePath('build/');
@@ -13,16 +14,22 @@ module.exports = {
   root: `${srcRoot}`,
   baseMain: `${mainRoot}`,
   baseResource: `${resourceRoot}`,
+  baseStyle: `${styleRoot}`,
+  baseSass: `${styleRoot}/sass`,
+  baseImg: `${styleRoot}/img`,
   baseTest: `${testRoot}`,
   tsConfig: absolutePath(`tsconfig.json`),
   source: `${mainRoot}/**/*.ts`,
   html: `${mainRoot}/**/*.html`,
   css: `${mainRoot}/**/*.css`,
-  style: `${mainRoot}styles/**/*.css`,
+  sass: `${styleRoot}/sass/**/*.scss`,
+  img: `${styleRoot}/img/**/*.*`,
   test: `${testRoot}/test/**/*.ts`,
   resource: `${resourceRoot}/**/*`,
   output: `${outputRoot}`,
   outputMain: `${outputRoot}/main`,
+  outputCss: `${outputRoot}/style/css`,
+  outputImage: `${outputRoot}/style/img`,
   outputResource: `${outputRoot}/resource`,
   outputTest: `${outputRoot}/test`,
   e2eSpecsSrc: `${testRoot}/e2e/src/**/*.ts`,

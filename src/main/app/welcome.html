@@ -6,9 +6,7 @@
         <require from="/verseList/verseList"></require>
 
         <h2>${heading}</h2>
-        <div style="width: 300px; height: 300px; overflow: scroll; float: left">
-            <bible-list selectable.bind="appStatus.bible"></bible-list>
-        </div>
+        <bible-list selectable.bind="appStatus.bible"></bible-list>
         <div style="width: 300px; height: 300px; overflow: scroll; float: left">
             <book-list selectable.bind="appStatus.book" bible.bind="appStatus.bible.selectedValue"></book-list>
         </div>

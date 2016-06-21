@@ -1,10 +1,8 @@
 <template bindable="selectable">
+    <require from="/dropdownMenu/dropdownMenu"></require>
+
+    <dropdown-menu title="Bible versions" items.bind="menuItems" on-select.bind="selectBible"></dropdown-menu>
+
     Selected: ${selectable.bible}
-    <div repeat.for="bible of bibles">
-        <a href="#" click.delegate="selectBible(bible._id)">
-            <span inner-text="${bible.languageCode}"></span>
-            <span> - </span>
-            <span inner-text="${bible.name}"></span>
-        </a>
-    </div>
+
 </template>

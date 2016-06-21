@@ -26,7 +26,6 @@ module.exports = class Server {
   configureServer() {
     this.app.use(compress());
     this.app.use(express.static(`${__dirname}/build/main`));
-    this.app.use(express.static(`${__dirname}/build/resource`));
     this.app.use(express.static(`${__dirname}/build`));
   }
 
