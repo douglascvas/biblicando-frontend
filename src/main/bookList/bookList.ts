@@ -27,6 +27,7 @@ export class BookList {
   }
 
   public selectBook(bookId) {
+    console.log("## Selected book", bookId);
     this.selectable.selectedValue = bookId;
   }
 }

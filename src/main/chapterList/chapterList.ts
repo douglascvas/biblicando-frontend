@@ -16,14 +16,19 @@ export class ChapterList {
 
   public bookChanged(newValue, oldValue) {
     const self = this;
-    if (!self.book) {
+    if (!newValue) {
       return;
     }
-    console.log("## Loading books for ", newValue);
+    console.log("## Loading chapters for ", newValue);
     self.httpClient.get(`api/v1/book/${newValue}/chapters`)
       .then(httpResponse => {
         console.log(JSON.parse(httpResponse.response));
         self.chapters = JSON.parse(httpResponse.response);
       });
+  }
+
+  public selectChapter(chapterId) {
+    console.log("## Selected chapter", chapterId);
+    this.selectable.selectedValue = chapterId;
   }
 }

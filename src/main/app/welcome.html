@@ -3,10 +3,10 @@
         <require from="/bibleList/bibleList"></require>
         <require from="/bookList/bookList"></require>
         <require from="/chapterList/chapterList"></require>
+        <require from="/verseList/verseList"></require>
 
         <h2>${heading}</h2>
         <div style="width: 300px; height: 300px; overflow: scroll; float: left">
-            xx${appConfig.selectedBible}xx
             <bible-list selectable.bind="appStatus.bible"></bible-list>
         </div>
         <div style="width: 300px; height: 300px; overflow: scroll; float: left">

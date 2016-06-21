@@ -1,6 +1,6 @@
 <template bindable="selectable, book">
     <div repeat.for="chapter of chapters">
-        <a href="#" click.delegate="selectChapter(book._id)">
+        <a href="#" click.delegate="selectChapter(chapter._id)">
             <span inner-text="${chapter.number}"></span>
         </a>
     </div>
