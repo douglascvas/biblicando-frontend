@@ -1,0 +1,18 @@
+<template>
+    <require from="/bibleList/bibleList"></require>
+    <div class="row full-height">
+        <nav class="page__navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="page__nav-wrapper">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)" click.delegate="toggleBibleList()">
+                            <i class="fa fa-globe navbar__icon left" aria-hidden="true"></i> Version
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <bible-list class="bible__menu col s12 full-height ${showBibleList ? '' : 'hide'}" selectable.bind="appStatus.bible"></bible-list>
+    </div>
+
+</template>

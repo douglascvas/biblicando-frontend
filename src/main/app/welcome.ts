@@ -5,7 +5,6 @@ import {AppStatus} from "../appStatus";
 
 
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App!';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;

@@ -2,19 +2,22 @@ const del = require('del');
 const paths = require('../paths');
 
 module.exports = {
-  main: function () {
+  main: function cleanMain() {
     return del(paths.outputMain);
   },
-  resource: function () {
+  resource: function cleanResource() {
     return del(paths.outputResource);
   },
-  test: function () {
+  test: function cleanTest() {
     return del(paths.outputTest);
   },
-  css: function () {
+  css: function CleanCss() {
     return del(paths.outputCss);
   },
-  img: function () {
+  img: function cleanImg() {
     return del(paths.outputImage);
+  },
+  font: function cleanFont() {
+    return del(paths.outputFont);
   }
 };

@@ -1,8 +1,21 @@
 <template bindable="selectable">
-    <require from="/dropdownMenu/dropdownMenu"></require>
+    <div class="row full-height">
+        <div class="col s6 left bible-list">
+            <div class="input-field">
+                <i class="fa fa-search material-icons prefix" aria-hidden="true"></i>
+                <input keydown.delegate="filterBibles($event)" value.bind="filter" id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix" class="active">Version Name</label>
+            </div>
+            <div class="collection">
+                <a href="javascript:void(0)" class="collection-item" repeat.for="bible of bibles">
+                    <span inner-text="${bible.name}"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col s6 left">
 
-    <dropdown-menu title="Bible versions" items.bind="menuItems" on-select.bind="selectBible"></dropdown-menu>
-
+        </div>
+    </div>
     Selected: ${selectable.bible}
 
 </template>

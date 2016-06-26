@@ -1,0 +1,32 @@
+nav ul a {
+  //line-height: 2em;
+}
+
+%nav-height {
+  height: $page-navbar-height;
+  line-height: $page-navbar-height;
+}
+
+i.fa.navbar__icon {
+  font-size: 2rem;
+  line-height: $page-navbar-height;
+}
+
+.page__nav-wrapper {
+  @extend .nav-wrapper;
+  background-color: $page-navbar-color;
+}
+
+.page__navbar {
+  @extend nav;
+  @extend %nav-height;
+
+  a i.navbar__icon{
+    @extend %nav-height;
+  }
+
+  ul a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+

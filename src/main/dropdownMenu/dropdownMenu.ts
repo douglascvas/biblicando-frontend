@@ -1,6 +1,4 @@
-import {bindable} from "aurelia-templating";
-import {customElement} from "aurelia-templating";
-import {HttpClient} from "aurelia-http-client";
+import {bindable, customElement} from "aurelia-templating";
 
 export class KeyValue {
   constructor(public key, public value) {
@@ -13,34 +11,41 @@ export class DropdownMenu {
   @bindable title:string;
   @bindable onSelect:Function;
 
+  private wrapper:any;
+
   constructor() {
   }
 
   public itemsChanged(newValue) {
-    console.log('Items: ', newValue);
   }
 
-  private toggleClass(classAttribute, className):string {
+  private toggleClass(element, className) {
     const regex = new RegExp('(?:^| )(' + className + ')(?:$| )');
-    classAttribute = classAttribute || '';
+    var classAttribute = element.className || '';
     if (classAttribute.match(regex)) {
       classAttribute = classAttribute.replace(regex, ' ');
     } else {
       classAttribute = classAttribute + ' ' + className;
     }
-    return classAttribute.replace(/[ ]+/g, ' ');
+    element.className = classAttribute.replace(/[ ]+/g, ' ');
   }
 
   public clickMenu(event) {
-    event.target.className = this.toggleClass(event.target.className, 'active');
+    this.wrapper = event.target;
+    this.toggleClass(this.wrapper, 'active');
   }
 
   public clickMenuItem(event:any, item:KeyValue) {
-    console.log("Selected item", item.key, item.value);
     this.title = item.value;
+
+    // Callback passed in to the component
     if (typeof this.onSelect === 'function') {
       this.onSelect(item.key);
     }
-    console.log('clicked item', event.target);
+
+    if (this.wrapper) {
+      this.toggleClass(this.wrapper, 'active');
+    }
+    console.log('clicked wrapper', item.value, this.wrapper);
   }
 }

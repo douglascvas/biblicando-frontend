@@ -1,0 +1,13 @@
+@mixin calc-height($percentage, $pixels){
+  height: -webkit-calc(#{$percentage} - #{$pixels});
+  height:    -moz-calc(#{$percentage} - #{$pixels});
+  height:         calc(#{$percentage} - #{$pixels});
+}
+
+.bible-list {
+  background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 0.5rem !important;
+  @include calc-height(100%, #{$navbar-height} - #{$page-navbar-height} - 1rem);
+}

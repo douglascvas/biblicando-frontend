@@ -19,17 +19,24 @@ function processCss() {
 }
 
 module.exports = {
-  main: function () {
+  main: function copyMain() {
     return Promise.all([processHtml(), processCss()]);
   },
-  img: function () {
+  img: function copyImg() {
     var result = gulp.src(paths.img)
       .pipe(changed(paths.outputImage))
       .pipe(gulp.dest(paths.outputImage));
     result.on('error', error => console.log("## ERROR - ", error));
     return result;
   },
-  test: function () {
+  font: function copyFont() {
+    var result = gulp.src(paths.font)
+      .pipe(changed(paths.outputFont))
+      .pipe(gulp.dest(paths.outputFont));
+    result.on('error', error => console.log("## ERROR - ", error));
+    return result;
+  },
+  test: function copyTest() {
     return gulp.src(paths.test)
       .pipe(changed(paths.outputTest))
       .pipe(gulp.dest(paths.outputTest));

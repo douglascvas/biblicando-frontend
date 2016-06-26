@@ -1,5 +1,5 @@
 <template bindable="title, items, onSelect">
-    <div class="dropdown-menu-wrapper-1" click.delegate="clickMenu($event)">
+    <div class="dropdown-menu-wrapper" click.delegate="clickMenu($event)">
         <span inner-text="${title}"></span>
         <ul class="dropdown-menu">
             <li repeat.for="item of items"
