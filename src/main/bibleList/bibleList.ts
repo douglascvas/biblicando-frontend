@@ -32,12 +32,12 @@ export class BibleList {
 
   public created() {
     const self = this;
-    self.httpClient.get('api/v1/bibles')
-      .then(httpResponse => {
-        self.serverBibles = JSON.parse(httpResponse.response);
-        self.bibles = self.serverBibles;
-        self.menuItems = self.formatMenuItems();
-      });
+    // self.httpClient.get('api/v1/bibles')
+    //   .then(httpResponse => {
+    //     self.serverBibles = JSON.parse(httpResponse.response);
+    //     self.bibles = self.serverBibles;
+    //     self.menuItems = self.formatMenuItems();
+    //   });
   }
 
   public selectBible(bibleId) {
