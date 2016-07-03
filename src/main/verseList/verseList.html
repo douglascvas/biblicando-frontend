@@ -1,5 +1,8 @@
 <template bindable="verses">
-    <div repeat.for="verse of verses">
-        <p inner-text="${verse.text}"></p>
-    </div>
+    <ul class="collection">
+        <li repeat.for="verse of verses" class="collection-item">
+            <span inner-text="${verse.number}. "></span>
+            <span inner-text="${verse.text}"></span>
+        </li>
+    </ul>
 </template>

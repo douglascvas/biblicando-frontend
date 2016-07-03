@@ -27,6 +27,8 @@
                     selection.bind="bibleSelection"
                     bibles.bind="bibles"></bible-list>
 
+        <h4 class="center" inner-text="${selectedBook.name} ${selectedChapter.number}"></h4>
+
         <verse-list class="s12" verses.bind="verses"></verse-list>
     </div>
 

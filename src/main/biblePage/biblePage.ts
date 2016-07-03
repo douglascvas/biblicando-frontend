@@ -22,7 +22,8 @@ export class BiblePage {
 
   private loadBooks(bible) {
     var self = this;
-    return self.httpClient.get(`api/v1/bible/${bible._id}/books`)
+    var time = (new Date()).getTime();
+    return self.httpClient.get(`api/v1/bible/${bible._id}/books?time=${time}`)
       .then(httpResponse => {
         bible.books = JSON.parse(httpResponse.response);
         console.log("Loaded", (bible.books || []).length, "books");
@@ -36,7 +37,7 @@ export class BiblePage {
   private loadBibles() {
     console.log("Loading bibles...");
     var self = this;
-    return self.httpClient.get('api/v1/bibles')
+    return self.httpClient.get('api/v1/bibles?time=' + (new Date()).getTime())
       .then(httpResponse => {
         self.bibles = JSON.parse(httpResponse.response);
         console.log("Loaded", self.bibles.length, "bibles");
