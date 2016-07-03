@@ -7,10 +7,10 @@ import {KeyValue} from "../dropdownMenu/dropdownMenu";
 @inject(HttpClient)
 @customElement('bible-list')
 export class BibleList {
-  public bibles:Array<any>;
-  private serverBibles:Array<any>;
-  @bindable selectable:Selectable;
-  @bindable menuItems:Array<KeyValue>;
+  @bindable bibles:any[];
+  @bindable selection:Selectable;
+  filteredBibles:any[];
+  menuItems:KeyValue[];
   filter:String;
 
   constructor(private httpClient:HttpClient) {
@@ -18,9 +18,9 @@ export class BibleList {
     this.selectBible = this.selectBible.bind(this);
   }
 
-  private filterBibles($event) {
+  private filterBibles(bibles) {
     var self = this;
-    self.bibles = (self.serverBibles || [])
+    self.filteredBibles = (bibles || [])
       .filter(bible=>bible.name.toLowerCase().indexOf(self.filter.toLowerCase()) >= 0);
     return true;
   }
@@ -31,17 +31,12 @@ export class BibleList {
   }
 
   public created() {
-    const self = this;
-    // self.httpClient.get('api/v1/bibles')
-    //   .then(httpResponse => {
-    //     self.serverBibles = JSON.parse(httpResponse.response);
-    //     self.bibles = self.serverBibles;
-    //     self.menuItems = self.formatMenuItems();
-    //   });
+    console.log("Bibles:", this.bibles);
+    this.filterBibles(this.bibles);
   }
 
   public selectBible(bibleId) {
-    this.selectable.selectedValue = bibleId;
+    this.selection.selectedValue = bibleId;
   }
 
   private formatMenuItems():KeyValue[] {
