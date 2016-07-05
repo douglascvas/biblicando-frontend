@@ -1,4 +1,4 @@
-<template bindable="selection, bibles">
+<template bindable="onselect, bibles">
     <div class="row full-height">
         <div class="col s6 left bible-list">
             <div class="input-field">
@@ -7,7 +7,7 @@
                 <label for="icon_prefix" class="active">Version Name</label>
             </div>
             <div class="collection">
-                <a href="javascript:void(0)" class="collection-item" repeat.for="bible of bibles">
+                <a href="javascript:void(0)" class="collection-item" repeat.for="bible of bibles" click.delegate="onselect(bible)">
                     <span inner-text="${bible.name}"></span>
                 </a>
             </div>

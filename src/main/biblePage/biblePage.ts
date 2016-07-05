@@ -14,10 +14,17 @@ export class BiblePage {
   @bindable selectedChapter:any;
   public verses:any[];
 
-  public bibleSelection:Selectable;
-
   constructor(private httpClient:HttpClient) {
+    this.onBibleSelect = this.onBibleSelect.bind(this);
+  }
 
+  public onBibleSelect(bible) {
+    this.toggleBibleList();
+    console.log("Loading bible ", bible._id);
+    if (!this.selectedBible || (bible && this.selectedBible._id && this.selectedBible._id !== bible._id)) {
+      console.log("Loading books");
+      this.loadBooks(bible);
+    }
   }
 
   private loadBooks(bible) {
@@ -53,7 +60,7 @@ export class BiblePage {
     return this.loadBibles();
   }
 
-  toggleBibleList() {
+  public toggleBibleList() {
     this.showBibleList = !this.showBibleList;
   }
 

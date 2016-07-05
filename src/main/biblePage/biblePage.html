@@ -12,7 +12,8 @@
                     </li>
                     <li>
                         <a href="javascript:void(0)" click.delegate="toggleBibleList()">
-                            <i class="fa fa-table navbar__icon left" aria-hidden="true"><span class="icon-badge">15</span></i> Chapter
+                            <i class="fa fa-table navbar__icon left" aria-hidden="true"><span
+                                    class="icon-badge">15</span></i> Chapter
                         </a>
                     </li>
                     <li>
@@ -23,13 +24,15 @@
                 </ul>
             </div>
         </nav>
-        <bible-list class="bible__menu col s12 full-height ${showBibleList ? '' : 'hide'}"
-                    selection.bind="bibleSelection"
-                    bibles.bind="bibles"></bible-list>
+        <div class="bible-page__body col s10 offset-s1">
+            <bible-list class="bible__menu col s12 full-height ${showBibleList ? '' : 'hide'}"
+                        onselect.bind="onBibleSelect"
+                        bibles.bind="bibles"></bible-list>
 
-        <h4 class="center" inner-text="${selectedBook.name} ${selectedChapter.number}"></h4>
+            <h4 class="center" inner-text="${selectedBook.name} ${selectedChapter.number}"></h4>
 
-        <verse-list class="s12" verses.bind="verses"></verse-list>
+            <verse-list class="s12" verses.bind="verses"></verse-list>
+        </div>
     </div>
 
 </template>

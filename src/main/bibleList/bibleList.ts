@@ -8,14 +8,13 @@ import {KeyValue} from "../dropdownMenu/dropdownMenu";
 @customElement('bible-list')
 export class BibleList {
   @bindable bibles:any[];
-  @bindable selection:Selectable;
+  @bindable onselect:Function;
   filteredBibles:any[];
   menuItems:KeyValue[];
   filter:String;
 
   constructor(private httpClient:HttpClient) {
     console.log("Bibles list started.");
-    this.selectBible = this.selectBible.bind(this);
   }
 
   private filterBibles(bibles) {
@@ -33,10 +32,6 @@ export class BibleList {
   public created() {
     console.log("Bibles:", this.bibles);
     this.filterBibles(this.bibles);
-  }
-
-  public selectBible(bibleId) {
-    this.selection.selectedValue = bibleId;
   }
 
   private formatMenuItems():KeyValue[] {
