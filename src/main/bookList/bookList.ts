@@ -1,33 +1,44 @@
-import {bindable} from "aurelia-templating";
-import {customElement} from "aurelia-templating";
+import {bindable, customElement} from "aurelia-templating";
 import {inject} from "aurelia-dependency-injection";
 import {HttpClient} from "aurelia-http-client";
 import {Selectable} from "../selectable";
+import {KeyValue} from "../dropdownMenu/dropdownMenu";
 
 @inject(HttpClient)
 @customElement('book-list')
 export class BookList {
-  @bindable selectable:Selectable;
-  @bindable bible:String;
-  @bindable books:Array<any>;
+  @bindable books:any[];
+  @bindable onselect:Function;
+  filteredBooks:any[];
+  menuItems:KeyValue[];
+  filter:String;
 
   constructor(private httpClient:HttpClient) {
+    console.log("Book list started.");
   }
 
-  public bibleChanged(newValue, oldValue) {
-    const self = this;
-    if (self.bible) {
-      console.log("## Loading books for ", newValue);
-      self.httpClient.get(`api/v1/bible/${self.bible}/books`)
-        .then(httpResponse => {
-          console.log(JSON.parse(httpResponse.response));
-          self.books = JSON.parse(httpResponse.response);
-        });
+  private filterBooks(bibles) {
+    var self = this;
+    self.filteredBooks = (bibles || [])
+      .filter(bible=>bible.name.toLowerCase().indexOf(self.filter.toLowerCase()) >= 0);
+    return true;
+  }
+
+  public filterChanged(newValue, oldValue) {
+    console.log('filter changed:', newValue);
+    this.filterBooks(newValue || '');
+  }
+
+  public created() {
+    console.log("Books:", this.books);
+    this.filterBooks(this.books);
+  }
+
+  private formatMenuItems():KeyValue[] {
+    if (this.books) {
+      return this.books.map(book=>new KeyValue(book._id, `${book.number} - ${book.name}`));
     }
+    return [];
   }
 
-  public selectBook(bookId) {
-    console.log("## Selected book", bookId);
-    this.selectable.selectedValue = bookId;
-  }
 }

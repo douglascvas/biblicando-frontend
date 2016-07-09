@@ -4,34 +4,45 @@ import {HttpClient} from "aurelia-http-client";
 import {Selectable} from "../selectable";
 import {KeyValue} from "../dropdownMenu/dropdownMenu";
 
+export class BibleList {
+  bibles;
+}
+
 @inject(HttpClient)
 @customElement('bible-list')
-export class BibleList {
+export class BibleListController {
   @bindable bibles:any[];
   @bindable onselect:Function;
   filteredBibles:any[];
   menuItems:KeyValue[];
-  filter:String;
+  @bindable filter:String;
 
   constructor(private httpClient:HttpClient) {
     console.log("Bibles list started.");
   }
 
-  private filterBibles(bibles) {
+  private filterBibles(bibles, filter) {
     var self = this;
+    console.log('filter', filter);
+    if (!filter) {
+      self.filteredBibles = bibles;
+      return;
+    }
     self.filteredBibles = (bibles || [])
-      .filter(bible=>bible.name.toLowerCase().indexOf(self.filter.toLowerCase()) >= 0);
+      .filter(bible=>bible.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0);
     return true;
   }
 
   public filterChanged(newValue, oldValue) {
     console.log('filter changed:', newValue);
-    this.filterBibles(newValue || '');
+    this.filterBibles(this.bibles, newValue || '');
+  }
+
+  public biblesChanged(){
+    this.filterBibles(this.bibles, this.filter || '');
   }
 
   public created() {
-    console.log("Bibles:", this.bibles);
-    this.filterBibles(this.bibles);
   }
 
   private formatMenuItems():KeyValue[] {

@@ -7,7 +7,7 @@ export class App {
   }
 
   public configureRouter(config, router) {
-    config.title = 'Aurelia';
+    config.title = 'Biblicando';
     config.map([
       {route: ['', 'welcome'], name: 'welcome', moduleId: './app/welcome', nav: true, title: 'Welcome'},
       {route: 'users', name: 'users', moduleId: './app/users', nav: true, title: 'Github Users'},

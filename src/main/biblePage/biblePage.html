@@ -1,5 +1,7 @@
 <template>
+    <require from="/global/sectionMenu"></require>
     <require from="/bibleList/bibleList"></require>
+    <require from="/bookList/bookList"></require>
     <require from="/verseList/verseList"></require>
     <div class="row full-height">
         <nav class="page__navbar navbar-default navbar-fixed-top" role="navigation">
@@ -7,31 +9,38 @@
                 <ul>
                     <li>
                         <a href="javascript:void(0)" click.delegate="toggleBibleList()">
-                            <i class="fa fa-globe navbar__icon left" aria-hidden="true"></i> Version
+                            <i class="fa fa-language navbar__icon left" aria-hidden="true"></i> Version
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" click.delegate="toggleBookList()">
+                            <i class="fa fa-book navbar__icon left" aria-hidden="true"></i> Book
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0)" click.delegate="toggleBibleList()">
-                            <i class="fa fa-table navbar__icon left" aria-hidden="true"><span
+                            <i class="fa fa-clone navbar__icon left" aria-hidden="true"><span
                                     class="icon-badge">15</span></i> Chapter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" click.delegate="toggleBibleList()">
-                            <i class="fa fa-list-ul navbar__icon left" aria-hidden="true"></i> Verse
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div class="bible-page__body col s10 offset-s1">
-            <bible-list class="bible__menu col s12 full-height ${showBibleList ? '' : 'hide'}"
-                        onselect.bind="onBibleSelect"
-                        bibles.bind="bibles"></bible-list>
+        <div class="bible-page__body row offset-s1">
+            <div class="${overlayVisible ? 'bible-page__overlay': 'hide'}"></div>
+            <div class="bible-page__content col s10 offset-s1">
+                <bible-list section-menu=""
+                            class="list-menu push--left col s12 full-height ${showBibleList ? '' : 'hide'}"
+                            onselect.bind="onBibleSelect"
+                            bibles.bind="bibles"></bible-list>
+                <book-list class="list-menu col s12 full-height ${showBookList ? '' : 'hide'}"
+                            onselect.bind="onBookSelect"
+                            books.bind="selectedBible.books"></book-list>
 
-            <h4 class="center" inner-text="${selectedBook.name} ${selectedChapter.number}"></h4>
+                <h4 class="center" inner-text="${selectedBook.name} ${selectedChapter.number}"></h4>
 
-            <verse-list class="s12" verses.bind="verses"></verse-list>
+                <verse-list class="s12" verses.bind="verses"></verse-list>
+            </div>
         </div>
     </div>
 

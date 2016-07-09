@@ -16,9 +16,9 @@ function compileTs(source, dest) {
     }
     var result = gulp.src(paths.dtsSrc.concat(source))
       .pipe(plumber())
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init())
       .pipe(typescript(typescriptCompiler))
-      .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/src'}))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(paths.output));
     result.on('error', error => console.log("## ERROR - ", error));
     return result;
