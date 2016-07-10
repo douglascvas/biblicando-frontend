@@ -23,7 +23,9 @@
     "aurelia-templating": "github:aurelia/templating/dist/aurelia-templating.d.ts#aad25d550f316ac2d7cac29c330059897c7d15bd",
     "aurelia-templating-binding": "github:aurelia/templating-binding/dist/aurelia-templating-binding.d.ts#f90d1082b0aa3be71c23e26c1e152b22593a15b5",
     "aurelia-templating-resources": "github:aurelia/templating-resources/dist/aurelia-templating-resources.d.ts#98f81efd2d7270742bfaa1f3c37d8a71a3936172",
-    "aurelia-templating-router": "github:aurelia/templating-router/dist/aurelia-templating-router.d.ts#68460e0398f896c5883be81588bdd5f3855f05c3"
+    "aurelia-templating-router": "github:aurelia/templating-router/dist/aurelia-templating-router.d.ts#68460e0398f896c5883be81588bdd5f3855f05c3",
+    "kefir": "registry:dt/kefir#3.2.0+20160316155526",
+    "node": "registry:dt/node#6.0.0+20160709114037"
   },
   "globalDevDependencies": {
     "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",

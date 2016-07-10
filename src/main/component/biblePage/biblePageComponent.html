@@ -8,7 +8,7 @@
             <div class="page__nav-wrapper">
                 <ul>
                     <li>
-                        <a href="javascript:void(0)" click.delegate="toggleBibleList()">
+                        <a href="javascript:void(0)" click.delegate="bibleMenu.toggle()">
                             <i class="fa fa-language navbar__icon left" aria-hidden="true"></i> Version
                         </a>
                     </li>
@@ -30,9 +30,8 @@
             <div class="${overlayVisible ? 'bible-page__overlay': 'hide'}"></div>
             <div class="bible-page__content col s10 offset-s1">
                 <bible-list section-menu=""
-                            class="list-menu push--left col s12 full-height ${showBibleList ? '' : 'hide'}"
-                            onselect.bind="onBibleSelect"
-                            bibles.bind="bibles"></bible-list>
+                            class="list-menu push--left col s12 full-height ${bibleMenu.visible ? '' : 'hide'}"
+                            menu.bind="bibleMenu"></bible-list>
                 <book-list class="list-menu col s12 full-height ${showBookList ? '' : 'hide'}"
                             onselect.bind="onBookSelect"
                             books.bind="selectedBible.books"></book-list>

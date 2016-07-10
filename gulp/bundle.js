@@ -21,6 +21,7 @@ var config = {
     "vendor/bundle": {
       includes: [
         // "aurelia-animator-css",
+        "kefir",
         "aurelia-bootstrapper",
         "aurelia-fetch-client",
         "aurelia-framework",

@@ -64,6 +64,7 @@
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0-beta.1.2.6",
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0-beta.1.2.1",
       "font-awesome": "npm:font-awesome@^4.5.0",
+      "kefir": "npm:kefir@^3.2.6",
       "webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs@^0.7.22"
     },
     "devDependencies": {
@@ -73,8 +74,10 @@
     }
   },
   "dependencies": {
+    "@reactivex/rxjs": "^5.0.0-beta.1",
     "compression": "^1.6.2",
     "configurator-js": "0.0.5",
+    "kefir": "^3.2.6",
     "q": "^1.4.1",
     "request-promise": "^3.0.0"
   }
