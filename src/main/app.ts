@@ -1,4 +1,5 @@
 import {bindable} from "aurelia-templating";
+
 export class App {
   @bindable router = null;
 
@@ -9,7 +10,7 @@ export class App {
   public configureRouter(config, router) {
     config.title = 'Biblicando';
     config.map([
-      {route: ['', 'welcome'], name: 'welcome', moduleId: './app/welcome', nav: true, title: 'Welcome'},
+      {route: ['', 'main'], name: 'main', moduleId: './main/main', nav: true, title: ''},
       {route: 'users', name: 'users', moduleId: './app/users', nav: true, title: 'Github Users'},
       {route: 'child-router', name: 'child-router', moduleId: './app/child-router', nav: true, title: 'Child Router'}
     ]);
@@ -21,7 +22,7 @@ export class App {
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .globalResources('global/innerText')
+    .globalResources('common/innerText')
     .developmentLogging();
 
   aurelia.start().then(() => aurelia.setRoot());

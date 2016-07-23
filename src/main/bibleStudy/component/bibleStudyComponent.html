@@ -1,0 +1,7 @@
+<template>
+    <require from="/bible/biblePage/component/biblePageComponent"></require>
+
+    <div repeat.for="page of pages">
+        <bible-page page.bind="page"></bible-page>
+    </div>
+</template>
