@@ -8,7 +8,8 @@ export abstract class Menu<E> {
   private _filteredItems:E[];
   private _visible:boolean;
   private _filter:string;
-  private _onSelect:Observer;
+  private _onSelect:Observer<E>;
+  private _onShow:Observer<E>;
 
   constructor(private _overlay:Overlay,
               private _logger:Logger) {
@@ -16,6 +17,7 @@ export abstract class Menu<E> {
     this._filteredItems = [];
     this._visible = false;
     this._onSelect = new Observer();
+    this._onShow = new Observer();
 
     _overlay.onShow(()=>this.hide());
   }
@@ -26,7 +28,12 @@ export abstract class Menu<E> {
     return this._onSelect.observe(listener);
   }
 
+  public onShow(listener) {
+    return this._onShow.observe(listener);
+  }
+
   public update(items) {
+    this._logger.debug(`Updated ${items.length} menu items`);
     this._items = items;
     this._filterItems();
   }
@@ -57,6 +64,7 @@ export abstract class Menu<E> {
   }
 
   public show() {
+    this._onShow.trigger();
     this._overlay.show();
     this._visible = true;
   }
@@ -67,7 +75,11 @@ export abstract class Menu<E> {
   }
 
   public toggle() {
-    this._visible = !this._visible;
+    if (this._visible) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
 
   private _filterItems() {

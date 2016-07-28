@@ -1,4 +1,10 @@
-%menu {
+.menu {
+  &__wrapper {
+    position: absolute;
+    z-index: 1000;
+    width: 96%;
+    margin-left: 2%;
+  }
   &__body {
     background-color: #fff;
     overflow-y: scroll;
@@ -6,7 +12,17 @@
     padding-top: 0.5rem !important;
     @include calc-height(100%, #{$navbar-height} - #{$page-navbar-height} - 1rem);
   }
-  &__list {
-
+  &__body-wrapper {
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 0.5rem;
   }
+  &__list {
+  }
+  &__item {
+    background-color: rgba(255, 255, 255, 0.91);
+    text-align: center;
+    border: 1px solid rgba(241, 241, 241, 0.51);
+  }
+  //background-color: red;
+  display: inherit;
 }

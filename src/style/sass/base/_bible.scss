@@ -1,5 +1,0 @@
-@mixin calc-height($percentage, $pixels){
-  height: -webkit-calc(#{$percentage} - #{$pixels});
-  height:    -moz-calc(#{$percentage} - #{$pixels});
-  height:         calc(#{$percentage} - #{$pixels});
-}

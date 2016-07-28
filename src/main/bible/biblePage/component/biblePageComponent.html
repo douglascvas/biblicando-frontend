@@ -1,45 +1,14 @@
-<template binding="page">
-    <require from="/common/sectionMenu"></require>
-    <require from="/bible/bibleMenu/component/bibleMenuComponent"></require>
-    <require from="/book/bookMenu/component/bookMenuComponent"></require>
-    <require from="/chapter/chapterMenu/component/chapterMenuComponent"></require>
+<template bindable="page">
+    <require from="/menuBar/component/menuBarComponent"></require>
     <require from="/verse/verseList/component/verseListComponent"></require>
 
-    <div class="row full-height">
-        <nav class="page__navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="page__nav-wrapper">
-                <ul>
-                    <li>
-                        <a href="javascript:void(0)" click.delegate="page.bibleMenu.toggle()">
-                            <i class="fa fa-language navbar__icon left" aria-hidden="true"></i> Version
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" click.delegate="page.bookMenu.toggle()">
-                            <i class="fa fa-book navbar__icon left" aria-hidden="true"></i> Book
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" click.delegate="page.chapterMenu.toggle()">
-                            <i class="fa fa-clone navbar__icon left" aria-hidden="true">
-                                <span class="icon-badge" inner-text="${chapterMenu.selected.number || 1}"></span>
-                            </i> Chapter
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <div class="row full-height bible-page__body">
+        <menu-bar menu-bar.bind="page.menuBar"></menu-bar>
 
         <div class="bible-page__body row offset-s1">
-            <div class="${overlay.visible ? 'bible-page__overlay': 'hide'}"></div>
             <div class="bible-page__content col s10 offset-s1">
-                <bible-menu menu.bind="page.bibleMenu" class="list-menu push--left col s12 full-height ${page.bibleMenu.visible ? '' : 'hide'}"></bible-menu>
-                <book-menu menu.bind="page.bookMenu" class="list-menu push--left col s12 full-height ${page.bookMenu.visible ? '' : 'hide'}"></book-menu>
-                <chapter-menu menu.bind="page.chapterMenu" class="list-menu col s12 full-height ${page.chapterMenu.visible ? '' : 'hide'}"></chapter-menu>
-
-                <h4 class="center" inner-text="${selectedBook.name} ${selectedChapter.number}"></h4>
-
-                <verse-list class="s12" verses.bind="page.selectedChapter.verses"></verse-list>
+                <h4 class="center" inner-text="${page.currentBook.name} ${page.currentChapter.number}"></h4>
+                <verse-list class="s12" verses.bind="page.currentVerses"></verse-list>
             </div>
         </div>
     </div>

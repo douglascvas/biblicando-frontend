@@ -1,11 +1,11 @@
-export class Observer {
-  private _listeners:Array<(any)=>any>;
+export class Observer<E> {
+  private _listeners:Array<(E)=>void>;
 
   constructor() {
     this._listeners = [];
   }
 
-  public observe(listener:(any)=>any) {
+  public observe(listener:(E)=>void) {
     const self = this;
     self._listeners.push(listener);
     return () => {
@@ -17,7 +17,7 @@ export class Observer {
     };
   }
 
-  public trigger(...value:any[]) {
+  public trigger(...value:E[]) {
     this._listeners.forEach(fn=> {
       if (typeof fn === 'function') {
         try {

@@ -1,7 +1,19 @@
-<template bindable="selectable, book">
-    <div repeat.for="chapter of chapters">
-        <a href="#" click.delegate="selectChapter(chapter._id)">
-            <span inner-text="${chapter.number}"></span>
-        </a>
+<template bindable="menu">
+    <div class="row menu__body-wrapper">
+        <div class="col s12 left bible-menu__body">
+            <div class="book-menu__search input-field">
+                <i class="fa fa-search material-icons prefix" aria-hidden="true"></i>
+                <input value.bind="menu.filter" id="chapter_filter" type="text" class="validate">
+                <label for="chapter_filter" class="active">Chapter Number</label>
+            </div>
+        </div>
+        <div class="col s12 left bible-menu__body">
+            <div class="bible-menu__list row">
+                <a href="javascript:void(0)" class="col s1 menu__item"
+                   repeat.for="chapter of menu.filteredItems" click.delegate="menu.selectItem(chapter)">
+                    <span inner-text="${formatMenuItem(chapter)}"></span>
+                </a>
+            </div>
+        </div>
     </div>
 </template>

@@ -1,6 +1,3 @@
-import {BibleMenu} from "../bibleMenu/bibleMenu";
-import {BookMenu} from "../../book/bookMenu/bookMenu";
-import {ChapterMenu} from "../../chapter/chapterMenu/chapterMenu";
 import {Bible} from "../bible";
 import {Book} from "../../book/book";
 import {Chapter} from "../../chapter/chapter";
@@ -9,18 +6,15 @@ import {BookService} from "../../book/bookService";
 import {ChapterService} from "../../chapter/chapterService";
 import {VerseService} from "../../verse/verseService";
 import {Verse} from "../../verse/verse";
-import {Overlay} from "../../common/overlay";
+import {MenuBar} from "../../menuBar/menuBar";
 
 export class BiblePage {
-  public overlay:Overlay;
-  public bibleMenu:BibleMenu;
-  public bookMenu:BookMenu;
-  public chapterMenu:ChapterMenu;
+  public currentBible:Bible;
+  public currentBook:Book;
+  public currentChapter:Chapter;
+  public currentVerses:Verse[];
+  public menuBar:MenuBar;
 
-  private selectedBible:Bible;
-  private selectedBook:Book;
-  private selectedChapter:Chapter;
-  private _verses:Verse[];
   private _logger:Logger;
   private _bibles:Bible[];
   private _pageId:string;
@@ -31,68 +25,71 @@ export class BiblePage {
               private _loggerFactory:LoggerFactory) {
     this._logger = _loggerFactory.getLogger('biblePage');
     this._pageId = new Date().getTime().toString();
+    this.menuBar = new MenuBar(_loggerFactory);
 
-    this.overlay = new Overlay();
-    this.bibleMenu = new BibleMenu(this.overlay, this._loggerFactory);
-    this.bookMenu = new BookMenu(this.overlay, this._loggerFactory);
-    this.chapterMenu = new ChapterMenu(this.overlay, this._loggerFactory);
-
-    this.bibleMenu.onSelect(bible=>this._onBibleSelect(bible));
-    this.bookMenu.onSelect(bible=>this._onBookSelect(bible));
-    this.chapterMenu.onSelect(bible=>this._onChapterSelect(bible));
+    this.menuBar.onBibleSelect(bible=>this._selectBible(bible));
+    this.menuBar.onBookSelect(book=>this._selectBook(book));
+    this.menuBar.onChapterSelect(book=>this._selectChapter(book));
   }
+
+  /**
+   * Bible
+   */
 
   public updateBibles(bibles:Bible[]) {
     this._bibles = bibles;
     this._logger.debug(`Updated ${bibles.length} bibles for page ${this._pageId}.`);
-    this.bibleMenu.update(bibles);
+    this.menuBar.updateBibles(bibles);
     return this._loadBooks(bibles[0]);
   }
 
-  private _onBibleSelect(bible) {
-    this.bibleMenu.hide();
-    this._logger.debug("Selected bible ", bible._id);
+  private _selectBible(bible:Bible) {
     if (!this._canSelectBible(bible)) {
       return;
     }
+    this._logger.debug("Selected bible ", bible._id);
     this._loadBooks(bible)
       .then(()=>this._setSelectedBible(bible));
   }
 
-  private _onBookSelect(book) {
-    this.bookMenu.hide();
-    if (this._canSelectBook(book)) {
+  private _canSelectBible(bible:Bible) {
+    return !(!bible || (this.currentBible && bible && this.currentBible._id === bible._id));
+  }
+
+  private _loadBooks(bible) {
+    var self = this;
+    return self._bookService.fetchBooks(bible)
+      .then((books:Book[]) => {
+        bible.books = books;
+        self.menuBar.updateBooks(books);
+        self.currentBook = (books || [])[0];
+        let chapters = (self.currentBook || <Book>{}).chapters || [];
+        self._logger.debug(`Loaded ${chapters.length} chapters.`);
+        self.menuBar.updateChapters(chapters);
+        self.currentChapter = chapters[0] || <Chapter>{};
+        self.currentVerses = self.currentChapter.verses || [];
+      });
+  }
+
+  private _setSelectedBible(bible:Bible) {
+    this.currentBible = bible;
+  }
+
+  /**
+   * Book
+   */
+
+  private _selectBook(book:Book) {
+    if (!this._canSelectBook(book)) {
       return;
     }
     this._logger.debug("Loading book ", book._id);
     this._loadChapters(book)
-      .then(()=>this.selectedBook = book);
-  }
-
-  private _onChapterSelect(chapter) {
-    this.chapterMenu.toggle();
-    if (this._canSelectChapter(chapter)) {
-      return;
-    }
-    this._logger.debug("Loading chapter ", chapter._id);
-    this._loadVerses(chapter)
-      .then(()=>this.selectedChapter = chapter);
-  }
-
-  private _canSelectBible(bible) {
-    return !(!bible || (this.selectedBible && bible && this.selectedBible._id === bible._id));
+      .then(()=>this._setSelectedBook(book));
   }
 
   private _canSelectBook(book) {
-    return !(!book || (this.selectedBook && book && this.selectedBook._id === book._id));
-  }
-
-  private _canSelectChapter(chapter) {
-    return !(!chapter || (this.selectedChapter && chapter && this.selectedChapter._id === chapter._id));
-  }
-
-  private _setSelectedBible(bible) {
-    this.selectedBible = bible;
+    return !(!book || (this.currentBook && book && this.currentBook._id === book._id));
   }
 
   // TODO: check if chapters already exist and if so, use it instead of fetching again
@@ -101,11 +98,32 @@ export class BiblePage {
     return self._chapterService.fetchChapters(book)
       .then(chapters => {
         book.chapters = chapters;
-        self.chapterMenu.update(chapters);
-        self.selectedChapter = (chapters || [])[0];
-        self._verses = (self.selectedChapter || <Chapter>{}).verses || [];
+        self.menuBar.updateChapters(chapters);
+        self.currentChapter = (chapters || [])[0];
+        self.currentVerses = (self.currentChapter || <Chapter>{}).verses || [];
         return chapters;
       });
+  }
+
+  private _setSelectedBook(book:Book) {
+    this.currentBook = book;
+  }
+
+  /**
+   * Chapter
+   */
+
+  private _selectChapter(chapter:Chapter) {
+    if (!this._canSelectChapter(chapter)) {
+      return;
+    }
+    this._logger.debug("Loading chapter ", chapter._id);
+    this._loadVerses(chapter)
+      .then(()=>this._setSelectedChapter(chapter));
+  }
+
+  private _canSelectChapter(chapter) {
+    return !(!chapter || (this.currentChapter && chapter && this.currentChapter._id === chapter._id));
   }
 
   private _loadVerses(chapter) {
@@ -113,22 +131,13 @@ export class BiblePage {
     return self._verseService.fetchVerses(chapter)
       .then(verses => {
         chapter.verses = verses;
-        self._verses = (self.selectedChapter || <Chapter>{}).verses || [];
+        self.currentVerses = (self.currentChapter || <Chapter>{}).verses || [];
         return verses;
       });
   }
 
-  private _loadBooks(bible) {
-    var self = this;
-    return self._bookService.fetchBooks(bible)
-      .then(books => {
-        bible.books = books;
-        self.bookMenu.update(books);
-        self.selectedBook = (books || [])[0];
-        self.chapterMenu.update((self.selectedBook || <Book>{}).chapters);
-        self.selectedChapter = ((self.selectedBook || <Book>{}).chapters || [])[0] || <Chapter>{};
-        self._verses = self.selectedChapter.verses || [];
-      });
+  private _setSelectedChapter(chapter:Chapter) {
+    this.currentChapter = chapter;
   }
 
 }

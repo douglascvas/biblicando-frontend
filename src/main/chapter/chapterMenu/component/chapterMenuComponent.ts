@@ -1,13 +1,13 @@
 import {bindable, customElement} from "aurelia-templating";
 import {autoinject} from "aurelia-dependency-injection";
-import {BookMenu} from "../../../book/bookMenu/bookMenu";
 import {Logger, LoggerFactory} from "../../../common/loggerFactory";
-import {Book} from "../../../book/book";
+import {ChapterMenu} from "../chapterMenu";
+import {Chapter} from "../../chapter";
 
 @autoinject
 @customElement('chapter-menu')
 export class ChapterMenuComponent {
-  @bindable menu:BookMenu;
+  @bindable menu:ChapterMenu;
   private _logger:Logger;
 
   constructor(private _loggerFactory:LoggerFactory) {
@@ -18,7 +18,7 @@ export class ChapterMenuComponent {
     this.menu.selectItem(item);
   }
 
-  public formatMenuItem(book:Book):String {
-    return book.name;
+  public formatMenuItem(chapter:Chapter):String {
+    return (chapter.number || 1).toString();
   }
 }

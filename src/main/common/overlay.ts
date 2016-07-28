@@ -1,10 +1,9 @@
 import {Observer} from "./observer";
-import {computedFrom} from "aurelia-binding";
 
 export class Overlay {
-  private _onHide:Observer;
-  private _onShow:Observer;
-  private _visible:boolean;
+  private _onHide:Observer<any>;
+  private _onShow:Observer<any>;
+  private visible:boolean;
 
   constructor() {
     this._onHide = new Observer();
@@ -19,23 +18,18 @@ export class Overlay {
     this._onHide.observe(fn);
   }
 
-  @computedFrom('_visible')
-  public get visible():boolean {
-    return this._visible;
-  }
-
   public show() {
-    this._visible = true;
     this._onShow.trigger();
+    this.visible = true;
   }
 
   public hide() {
-    this._visible = false;
     this._onHide.trigger();
+    this.visible = false;
   }
 
   public toggle() {
-    if (this._visible) {
+    if (this.visible) {
       this.hide();
     } else {
       this.show();
