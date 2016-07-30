@@ -3,13 +3,14 @@
         <div class="col s12 left bible-menu__body">
             <div class="bible-menu__search input-field">
                 <i class="fa fa-search material-icons prefix" aria-hidden="true"></i>
-                <input value.bind="menu.filter" id="bible_filter" type="text" class="validate">
+                <input value.bind="menu.filter" id="bible_filter" type="text" class="validate"
+                       ref="filterElement" keypress.trigger="processFilterKeyPress($event)">
                 <label for="bible_filter" class="active">Version Name</label>
             </div>
             <div class="collection bible-menu__list">
                 <a href="javascript:void(0)" class="collection-item"
                    repeat.for="bible of menu.filteredItems" click.delegate="menu.selectItem(bible)">
-                    <span inner-text="${formatMenuItem(bible)}"></span>
+                    <span textcontent.one-time="formatMenuItem(bible)"></span>
                 </a>
             </div>
         </div>

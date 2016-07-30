@@ -1,22 +1,17 @@
 import {bindable, customElement} from "aurelia-templating";
 import {autoinject} from "aurelia-dependency-injection";
 import {BookMenu} from "../bookMenu";
-import {Logger, LoggerFactory} from "../../../common/loggerFactory";
 import {Book} from "../../book";
+import {AbstractMenuComponent} from "../../../common/abstractMenuComponent";
+import {Menu} from "../../../common/menu";
 
 @autoinject
 @customElement('book-menu')
-export class BookMenuComponent {
-  private _logger:Logger;
-
+export class BookMenuComponent extends AbstractMenuComponent {
   @bindable menu:BookMenu;
 
-  constructor(private _loggerFactory:LoggerFactory) {
-    this._logger = _loggerFactory.getLogger('BookMenuComponent');
-  }
-
-  public selectItem(item):void {
-    this.menu.selectItem(item);
+  protected getMenu():Menu {
+    return this.menu;
   }
 
   public formatMenuItem(book:Book):String {

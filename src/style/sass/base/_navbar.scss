@@ -1,5 +1,9 @@
-nav ul a {
-  //line-height: 2em;
+nav {
+  .brand-logo {
+    font-family: $logo_font;
+    margin-left: 2rem;
+    font-size: 2.2rem;
+  }
 }
 
 %nav-height {
@@ -21,7 +25,7 @@ i.fa.navbar__icon {
   @extend nav;
   @extend %nav-height;
 
-  a i.navbar__icon{
+  a i.navbar__icon {
     @extend %nav-height;
   }
 

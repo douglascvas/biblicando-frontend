@@ -7,8 +7,14 @@
 
         <div class="bible-page__body row offset-s1">
             <div class="bible-page__content col s10 offset-s1">
-                <h4 class="center" inner-text="${page.currentBook.name} ${page.currentChapter.number}"></h4>
-                <verse-list class="s12" verses.bind="page.currentVerses"></verse-list>
+                <div class="bible-page__display-mode" click.trigger="switchDisplayMode()">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true" if.bind="!continuousVerses"></i>
+                    <i class="fa fa-bars" aria-hidden="true" if.bind="continuousVerses"></i>
+                </div>
+                <h4 class="center bible-page__book-name" textcontent.one-way="page.currentBook.name + ' ' + page.currentChapter.number"></h4>
+                <h6 class="center bible-page__bible-name" textcontent.one-way="page.currentBible.name"></h6>
+
+                <verse-list class="${continuousVerses ? 'continuous' : ''} verse-list" verses.bind="page.currentVerses"></verse-list>
             </div>
         </div>
     </div>

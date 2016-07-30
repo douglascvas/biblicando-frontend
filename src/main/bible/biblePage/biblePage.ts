@@ -40,6 +40,7 @@ export class BiblePage {
     this._bibles = bibles;
     this._logger.debug(`Updated ${bibles.length} bibles for page ${this._pageId}.`);
     this.menuBar.updateBibles(bibles);
+    this.currentBible = bibles[0];
     return this._loadBooks(bibles[0]);
   }
 
@@ -131,6 +132,7 @@ export class BiblePage {
     return self._verseService.fetchVerses(chapter)
       .then(verses => {
         chapter.verses = verses;
+        self.currentChapter = chapter;
         self.currentVerses = (self.currentChapter || <Chapter>{}).verses || [];
         return verses;
       });

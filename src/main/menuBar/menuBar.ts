@@ -33,27 +33,27 @@ export class MenuBar {
 
     this.bibleMenu.onSelect(bible=>this._selectBible(bible));
     this.bookMenu.onSelect(book=>this._selectBook(book));
-    this.chapterMenu.onSelect(chapter=>this._selectBible(chapter));
+    this.chapterMenu.onSelect(chapter=>this._selectChapter(chapter));
   }
 
-  private _hideAll() {
+  public hideAll() {
     this.bibleMenu.hide();
     this.bookMenu.hide();
     this.chapterMenu.hide();
   }
 
   private _selectBible(bible:Bible) {
-    this._hideAll();
+    this.hideAll();
     this._onBibleSelectObserver.trigger(bible);
   }
 
   private _selectBook(book:Book) {
-    this._hideAll();
+    this.hideAll();
     this._onBookSelectObserver.trigger(book);
   }
 
   private _selectChapter(chapter:Chapter) {
-    this._hideAll();
+    this.hideAll();
     this._onChapterSelectObserver.trigger(chapter);
   }
 

@@ -7,6 +7,7 @@ import {LoggerFactory, Logger} from "../../../common/loggerFactory";
 @customElement('bible-page')
 export class BiblePageComponent {
   @bindable page:BiblePage;
+  public continuousVerses: boolean;
 
   private _logger:Logger;
 
@@ -20,5 +21,9 @@ export class BiblePageComponent {
 
   public pageChanged(newValue, oldValue){
     this._logger.debug('Updated bible page with', this.page);
+  }
+
+  public switchDisplayMode(){
+    this.continuousVerses = !this.continuousVerses;
   }
 }

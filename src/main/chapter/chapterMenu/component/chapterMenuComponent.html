@@ -3,7 +3,8 @@
         <div class="col s12 left bible-menu__body">
             <div class="book-menu__search input-field">
                 <i class="fa fa-search material-icons prefix" aria-hidden="true"></i>
-                <input value.bind="menu.filter" id="chapter_filter" type="text" class="validate">
+                <input value.bind="menu.filter" id="chapter_filter" type="text" class="validate"
+                       ref="filterElement" keypress.trigger="processFilterKeyPress($event)">
                 <label for="chapter_filter" class="active">Chapter Number</label>
             </div>
         </div>
@@ -11,7 +12,7 @@
             <div class="bible-menu__list row">
                 <a href="javascript:void(0)" class="col s1 menu__item"
                    repeat.for="chapter of menu.filteredItems" click.delegate="menu.selectItem(chapter)">
-                    <span inner-text="${formatMenuItem(chapter)}"></span>
+                    <span textcontent.one-time="formatMenuItem(chapter)"></span>
                 </a>
             </div>
         </div>

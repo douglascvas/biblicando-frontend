@@ -20,21 +20,17 @@
                 <li>
                     <a href="javascript:void(0)" click.delegate="menuBar.chapterMenu.toggle()">
                         <i class="fa fa-clone navbar__icon left" aria-hidden="true">
-                                <span class="icon-badge"
-                                      inner-text="${menuBar.chapterMenu.selected.number || 1}"></span>
+                                <span class="icon-badge" textcontent.one-way="menuBar.chapterMenu.selected.number || 1"></span>
                         </i> Chapter
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="overlay ${menuBar.overlay.visible ? 'bible-page__overlay': 'hide'}"></div>
+    <div class="overlay ${menuBar.overlay.visible ? 'bible-page__overlay': 'hide'}" click.delegate="menuBar.hideAll()"></div>
     <div class="col s12">
-        <bible-menu menu.bind="menuBar.bibleMenu"
-                    class="menu__wrapper push--left full-height ${menuBar.bibleMenu.visible ? '' : 'hide'}"></bible-menu>
-        <book-menu menu.bind="menuBar.bookMenu"
-                   class="menu__wrapper push--left full-height ${menuBar.bookMenu.visible ? '' : 'hide'}"></book-menu>
-        <chapter-menu menu.bind="menuBar.chapterMenu"
-                      class="menu__wrapper push--left full-height ${menuBar.chapterMenu.visible ? '' : 'hide'}"></chapter-menu>
+        <bible-menu menu.bind="menuBar.bibleMenu" if.bind="menuBar.bibleMenu.visible" class="menu__wrapper push--left"></bible-menu>
+        <book-menu menu.bind="menuBar.bookMenu" if.bind="menuBar.bookMenu.visible" class="menu__wrapper push--left"></book-menu>
+        <chapter-menu menu.bind="menuBar.chapterMenu" if.bind="menuBar.chapterMenu.visible" class="menu__wrapper push--left"></chapter-menu>
     </div>
 </template>

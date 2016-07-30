@@ -1,0 +1,14 @@
+@mixin setColumns($numberColumns){
+  -webkit-column-count: #{$numberColumns}; /* Chrome, Safari, Opera */
+  -moz-column-count: #{$numberColumns}; /* Firefox */
+  column-count: #{$numberColumns};
+  -webkit-column-gap: 2.5rem; /* Chrome, Safari, Opera */
+  -moz-column-gap: 2.5rem; /* Firefox */
+  column-gap: 2.5rem;
+  -webkit-column-rule-style: none; /* Chrome, Safari, Opera */
+  -moz-column-rule-style: none; /* Firefox */
+  column-rule-style: none;
+  //-webkit-column-rule-width: 1px; /* Chrome, Safari, Opera */
+  //-moz-column-rule-width: 1px; /* Firefox */
+  //column-rule-width: 1px;
+}

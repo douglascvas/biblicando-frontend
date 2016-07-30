@@ -1,6 +1,7 @@
 @import "variables/variables";
 @import "materialize/materialize";
 @import "mixins/calc";
+@import "mixins/columns";
 @import "base/menu";
 @import "base/base";
 @import "base/badge";
@@ -9,6 +10,7 @@
 @import "base/bible";
 @import "base/background";
 @import "components/listMenu";
+@import "components/verseList";
 @import "components/biblePage";
 @import "font-awesome/font-awesome";
 

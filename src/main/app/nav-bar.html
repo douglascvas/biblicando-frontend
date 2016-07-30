@@ -2,23 +2,23 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="nav-wrapper">
             <a class="brand-logo left" href="#">
-                Biblicando
+                Biblicando...
             </a>
 
-            <ul class="right">
-                <li>
-                    <a href="javascript:void(0)">
-                        <i class="fa fa-globe material-icons left" aria-hidden="true"></i> Version
-                    </a>
-                </li>
-                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                    <a data-toggle="collapse"
-                       data-target="#bs-example-navbar-collapse-1.in"
-                       href.bind="row.href">
-                        ${row.title}
-                    </a>
-                </li>
-            </ul>
+            <!--<ul class="right">-->
+                <!--<li>-->
+                    <!--<a href="javascript:void(0)">-->
+                        <!--<i class="fa fa-globe material-icons left" aria-hidden="true"></i> Version-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">-->
+                    <!--<a data-toggle="collapse"-->
+                       <!--data-target="#bs-example-navbar-collapse-1.in"-->
+                       <!--href.bind="row.href">-->
+                        <!--${row.title}-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="loader" if.bind="router.isNavigating">

@@ -22,7 +22,6 @@ export class App {
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .globalResources('common/innerText')
     .developmentLogging();
 
   aurelia.start().then(() => aurelia.setRoot());
