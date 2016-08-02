@@ -1,9 +1,9 @@
 import {Menu} from "./menu";
 
-export abstract class AbstractMenuComponent {
+export abstract class AbstractMenuComponent<E> {
   public filterElement:any;
 
-  protected abstract getMenu():Menu;
+  protected abstract getMenu():Menu<E>;
 
   public attached() {
     this.filterElement.focus();

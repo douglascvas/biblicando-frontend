@@ -5,10 +5,10 @@ import {AbstractMenuComponent} from "../../../common/abstractMenuComponent";
 import {Menu} from "../../../common/menu";
 
 @customElement('bible-menu')
-export class BibleMenuComponent extends AbstractMenuComponent {
+export class BibleMenuComponent extends AbstractMenuComponent<Bible> {
   @bindable menu:BibleMenu;
 
-  protected getMenu():Menu {
+  protected getMenu():Menu<Bible> {
     return this.menu;
   }
 

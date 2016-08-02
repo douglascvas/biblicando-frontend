@@ -7,10 +7,10 @@ import {Menu} from "../../../common/menu";
 
 @autoinject
 @customElement('book-menu')
-export class BookMenuComponent extends AbstractMenuComponent {
+export class BookMenuComponent extends AbstractMenuComponent<Book> {
   @bindable menu:BookMenu;
 
-  protected getMenu():Menu {
+  protected getMenu():Menu<Book> {
     return this.menu;
   }
 
