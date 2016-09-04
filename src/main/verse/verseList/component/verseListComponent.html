@@ -1,6 +1,6 @@
 <template bindable="verses">
         <span repeat.for="verse of verses" class="verse-list__verse">
-            <span textcontent.one-way="verse.number" class="verse-list__verse-number"></span>
+            <span textcontent.one-way="formatVerseNumber(verse)" class="verse-list__verse-number"></span>
             <span textcontent.one-way="verse.text"></span>
         </span>
 </template>

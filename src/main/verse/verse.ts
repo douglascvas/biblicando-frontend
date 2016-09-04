@@ -7,7 +7,7 @@ export class Verse {
   remoteId:string;
   remoteSource:string;
   copyright:string;
-  number:number;
+  numbers:number[];
   chapter:Chapter;
   text:string;
 }

@@ -2,11 +2,10 @@
     <require from="/menuBar/component/menuBarComponent"></require>
     <require from="/verse/verseList/component/verseListComponent"></require>
 
-    <div class="row full-height bible-page__body">
         <menu-bar menu-bar.bind="page.menuBar"></menu-bar>
 
-        <div class="bible-page__body row offset-s1">
-            <div class="bible-page__content col s10 offset-s1">
+        <div class="bible-page__body">
+            <div class="bible-page__content">
                 <div class="bible-page__display-mode" click.trigger="switchDisplayMode()">
                     <i class="fa fa-ellipsis-h" aria-hidden="true" if.bind="!continuousVerses"></i>
                     <i class="fa fa-bars" aria-hidden="true" if.bind="continuousVerses"></i>
@@ -17,6 +16,5 @@
                 <verse-list class="${continuousVerses ? 'continuous' : ''} verse-list" verses.bind="page.currentVerses"></verse-list>
             </div>
         </div>
-    </div>
 
 </template>

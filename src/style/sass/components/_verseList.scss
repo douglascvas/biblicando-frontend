@@ -29,7 +29,7 @@
       @include setColumns(2);
     }
     @media #{$large-and-up} {
-      @include setColumns(3);
+      @include setColumns(2);
     }
   }
 
