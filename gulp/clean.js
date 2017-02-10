@@ -2,22 +2,16 @@ const del = require('del');
 const paths = require('../paths');
 
 module.exports = {
-  main: function cleanMain() {
-    return del(paths.outputMain);
+  scripts: function cleanScripts() {
+    return del(paths.output.dirs.scripts);
   },
-  resource: function cleanResource() {
-    return del(paths.outputResource);
+  styles: function cleanStyles() {
+    return del(paths.output.dirs.styles);
   },
-  test: function cleanTest() {
-    return del(paths.outputTest);
+  files: function cleanFonts() {
+    return del(paths.output.files.files);
   },
-  css: function CleanCss() {
-    return del(paths.outputCss);
-  },
-  img: function cleanImg() {
-    return del(paths.outputImage);
-  },
-  font: function cleanFont() {
-    return del(paths.outputFont);
+  output: function cleanOutput() {
+    return del(paths.other.clean);
   }
 };

@@ -1,45 +1,24 @@
 module.exports = function(config) {
   config.set({
-    basePath: './',
-    frameworks: ['systemjs', 'jasmine'],
-    systemjs: {
-      configFile: 'config.js',
-      config: {
-        paths: {
-          "*": "*",
-          "src/*": "src/*",
-          "typescript": "node_modules/typescript/lib/typescript.js",
-          "systemjs": "node_modules/systemjs/dist/system.js",
-          'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
-          'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js'
-        },
-        packages: {
-          'test/unit': {
-            defaultExtension: 'ts'
-          },
-          'src': {
-            defaultExtension: 'ts'
-          }
-        },
-        transpiler: 'typescript'
-      },
-      serveFiles: [
-        'src/**/*.ts',
-        'jspm_packages/**/*.js'
-      ]
-    },
+    basePath: '',
+    frameworks: ['source-map-support', 'mocha', 'sinon'],
     files: [
-      'test/unit/setup.ts',
-      'test/unit/*.ts'
+      'app/app.tests.js'
     ],
     exclude: [],
-    preprocessors: { },
-    reporters: ['progress'],
+    preprocessors: {
+      'app/app.tests.js': ['webpack', 'sourcemap'],
+    },
+    reporters: ['mocha'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: [/*'Chrome', */'PhantomJS'],
+    singleRun: false,
+    webpack: require('./webpack/config.test'),
+    webpackMiddleware: {
+      noInfo: true
+    }
   });
 };
