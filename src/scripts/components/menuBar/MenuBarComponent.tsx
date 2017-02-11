@@ -9,20 +9,19 @@ export interface MenuBarProperties {
   menuBar: MenuBar
 }
 
-export interface MenuBarState {
-}
-
 interface MenuItem {
   label: string,
   icon: string,
-  onClick: EventHandler<MouseEvent>
+  onClick: EventHandler<MouseEvent<any>>
 }
 
-export default class MenuBarComponent extends React.Component<MenuBarProperties, MenuBarState> {
+export default class MenuBarComponent extends React.Component<MenuBarProperties, MenuBar> {
   private menuItems: MenuItem[];
 
   constructor(props: MenuBarProperties, context: any) {
     super(props, context);
+
+    this.state = props.menuBar;
 
     this.menuItems = [
       {label: 'Version', icon: 'fa-language', onClick: this.toggleBibleMenu.bind(this)},
@@ -32,26 +31,28 @@ export default class MenuBarComponent extends React.Component<MenuBarProperties,
   }
 
   private toggleBibleMenu() {
-    this.props.menuBar.bibleMenuButtonClicked();
+    this.state.bibleMenuButtonClicked();
   }
 
   private toggleBookMenu() {
-    this.props.menuBar.bookMenuButtonClicked();
+    this.state.bookMenuButtonClicked();
   }
 
   private toggleChapterMenu() {
-    this.props.menuBar.chapterMenuButtonClicked();
+    this.state.chapterMenuButtonClicked();
   }
 
   private closeMenu() {
-    this.props.menuBar.hideAll();
+    this.state.hideAll();
   }
 
   public render() {
     const items = this.menuItems.map((item: MenuItem, index: number) => (
-      <a href="javascript:void(0)" onClick={item.onClick} key={`menu-item:${index}`}>
-        <i class={`fa ${item.icon} navbar__icon left`} aria-hidden="true"></i> {item.label}
-      </a>
+      <li key={`menu-item:${index}`}>
+        <a href="javascript:void(0)" onClick={item.onClick}>
+          <i className={`fa ${item.icon} navbar__icon left`} aria-hidden="true"></i> {item.label}
+        </a>
+      </li>
     ));
 
     return (
@@ -62,14 +63,14 @@ export default class MenuBarComponent extends React.Component<MenuBarProperties,
           </div>
         </nav>
         <OverlayComponent id={`${this.props.id}:overlay`}
-                          overlay={this.props.menuBar.overlay}
+                          overlay={this.state.overlay}
                           className="bible-page__overlay"
                           onClick={this.closeMenu.bind(this)}/>
         <div className="col s12">
-          {this.props.menuBar.bibleMenu.visible ?
-            <BibleMenuComponent id={`${this.props.id}:menu-bar`} menu={this.props.menuBar.bibleMenu} className="menu__wrapper push--left"/> : null}
-          {/*{this.props.menuBar.bookMenu.visible ? <BookMenu menu={this.props.menuBar.bookMenu} className="menu__wrapper push--left"/> : null}*/}
-          {/*{this.props.menuBar.chapterMenu.visible ? <ChapterMenu menu={this.props.menuBar.chapterMenu} class="menu__wrapper push--left"/> : null}*/}
+          {this.state.bibleMenu.visible ?
+            <BibleMenuComponent id={`${this.props.id}:menu-bar`} menu={this.state.bibleMenu} className="menu__wrapper push--left"/> : null}
+          {/*{this.state.bookMenu.visible ? <BookMenu menu={this.state.bookMenu} className="menu__wrapper push--left"/> : null}*/}
+          {/*{this.state.chapterMenu.visible ? <ChapterMenu menu={this.state.chapterMenu} className="menu__wrapper push--left"/> : null}*/}
         </div>
       </div>
     )

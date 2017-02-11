@@ -12,6 +12,8 @@ const paths = {
   dist: `${root}/build/dist`
 };
 
+const fileExtensions = `{otf,eot,svg,woff,woff2,ico,jpg,jpeg,png}`;
+
 module.exports = {
   config: {
     ts: `${root}/tsconfig.json`,
@@ -34,7 +36,7 @@ module.exports = {
       // Styles
       styles: `${paths.source}/styles/**/*.css`,
       stylesMin: `${paths.source}/styles/**/*.min.css`,
-      scss: [`${paths.source}/scss/*.scss`],
+      scss: [`${paths.source}/scss/**/*.scss`],
 
       // Scripts
       scripts: `${paths.source}/scripts/**/*.js`,
@@ -53,7 +55,7 @@ module.exports = {
       ],
 
       // Miscellaneous files to copy
-      files: [`${paths.source}/**/*.{otf,eot,svg,woff,woff2,ico}`],
+      files: [`${paths.source}/**/*.${fileExtensions}`],
       html: [`${paths.source}/**/*.html`],
 
       views: [`${paths.source}/views/**/*.*`]
@@ -64,7 +66,7 @@ module.exports = {
       styles: `${paths.output}/styles/app.css`,
       scripts: `./app.js`,
       server: `${paths.output}/scripts/server.js`,
-      files: [`${paths.output}/**/*.{html,otf,eot,svg,woff,woff2,ico}`]
+      files: [`${paths.output}/**/*.${fileExtensions}`]
     },
     dirs: {
       tempScripts: `${paths.output}/app`,

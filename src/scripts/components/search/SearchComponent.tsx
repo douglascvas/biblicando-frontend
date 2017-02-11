@@ -24,9 +24,9 @@ export default class SearchComponent extends React.Component<SearchProperties,Se
   public render() {
     return (
       <div className={this.props.className}>
-        <i class="fa fa-search material-icons prefix" aria-hidden="true"></i>
-        <input id={`search:${this.props.id}`} value={this.state.query} type="text" class="validate" onKeypress={this.processKeypress}/>
-        <label htmlFor={`search:${this.props.id}`} class="active">{this.props.children}</label>
+        <i className="fa fa-search material-icons prefix" aria-hidden="true"></i>
+        <input id={`search:${this.props.id}`} value={this.state.query} type="text" className="validate" onKeyPress={this.processKeypress}/>
+        <label htmlFor={`search:${this.props.id}`} className="active">{this.props.children}</label>
       </div>
     );
   }

@@ -70,11 +70,11 @@ export class MenuBar {
   }
 
   public onBookSelect(listener: (Book) => void) {
-    return this.bookMenu.onSelect(listener);
+    // return this.bookMenu.onSelect(listener);
   }
 
   public onChapterSelect(listener: (Chapter) => void) {
-    return this.chapterMenu.onSelect(listener);
+    // return this.chapterMenu.onSelect(listener);
   }
 
   public isOverlayVisible() {

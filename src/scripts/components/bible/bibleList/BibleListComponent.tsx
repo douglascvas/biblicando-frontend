@@ -33,7 +33,7 @@ export default class BibleListComponent extends React.Component<BibleListPropert
 
   public render() {
     const bibleItems = this.props.list.getItems().map((bible: Bible, index: number) => (
-      <a href="javascript:void(0)" key={`bible_${index}`} class="collection-item" onClick={()=>this.selectBible(bible)}>
+      <a href="javascript:void(0)" key={`bible_${index}`} className="collection-item" onClick={()=>this.selectBible(bible)}>
         <span>{`${bible.languageCode} - ${bible.name}`}</span>
       </a>));
 

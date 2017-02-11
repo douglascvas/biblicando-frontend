@@ -29,8 +29,8 @@ export default class BibleMenuComponent extends React.Component<BibleMenuPropert
   public render() {
     return (
       <div className={this.props.className}>
-        <div class="row menu__body-wrapper">
-          <div class="col s12 left bible-menu__body">
+        <div className="row menu__body-wrapper">
+          <div className="col s12 left bible-menu__body">
             <SearchComponent id={`${this.props.id}_bible_menu_search`} search={this.props.menu.search} className="bible-menu__search input-field">
               Version Name
             </SearchComponent>

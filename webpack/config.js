@@ -6,12 +6,6 @@ const plugins = require('./plugins');
 const autoprefixer = require('autoprefixer');
 const paths = require('../paths');
 
-const options = Object.assign({}, {
-  useGulp: true,
-  version: pkg.version,
-  development: process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
-}, pkg.config);
-
 function getAppEntry(options) {
   const devEntries = [
     'react-hot-loader/patch',
@@ -26,25 +20,31 @@ function getAppEntry(options) {
 
 function getVendorEntry(options) {
   let production = ['react', 'react-dom', 'react-helmet'];
-  let development = [];//['source-map-support', './dev'];
+  let development = [];//'sourcemapped-stacktrace'];
   return [...production, ...(options.development ? development : [])]
 }
 
-module.exports = {
+function getEntries(options) {
+  const entries = {
+    app: getAppEntry(options),
+    vendor: getVendorEntry(options)
+  };
+  return entries;
+}
+
+module.exports = (options) => ({
   context: options.useGulp ? paths.output.dirs.root : paths.input.dirs.source,
   cache: options.development,
   target: 'web',
-  devtool: options.development ? 'source-map' : false,
-  entry: {
-    app: getAppEntry(options),
-    vendor: getVendorEntry(options)
-  },
+  devtool: options.development ? 'cheap-module-eval-source-map' : false,
+  entry: getEntries(options),
   output: {
     path: path.resolve(options.buildDir + '/dist/'),
     publicPath: '/',
     filename: `scripts/[name].${options.version}.js`,
     pathinfo: false,
-    sourceMapFilename: `scripts/[name].${options.version}.map`
+    // sourceMapFilename: `scripts/[name].${options.version}.map`
+    devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
   },
   module: {
     rules: loaders(options)
@@ -63,4 +63,4 @@ module.exports = {
     inline: true,
     stats: {colors: true}
   }
-};
+});

@@ -7,7 +7,7 @@ const webpack = require('webpack');
 module.exports = (options) => {
   const cssBundle = path.join('css', util.format('[name].%s.css', options.version));
   const devPlugins = [
-    new webpack.SourceMapDevToolPlugin(),
+    new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('development')}}),
     new webpack.HotModuleReplacementPlugin()
   ];
 

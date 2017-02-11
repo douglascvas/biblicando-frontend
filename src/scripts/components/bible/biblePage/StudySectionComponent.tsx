@@ -16,6 +16,7 @@ export default class StudySectionComponent extends React.Component<StudySectionP
 
     this.state = properties.studySection;
 
+    this.switchDisplayMode = this.switchDisplayMode.bind(this);
     this.state.onContinousModeChange(() => this.studySectionChanged());
   }
 
@@ -28,23 +29,27 @@ export default class StudySectionComponent extends React.Component<StudySectionP
   }
 
   public render() {
+    const currentBook = this.state.currentBook || {} as any;
+    const currentChapter = this.state.currentChapter || {} as any;
+    const currentBible = this.state.currentBible || {} as any;
     const displayModeClass = this.continuousVerses ? 'fa-bars' : 'fa-ellipsis-h';
+
     return (
       <div>
         <MenuBarComponent id={`bible-page:${this.props.id}`} menuBar={this.state.menuBar}/>
 
-        <div class="bible-page__body">
-          <div class="bible-page__content">
-            <div class="bible-page__display-mode" onClick={() => this.switchDisplayMode()}>
-              <i class={`fa ${displayModeClass}`} aria-hidden="true"></i>
+        <div className="bible-page__body">
+          <div className="bible-page__content">
+            <div className="bible-page__display-mode" onClick={this.switchDisplayMode}>
+              <i className={`fa ${displayModeClass}`} aria-hidden="true"></i>
             </div>
-            <h4 class="center bible-page__book-name">
-              {this.state.currentBook.name + ' ' + this.state.currentChapter.number}
+            <h4 className="center bible-page__book-name">
+              {`${currentBook.name || ''} ${currentChapter.number || ''}`}
             </h4>
-            <h6 class="center bible-page__bible-name">
-              {this.page.currentBible.name}
+            <h6 className="center bible-page__bible-name">
+              {`${currentBible.name || ''}`}
             </h6>
-            {/*<VerseList class={`verse-list ${this.continuousVerses ? 'continuous' : ''}`} verses={this.page.currentVerses}/>*/}
+            {/*<VerseList className={`verse-list ${this.continuousVerses ? 'continuous' : ''}`} verses={this.page.currentVerses}/>*/}
           </div>
         </div>
       </div>

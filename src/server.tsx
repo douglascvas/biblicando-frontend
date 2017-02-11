@@ -60,7 +60,7 @@ export default (options) => {
   const host = options.devHost;
 
   const configPath = '../webpack/config';
-  const config = require(configPath);
+  const config = require(configPath)(options);
 
   const server = createServer(config, options);
 

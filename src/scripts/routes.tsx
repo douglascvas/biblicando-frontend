@@ -5,7 +5,8 @@ import AboutView from "./views/AboutView";
 
 const routeMap = [
   {
-    path: '/', component: AppLayout,
+    path: '/',
+    component: AppLayout,
     indexRoute: {component: BibleStudyView},
     childRoutes: [
       {path: '/about', component: AboutView},

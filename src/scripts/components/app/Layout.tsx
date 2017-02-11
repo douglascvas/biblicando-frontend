@@ -1,4 +1,5 @@
-import * as React from 'react';
+import * as React from "react";
+import NavbarComponent from "../navbar/NavbarComponent";
 
 export default class Layout extends React.Component<any,any> {
 
@@ -14,9 +15,11 @@ export default class Layout extends React.Component<any,any> {
 
   render() {
     return (
-      <div>
-        <h1>Hello, worlds!</h1>
-        {this.props.children}
+      <div id="layout">
+        <NavbarComponent/>
+        <div className="page-host full-height">
+          {this.props.children}
+        </div>
       </div>
     )
   }

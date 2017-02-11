@@ -1,24 +1,14 @@
-import * as React from 'react'
-import {Link} from 'react-router'
-import * as Helmet from 'react-helmet'
-import * as config from '../config';
+import * as React from "react";
+import NavbarComponent from "../components/navbar/NavbarComponent";
 
-interface AppProps {
-  children: Object
-}
-
-export default class AppLayout extends React.Component<AppProps, any> {
+export default class AppLayout extends React.Component<any, any> {
   public render() {
     return (
-      <div className="views">
-        <Helmet {...config} />
-
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-
-        {this.props.children}
+      <div id="layout">
+        <NavbarComponent/>
+        <div className="page-host full-height">
+          {this.props.children}
+        </div>
       </div>
     );
   }

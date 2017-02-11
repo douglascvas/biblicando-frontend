@@ -1,11 +1,11 @@
 const gulp = require('gulp');
+const gulpif = require('gulp-if');
 const typescript = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
 const source = require('vinyl-source-stream');
 const plumber = require('gulp-plumber');
 const paths = require('../paths');
 const tsify = require('tsify');
-const browserify = require('browserify');
 const watchify = require('watchify');
 
 let tsProjects = {};
@@ -24,12 +24,12 @@ const compile = (name, options, input, output) => {
   let tsProject = makeTsProject(name, {
     isolatedModules: isolatedModules
   });
-  if(!isolatedModules){
+  if (!isolatedModules) {
     isolatedModules
   }
   return gulp
     .src(input)
-    // .pipe(plumber())
+    .pipe(gulpif(isolatedModules, plumber()))
     .pipe(sourcemaps.init())
     .pipe(tsProject())
     .js

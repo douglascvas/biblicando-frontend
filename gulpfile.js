@@ -16,6 +16,7 @@ const devServer = function (options) {
 };
 
 const options = Object.assign({}, {
+  useGulp: false,
   version: pkg.version,
   development: process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test',
   serverSideRendering: !process.env.NO_SSR

@@ -10,28 +10,19 @@ export default class WorkspaceView extends React.Component<any,any> {
 
   constructor(props) {
     super(props);
-    this.state = {loaded: false};
-
-    try {
-      // const serviceContainer = new ServiceContainer();
-      // const storeContainer = new StoreContainer();
-      // this._workspace = new Workspace(storeContainer, serviceContainer);
-    } catch (e) {
-      console.log('ERROR rendering component');
-      console.trace(e);
-    }
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    const serviceContainer = new ServiceContainer();
+    const storeContainer = new StoreContainer();
+    this._workspace = new Workspace(storeContainer, serviceContainer);
   }
 
   render() {
-    const loading = this.state.loaded ? "" : " (loading...)";
     return (
-      <div className="view view__about">
+      <div>
         <Helmet title='Biblicando'/>
-        {loading}
-        {/*<WorkspaceComponent id="biblicando" workspace={this._workspace}/>*/}
+        <WorkspaceComponent id="biblicando" workspace={this._workspace}/>
       </div>
     );
   }

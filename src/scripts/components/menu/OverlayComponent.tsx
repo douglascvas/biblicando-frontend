@@ -5,7 +5,7 @@ import {Overlay} from "../common/overlay";
 export interface OverlayProperties {
   id: string,
   overlay: Overlay,
-  onClick?: EventHandler<MouseEvent>,
+  onClick?: EventHandler<MouseEvent<any>>,
   className?: string
 }
 
