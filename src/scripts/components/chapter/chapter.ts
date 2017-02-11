@@ -1,6 +1,6 @@
 'use strict';
 
-import {Book} from "../book/book";
+import {Book} from "../book/Book";
 import {Verse} from "../verse/verse";
 
 export class Chapter {

@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e38911a-4c4d-4c0e-8824-1c9ca9bcec86" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scripts/ErrorReporter.tsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scripts/components/navbar/NavbarComponent.tsx" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scripts/components/Hello.tsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/typings.json" afterPath="" />
+    <list default="true" id="0e38911a-4c4d-4c0e-8824-1c9ca9bcec86" name="Default" comment="Adjusting">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/bibles.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scripts/config/config-dev.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scripts/config/config-prod.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scripts/config/config.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/scripts/components/book/book.ts" afterPath="$PROJECT_DIR$/src/scripts/components/book/Book.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/scripts/components/book/bookService.ts" afterPath="$PROJECT_DIR$/src/scripts/components/book/BookService.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulp/typescript.js" afterPath="$PROJECT_DIR$/gulp/typescript.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulp/webpack.js" afterPath="$PROJECT_DIR$/gulp/webpack.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paths.js" afterPath="$PROJECT_DIR$/paths.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dev.ts" afterPath="$PROJECT_DIR$/src/dev.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/app/Layout.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/app/Layout.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleListComponent.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleListComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudySectionComponent.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudySectionComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/menu/OverlayComponent.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/menu/OverlayComponent.tsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/Bible.ts" afterPath="$PROJECT_DIR$/src/scripts/components/bible/Bible.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/BibleService.ts" afterPath="$PROJECT_DIR$/src/scripts/components/bible/BibleService.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/BibleStore.ts" afterPath="$PROJECT_DIR$/src/scripts/components/bible/BibleStore.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts" afterPath="$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudySection.ts" afterPath="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudySection.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/book/BookFilter.ts" afterPath="$PROJECT_DIR$/src/scripts/components/book/BookFilter.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/book/bookMenu/bookMenu.ts" afterPath="$PROJECT_DIR$/src/scripts/components/book/bookMenu/bookMenu.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/chapter/chapter.ts" afterPath="$PROJECT_DIR$/src/scripts/components/chapter/chapter.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/common/ItemList.ts" afterPath="$PROJECT_DIR$/src/scripts/components/common/ItemList.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/common/ServiceContainer.ts" afterPath="$PROJECT_DIR$/src/scripts/components/common/ServiceContainer.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/common/Store.ts" afterPath="$PROJECT_DIR$/src/scripts/components/common/Store.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/common/StoreContainer.ts" afterPath="$PROJECT_DIR$/src/scripts/components/common/StoreContainer.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/menuBar/MenuBar.ts" afterPath="$PROJECT_DIR$/src/scripts/components/menuBar/MenuBar.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/menuBar/MenuBarComponent.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/menuBar/MenuBarComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/search/SearchComponent.tsx" afterPath="$PROJECT_DIR$/src/scripts/components/search/SearchComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/index.tsx" afterPath="$PROJECT_DIR$/src/scripts/index.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/routes.tsx" afterPath="$PROJECT_DIR$/src/scripts/routes.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/views/AppLayout.tsx" afterPath="$PROJECT_DIR$/src/scripts/views/AppLayout.tsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/components/workspace/Workspace.ts" afterPath="$PROJECT_DIR$/src/scripts/components/workspace/Workspace.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx" afterPath="$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scss/app.scss" afterPath="$PROJECT_DIR$/src/scss/app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scss/base/_background.scss" afterPath="$PROJECT_DIR$/src/scss/base/_background.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scss/components/_biblePage.scss" afterPath="$PROJECT_DIR$/src/scss/components/_biblePage.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server.tsx" afterPath="$PROJECT_DIR$/src/server.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="$PROJECT_DIR$/tsconfig.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack/config.js" afterPath="$PROJECT_DIR$/webpack/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack/plugins.js" afterPath="$PROJECT_DIR$/webpack/plugins.js" />
     </list>
     <list id="fbf43b8a-56e2-4e64-b6fa-567cb2e616ec" name="no_commit" comment="" />
     <ignored path="biblicando-frontend.iws" />
@@ -52,7 +44,102 @@
     <favorites_list name="biblicando-frontend" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/index.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#46#0" expanded="true" />
+                <marker date="1486841839103" expanded="true" signature="400:484" ph="..." />
+                <marker date="1486841839103" expanded="true" signature="464:469" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceContainer.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/components/common/ServiceContainer.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpClient.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/scripts/components/common/HttpClient.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BibleList.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemList.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/components/common/ItemList.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkspaceView.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BibleService.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/BibleService.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#67#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -105,23 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudyBodyComponent.tsx" />
-        <option value="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudyBody.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/menu/menu.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/bible/bibleMenu/BibleMenu.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/menuBar/menuBar.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/common/httpClient.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/common/ServiceContainer.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudySection.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/workspace/WorkspaceComponent.tsx" />
-        <option value="$PROJECT_DIR$/src/scripts/views/BibleStudyView.tsx" />
-        <option value="$PROJECT_DIR$/src/scripts/components/workspace/Workspace.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/common/StoreContainer.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/common/Store.ts" />
-        <option value="$PROJECT_DIR$/webpack/loaders.js" />
-        <option value="$PROJECT_DIR$/src/scripts/components/book/bookMenu/bookMenu.ts" />
-        <option value="$PROJECT_DIR$/src/scripts/components/common/abstractMenuComponent.ts" />
         <option value="$PROJECT_DIR$/src/scripts/components/book/bookMenu/component/bookMenuComponent.ts" />
         <option value="$PROJECT_DIR$/src/scripts/components/chapter/ChapterFilter.ts" />
         <option value="$PROJECT_DIR$/src/scripts/components/chapter/chapterMenu/chapterMenu.ts" />
@@ -134,18 +204,15 @@
         <option value="$PROJECT_DIR$/src/dev.ts" />
         <option value="$PROJECT_DIR$/gulp/typescript.js" />
         <option value="$PROJECT_DIR$/gulp/webpack.js" />
-        <option value="$PROJECT_DIR$/src/scripts/components/menuBar/MenuBar.ts" />
         <option value="$PROJECT_DIR$/src/scss/app.scss" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/scripts/components/navbar/NavbarComponent.tsx" />
         <option value="$PROJECT_DIR$/src/scripts/components/app/app.html" />
-        <option value="$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx" />
         <option value="$PROJECT_DIR$/paths.js" />
         <option value="$PROJECT_DIR$/src/scss/base/_background.scss" />
         <option value="$PROJECT_DIR$/src/scripts/routes.tsx" />
         <option value="$PROJECT_DIR$/src/scripts/components/app/Layout.tsx" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/webpack/config.js" />
         <option value="$PROJECT_DIR$/src/scripts/views/AppLayout.tsx" />
         <option value="$PROJECT_DIR$/src/scss/components/_biblePage.scss" />
         <option value="$PROJECT_DIR$/src/scripts/components/bible/biblePage/StudySectionComponent.tsx" />
@@ -156,6 +223,26 @@
         <option value="$PROJECT_DIR$/src/scripts/index.tsx" />
         <option value="$PROJECT_DIR$/src/server.tsx" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/config.js" />
+        <option value="$PROJECT_DIR$/src/config/config-dev.js" />
+        <option value="$PROJECT_DIR$/src/config/config-prod.js" />
+        <option value="$PROJECT_DIR$/src/scripts/components/common/ConfigManager.ts" />
+        <option value="$PROJECT_DIR$/src/data/bibles.json" />
+        <option value="$PROJECT_DIR$/src/scripts/components/book/BookService.ts" />
+        <option value="$PROJECT_DIR$/src/config/config-prod.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/bible/BibleService.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx" />
+        <option value="$PROJECT_DIR$/src/scripts/components/workspace/Workspace.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/common/Store.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/bible/BibleStore.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/common/StoreContainer.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/menuBar/MenuBar.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/common/ItemList.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts" />
+        <option value="$PROJECT_DIR$/src/config/config-dev.ts" />
+        <option value="$PROJECT_DIR$/src/config/config.ts" />
+        <option value="$PROJECT_DIR$/src/scripts/components/common/ServiceContainer.ts" />
+        <option value="$PROJECT_DIR$/webpack/config.js" />
       </list>
     </option>
   </component>
@@ -260,6 +347,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biblicando-frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biblicando-frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biblicando-frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biblicando-frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="NBKnowledgePane" />
@@ -286,19 +405,19 @@
     <property name="ts.rename.search.for.js.occurrences" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/scripts" />
+      <recent name="$PROJECT_DIR$/src/config" />
+      <recent name="$PROJECT_DIR$/src/scripts/components/workspace" />
+      <recent name="$PROJECT_DIR$/src/scripts/components/menu" />
+      <recent name="$PROJECT_DIR$/src/scripts/components/bible" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/config" />
       <recent name="$PROJECT_DIR$/src/scripts/components/chapter" />
       <recent name="$PROJECT_DIR$/src/scripts/components/bible/biblePage" />
       <recent name="$PROJECT_DIR$/src/scripts/components/menuBar/overlay" />
       <recent name="$PROJECT_DIR$/src/scripts/components/book" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/common" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/scripts/components/workspace" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/menu" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/bible" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/bible/bibleMenu" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/menuBar" />
     </key>
   </component>
   <component name="RunManager" selected="Gulp.js.DEV">
@@ -603,7 +722,7 @@
       <workItem from="1486060328903" duration="41213000" />
       <workItem from="1486235301841" duration="93451000" />
       <workItem from="1486828097436" duration="11000" />
-      <workItem from="1486828137058" duration="10711000" />
+      <workItem from="1486828137058" duration="18218000" />
     </task>
     <task id="LOCAL-00001" summary="Added project base structure.&#10;">
       <created>1463863224633</created>
@@ -668,11 +787,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486753537610</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed layout.">
+      <created>1486842663624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1486842663624</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="304812000" />
+    <option name="totallyTimeSpent" value="312319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="743" extended-state="6" />
@@ -711,7 +837,8 @@
     <MESSAGE value="Added project base structure.&#10;" />
     <MESSAGE value="Webpack-TS" />
     <MESSAGE value="Moved to react" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved to react" />
+    <MESSAGE value="Fixed layout." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed layout." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -722,129 +849,21 @@
           <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/scripts/components/workspace/Workspace.ts</url>
+          <line>18</line>
+          <properties lambdaOrdinal="0" />
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="100" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleListComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="40" column="44" lean-forward="false" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="332" column="14" lean-forward="false" selection-start-line="332" selection-start-column="14" selection-end-line="332" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/menu/OverlayComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/ItemList.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack/loaders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/react-hot-loader/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="14" column="57" lean-forward="false" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/typescript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="54" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/webpack.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/menu/Menu.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/search/SearchComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="27" column="104" lean-forward="false" selection-start-line="27" selection-start-column="104" selection-end-line="27" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/workspace/component/bibleStudyComponent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="54" lean-forward="false" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scss/mixins/_columns.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -863,13 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/menuBar/MenuBar.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -963,28 +975,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpack/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="38" column="62" lean-forward="false" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/views/AppLayout.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -1107,17 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-          <folding>
-            <marker date="1486841839103" expanded="true" signature="400:484" ph="..." />
-            <marker date="1486841839103" expanded="true" signature="464:469" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-256">
@@ -1130,6 +1113,182 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2112">
           <caret line="132" column="4" lean-forward="true" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/Bible.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="19" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/bibles.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/ConfigManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="15" column="29" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="15" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/book/BookService.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/Store.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/BibleStore.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/menuBar/MenuBar.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="83" column="68" lean-forward="false" selection-start-line="83" selection-start-column="68" selection-end-line="83" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/StoreContainer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/views/WorkspaceView.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/workspace/Workspace.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/ItemList.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/config/config-dev.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/config/config-prod.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/config/config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/bibleList/BibleList.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+            <marker date="1486841839103" expanded="true" signature="400:484" ph="..." />
+            <marker date="1486841839103" expanded="true" signature="464:469" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/ServiceContainer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/bible/BibleService.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/common/HttpClient.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -3,9 +3,9 @@ import {Bible} from "../bible/Bible";
 import {BibleStore} from "../bible/BibleStore";
 
 export class StoreContainer {
-  private _bibleStore: Store<Bible[]>;
+  private _bibleStore: Store<Bible>;
 
-  public getBibleStore(): BibleStore {
+  public getBibleStore(): Store<Bible> {
     if (!this._bibleStore) {
       this._bibleStore = new BibleStore();
     }

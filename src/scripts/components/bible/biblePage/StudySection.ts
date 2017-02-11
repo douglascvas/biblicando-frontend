@@ -1,5 +1,5 @@
 import {Bible} from "../Bible";
-import {Book} from "../../book/book";
+import {Book} from "../../book/Book";
 import {Chapter} from "../../chapter/chapter";
 import {Logger} from "../../common/loggerFactory";
 import {Verse} from "../../verse/verse";

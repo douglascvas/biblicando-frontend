@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "111",
+    "remoteId": "222",
+    "remoteSource": "biblesOrg",
+    "name": "King James",
+    "publisher": "",
+    "description": "The word of god",
+    "languageCode": "en-US",
+    "languageCodeType": "en-US",
+    "contactUrl": "",
+    "abbreviation": "KJM",
+    "numberOfBooks": 72,
+    "updatedAt": null,
+    "copyright": "Authorized Version",
+    "books": []
+  },
+  {
+    "_id": "333",
+    "remoteId": "444",
+    "remoteSource": "biblesOrg",
+    "name": "Joao Ferreira de Almeida",
+    "publisher": "",
+    "description": "A palavra de Deus",
+    "languageCode": "pt-BR",
+    "languageCodeType": "pt-BR",
+    "contactUrl": "",
+    "abbreviation": "JFA",
+    "numberOfBooks": 72,
+    "updatedAt": null,
+    "copyright": "Sociedade Bíblica do Brasil",
+    "books": []
+  }
+]

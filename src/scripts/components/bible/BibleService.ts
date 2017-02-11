@@ -1,14 +1,16 @@
 import {HttpClientFactory, HttpClient} from "../common/HttpClient";
+import {Config} from "../../config/config";
 
 export class BibleService {
   private _httpClient: HttpClient;
 
-  constructor(private httpClientFactory: HttpClientFactory) {
-    this._httpClient = httpClientFactory.createClient();
+  constructor(private _config: Config,
+              private _httpClientFactory: HttpClientFactory) {
+    this._httpClient = _httpClientFactory.createClient();
   }
 
   public fetchBibles() {
-    return this._httpClient.fetch('api/v1/bibles?time=' + (new Date()).getTime())
+    return this._httpClient.fetch(this._config.getBiblesUrl())
       .then(httpResponse => {
         return httpResponse.json();
       });

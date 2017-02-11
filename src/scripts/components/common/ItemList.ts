@@ -6,7 +6,7 @@ import {Filter} from "./filter/Filter";
 export abstract class ItemList<E> {
   protected onChangeObserver: Observer<E[]>;
 
-  constructor(protected _itemStore: Store<E[]>,
+  constructor(protected _itemStore: Store<E>,
               protected _logger: Logger,
               protected _filter?: Filter<E>) {
     this.onChangeObserver = new Observer<E[]>();
@@ -14,10 +14,10 @@ export abstract class ItemList<E> {
   }
 
   public getItems(): E[] {
-    if (this._filter && this._itemStore.item) {
-      return this._filter.filter(this._itemStore.item);
+    if (this._filter && this._itemStore.items) {
+      return this._filter.filter(this._itemStore.items);
     }
-    return this._itemStore.item || [];
+    return this._itemStore.items || [];
   }
 
   public onChange(callback: (items: E[]) => void): Function {

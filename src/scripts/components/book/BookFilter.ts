@@ -1,5 +1,5 @@
 import {Filter} from "../common/filter/Filter";
-import {Book} from "./book";
+import {Book} from "./Book";
 
 export default class BookFilter extends Filter<Book> {
   constructor(query: string) {

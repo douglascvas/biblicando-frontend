@@ -36,7 +36,7 @@ module.exports = (options) => ({
   context: options.useGulp ? paths.output.dirs.root : paths.input.dirs.source,
   cache: options.development,
   target: 'web',
-  devtool: options.development ? 'cheap-module-eval-source-map' : false,
+  devtool: options.development ? 'inline-source-map' : false,
   entry: getEntries(options),
   output: {
     path: path.resolve(options.buildDir + '/dist/'),

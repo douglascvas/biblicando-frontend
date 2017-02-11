@@ -1,7 +1,7 @@
 import {BookMenu} from "../book/bookMenu/bookMenu";
 import {ChapterMenu} from "../chapter/chapterMenu/chapterMenu";
 import {Bible} from "../bible/Bible";
-import {Book} from "../book/book";
+import {Book} from "../book/Book";
 import {Chapter} from "../chapter/chapter";
 import {Logger, LoggerFactory} from "../common/loggerFactory";
 import {Overlay} from "../common/overlay";
@@ -81,7 +81,7 @@ export class MenuBar {
     return this.overlay.visible;
   }
 
-  private createBibleMenu(overlay: Overlay, bibleStore: Store<Bible[]>, serviceContainer: ServiceContainer) {
+  private createBibleMenu(overlay: Overlay, bibleStore: Store<Bible>, serviceContainer: ServiceContainer) {
     const search: Search = new Search();
     const bibleList: ItemList<Bible> = new BibleList(bibleStore, serviceContainer);
     return new BibleMenu(overlay, search, bibleList, serviceContainer);

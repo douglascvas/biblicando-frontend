@@ -1,21 +1,21 @@
 import {Observer} from "./observer";
 
 export class Store<E> {
-  private _item: E;
-  private _onChange: Observer<E>;
+  private _items: E[];
+  private _onChange: Observer<E[]>;
 
   constructor() {
     this._onChange = new Observer();
   }
 
-  get item(): E {
-    return this._item;
+  get items(): E[] {
+    return this._items;
   }
 
-  public replaceItem(item: E): void {
-    const oldItems = this._item;
-    this._item = item;
-    this._onChange.trigger(item, oldItems);
+  public replaceAll(items: E[]): void {
+    const oldItems = this._items;
+    this._items = items;
+    this._onChange.trigger(items, oldItems);
   }
 
   public onChange(callback: (after: E, before: E) => void) {

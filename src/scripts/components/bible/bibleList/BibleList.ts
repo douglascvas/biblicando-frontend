@@ -5,7 +5,7 @@ import {ItemList} from "../../common/ItemList";
 import {ServiceContainer} from "../../common/ServiceContainer";
 
 export class BibleList extends ItemList<Bible> {
-  constructor(_itemStore: Store<Bible[]>,
+  constructor(_itemStore: Store<Bible>,
               _serviceContainer: ServiceContainer,
               _filter?: Filter<Bible>) {
     super(_itemStore, _serviceContainer.getLoggerFactory().getLogger('BibleList'), _filter);

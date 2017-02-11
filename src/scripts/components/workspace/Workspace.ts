@@ -14,18 +14,13 @@ export class Workspace {
     this._logger = _serviceContainer.getLoggerFactory().getLogger('Workspace');
   }
 
-  public created(owningView, myView) {
-    this._logger.debug('Element created');
-    this.loadBibles();
-  }
-
-  private loadBibles() {
+  public loadBibles() {
     return this._serviceContainer.getBibleService().fetchBibles()
-      .then(bibles => this.updateBiblesOnPages(bibles));
+      .then(bibles => this.updateContainer(bibles));
   }
 
-  private updateBiblesOnPages(bibles: Bible[]): void {
-    this._sections.forEach(page => page.updateBibles(bibles))
+  private updateContainer(bibles: Bible[]): void {
+    this._storeContainer.getBibleStore().replaceAll(bibles);
   }
 
   private createSection(): StudySection {

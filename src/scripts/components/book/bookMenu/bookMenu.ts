@@ -1,5 +1,5 @@
 import {Menu} from "../../menu/Menu";
-import {Book} from "../book";
+import {Book} from "../Book";
 import {LoggerFactory} from "../../common/loggerFactory";
 import {Overlay} from "../../common/overlay";
 import {Search} from "../../search/Search";

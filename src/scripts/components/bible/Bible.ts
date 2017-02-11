@@ -1,6 +1,6 @@
 'use strict';
 
-import {Book} from "../book/book";
+import {Book} from "../book/Book";
 
 export class Bible extends Object {
   _id:string;
