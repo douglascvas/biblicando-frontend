@@ -20,7 +20,7 @@ renderApp(routes);
 // Hot Module Replacement API
 const m: any = module;
 if (m.hot) {
-  m.hot.accept(["./scripts/index.tsx", "./scripts/routes.tsx"], () => {
+  m.hot.accept(["./scripts/index.tsx", "./scripts/routes.tsx", "./scripts/ErrorReporter.tsx"], () => {
     const currentRoutes = require("./routes").default;
     renderApp(currentRoutes);
   });

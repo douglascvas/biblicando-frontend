@@ -1,49 +1,53 @@
 import {Observer} from "../common/observer";
 import {Logger} from "../common/loggerFactory";
 import {Overlay} from "../common/overlay";
-import {Search} from "../search/Search";
-import {ItemList} from "../common/ItemList";
+import {MenuItem} from "./MenuItem";
 
 export abstract class Menu<E> {
-  private _selected: E;
+  private _selected: MenuItem<E>;
   private _visible: boolean;
-  private _onSelectObserver: Observer<E>;
-  private _onShowObserver: Observer<E>;
+  private _onSelectObserver: Observer<MenuItem<E>>;
+  private _onShowObserver: Observer<MenuItem<E>>;
+  private _onHideObserver: Observer<MenuItem<E>>;
 
   constructor(protected _overlay: Overlay,
-              protected _search: Search,
-              protected _itemList: ItemList<E>,
               protected _logger: Logger) {
     this._visible = false;
     this._onSelectObserver = new Observer();
     this._onShowObserver = new Observer();
+    this._onHideObserver = new Observer();
 
     _overlay.onShow(() => this.hide());
   }
 
-  public selectItem(selectedItem: E) {
+  public selectItem(selectedItem: MenuItem<E>) {
     this._logger.debug(`Selected item ${selectedItem}`);
     this._selected = selectedItem;
     this._onSelectObserver.trigger(selectedItem);
   }
 
-  public onSelect(listener) {
+  public onSelect(listener): Function {
     return this._onSelectObserver.subscribe(listener);
   }
 
-  public onShow(listener) {
+  public onShow(listener): Function {
     return this._onShowObserver.subscribe(listener);
   }
 
-  get itemList(): ItemList<E> {
-    return this._itemList;
+  public onHide(listener): Function {
+    return this._onHideObserver.subscribe(listener);
   }
 
-  get search(): Search {
-    return this._search;
+  public onToggle(listener): Function {
+    const hideUnsubscribe = this.onHide(listener);
+    const showUnsubscribe = this.onShow(listener);
+    return () => {
+      hideUnsubscribe();
+      showUnsubscribe();
+    };
   }
 
-  get selected(): E {
+  get selected(): MenuItem<E> {
     return this._selected;
   }
 
@@ -51,18 +55,19 @@ export abstract class Menu<E> {
     return this._visible;
   }
 
-  public show() {
-    this._onShowObserver.trigger();
+  public show(): void {
     this._overlay.show();
     this._visible = true;
+    this._onShowObserver.trigger();
   }
 
-  public hide() {
+  public hide(): void {
     this._overlay.hide();
     this._visible = false;
+    this._onHideObserver.trigger();
   }
 
-  public toggle() {
+  public toggle(): void {
     if (this._visible) {
       this.hide();
     } else {

@@ -2,14 +2,14 @@ import {Observer} from "../common/observer";
 
 export class Search {
   private _changeQueryObserver: Observer<string>;
-  private _keyPressObserver: Observer<string>;
+  private _keyDownObserver: Observer<string>;
   private _query: string;
 
   constructor() {
     this._changeQueryObserver = new Observer();
-    this._keyPressObserver = new Observer();
+    this._keyDownObserver = new Observer();
     this.triggerQueryChange = this.triggerQueryChange.bind(this);
-    this.triggerKeyPress = this.triggerKeyPress.bind(this);
+    this.triggerKeyDown = this.triggerKeyDown.bind(this);
   }
 
   get query(): string {
@@ -21,8 +21,8 @@ export class Search {
     this._changeQueryObserver.trigger(newQuery);
   }
 
-  public triggerKeyPress(event: any): void {
-    this._keyPressObserver.trigger(event);
+  public triggerKeyDown(event: any): void {
+    this._keyDownObserver.trigger(event);
   }
 
   public onQueryChange(callback: (string) => void) {
@@ -30,6 +30,6 @@ export class Search {
   }
 
   public onKeyPress(callback: (event) => void) {
-    return this._keyPressObserver.subscribe(callback);
+    return this._keyDownObserver.subscribe(callback);
   }
 }

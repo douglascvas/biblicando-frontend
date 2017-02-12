@@ -1,7 +1,7 @@
-import {Filter} from "../common/filter/Filter";
+import {MenuFilter} from "../menu/MenuFilter";
 import {Book} from "./Book";
 
-export default class BookFilter extends Filter<Book> {
+export default class BookFilter extends MenuFilter<Book> {
   constructor(query: string) {
     super(query);
   }

@@ -12,7 +12,7 @@ const paths = {
   dist: `${root}/build/dist`
 };
 
-const fileExtensions = `{otf,eot,svg,woff,woff2,ico,jpg,jpeg,png}`;
+const fileExtensions = `{otf,eot,svg,woff,woff2,ico,jpg,jpeg,png,json}`;
 
 module.exports = {
   config: {

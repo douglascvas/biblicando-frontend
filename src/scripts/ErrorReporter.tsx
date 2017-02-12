@@ -4,18 +4,19 @@ export class ErrorReporter extends React.Component<any,any> {
   private sourceMapper: any;
 
   public componentWillMount() {
+    const error = this.props.error;
     this.sourceMapper = require('sourcemapped-stacktrace');
-    this.setState({error: 'loading...'});
-    console.log(this.props.error);
-    this.sourceMapper.mapStackTrace(this.props.error.stack, (mappedStack) => this.setState({error: mappedStack}));
+    this.setState({message: 'Processing error, please wait a moment...'});
+    console.log(error);
+    this.sourceMapper.mapStackTrace(error.stack, (mappedStack) => {
+      this.setState({message: error.message, stack: mappedStack})
+    });
   }
 
   public render() {
-    let error = this.state.error;
-    if (!(error instanceof Array)) {
-      error = [error];
-    }
-    const parts = error.map((line, index) =><p key={'p-'+index}>{line}</p>);
+    let message = this.state.message;
+    let stack = this.state.stack || [];
+    const stackElements = stack.map((line, index) =><p key={'p-'+index}>{line}</p>);
     console.log(this.props.error);
     const style = {
       boxSizing: 'border-box',
@@ -33,10 +34,15 @@ export class ErrorReporter extends React.Component<any,any> {
       lineHeight: 1.2,
       overflow: 'scroll'
     };
+    const messageStyle = {
+      fontWeight: 1,
+      fontSize: '2rem'
+    };
 
     return (
       <div style={style}>
-        {parts}
+        <span style={messageStyle}>{message}</span>
+        {stackElements}
       </div>
     )
   }

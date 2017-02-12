@@ -1,6 +1,6 @@
 import {StudySection} from "./StudySection";
 import * as React from "react";
-import MenuBarComponent from "../../menuBar/MenuBarComponent";
+import MenuBarComponent from "../menuBar/MenuBarComponent";
 
 export interface StudySectionProperties {
   id: string,

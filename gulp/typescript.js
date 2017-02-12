@@ -7,6 +7,7 @@ const plumber = require('gulp-plumber');
 const paths = require('../paths');
 const tsify = require('tsify');
 const watchify = require('watchify');
+const tsConfig = require('../tsconfig.json');
 
 let tsProjects = {};
 let isolatedModules = false;
@@ -38,6 +39,6 @@ const compile = (name, options, input, output) => {
 };
 
 module.exports = options => () => {
-  return compile('client', options, paths.input.files.ts, paths.output.dirs.root);
+  return compile('client', options, tsConfig.include, paths.output.dirs.root);
 };
 

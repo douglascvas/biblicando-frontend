@@ -11,8 +11,8 @@ export class BibleService {
 
   public fetchBibles() {
     return this._httpClient.fetch(this._config.getBiblesUrl())
-      .then(httpResponse => {
-        return httpResponse.json();
+      .then(response => {
+        return response.data;
       });
   }
 }

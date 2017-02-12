@@ -1,6 +1,6 @@
 'use strict';
 
-import {Chapter} from "../chapter/chapter";
+import {Chapter} from "../chapter/Chapter";
 
 export class Verse {
   _id:string;

@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
     "declaration": false,
     "diagnostics": true,
     "emitDecoratorMetadata": true,
@@ -17,13 +18,15 @@
     "removeComments": true,
     "rootDir": "src",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "paths": {
+      "axios": ["node_modules/axios/lib/axios"]
+    }
   },
-  "filesGlob": [
+  "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./node_modules/@types/**.*.ts",
-    "./typings/index.d.ts"
+    "./node_modules/@types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

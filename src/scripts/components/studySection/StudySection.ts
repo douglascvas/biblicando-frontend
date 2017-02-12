@@ -1,4 +1,4 @@
-import {Bible} from "../Bible";
+import {Bible} from "./.";
 import {Book} from "../../book/Book";
 import {Chapter} from "../../chapter/chapter";
 import {Logger} from "../../common/loggerFactory";
@@ -7,8 +7,10 @@ import {MenuBar} from "../../menuBar/MenuBar";
 import {Observer} from "../../common/observer";
 import {StoreContainer} from "../../common/StoreContainer";
 import {ServiceContainer} from "../../common/ServiceContainer";
+import {SectionContext} from "./SectionContext";
 
 export class StudySection {
+  private _sectionContext: SectionContext;
   private _continousMode: boolean;
   private _continousModeChangeObserver: Observer<boolean>;
 
@@ -24,6 +26,8 @@ export class StudySection {
   constructor(private _storeContainer: StoreContainer,
               private _serviceContainer: ServiceContainer,) {
 
+    this._sectionContext = new SectionContext();
+    // this._storeContainer.getBibleStore().onChange(this.setData.bind(this));
     this._logger = _serviceContainer.getLoggerFactory().getLogger('biblePage');
     this._pageId = new Date().getTime().toString();
 

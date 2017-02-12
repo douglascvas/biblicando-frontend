@@ -1,7 +1,7 @@
 import * as React from "react";
-import {StudySection} from "../bible/biblePage/StudySection";
+import {StudySection} from "../studySection/StudySection";
 import {Workspace} from "./Workspace";
-import StudySectionComponent from "../bible/biblePage/StudySectionComponent";
+import StudySectionComponent from "../studySection/StudySectionComponent";
 export interface BibleStudyProps {
   id: string;
   className?: string;

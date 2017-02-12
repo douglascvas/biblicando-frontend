@@ -17,11 +17,10 @@ interface MenuItem {
 
 export default class MenuBarComponent extends React.Component<MenuBarProperties, MenuBar> {
   private menuItems: MenuItem[];
+  private _bibleMenuToggleUnsubscribe: Function;
 
   constructor(props: MenuBarProperties, context: any) {
     super(props, context);
-
-    this.state = props.menuBar;
 
     this.menuItems = [
       {label: 'Version', icon: 'fa-language', onClick: this.toggleBibleMenu.bind(this)},
@@ -30,20 +29,32 @@ export default class MenuBarComponent extends React.Component<MenuBarProperties,
     ];
   }
 
+  public componentWillMount() {
+    this._bibleMenuToggleUnsubscribe = this.props.menuBar.onBibleMenuToggle(this.onToggle.bind(this));
+  }
+
+  public componentWillUnmount() {
+    this._bibleMenuToggleUnsubscribe();
+  }
+
+  private onToggle() {
+    this.setState({});
+  }
+
   private toggleBibleMenu() {
-    this.state.bibleMenuButtonClicked();
+    this.props.menuBar.bibleMenuButtonClicked();
   }
 
   private toggleBookMenu() {
-    this.state.bookMenuButtonClicked();
+    this.props.menuBar.bookMenuButtonClicked();
   }
 
   private toggleChapterMenu() {
-    this.state.chapterMenuButtonClicked();
+    this.props.menuBar.chapterMenuButtonClicked();
   }
 
   private closeMenu() {
-    this.state.hideAll();
+    this.props.menuBar.hideAll();
   }
 
   public render() {
@@ -63,12 +74,12 @@ export default class MenuBarComponent extends React.Component<MenuBarProperties,
           </div>
         </nav>
         <OverlayComponent id={`${this.props.id}:overlay`}
-                          overlay={this.state.overlay}
+                          overlay={this.props.menuBar.overlay}
                           className="bible-page__overlay"
                           onClick={this.closeMenu.bind(this)}/>
         <div className="col s12">
-          {this.state.bibleMenu.visible ?
-            <BibleMenuComponent id={`${this.props.id}:menu-bar`} menu={this.state.bibleMenu} className="menu__wrapper push--left"/> : null}
+          {this.props.menuBar.bibleMenu.visible ?
+            <BibleMenuComponent id={`${this.props.id}:menu-bar`} menu={this.props.menuBar.bibleMenu} className="menu__wrapper push--left"/> : null}
           {/*{this.state.bookMenu.visible ? <BookMenu menu={this.state.bookMenu} className="menu__wrapper push--left"/> : null}*/}
           {/*{this.state.chapterMenu.visible ? <ChapterMenu menu={this.state.chapterMenu} className="menu__wrapper push--left"/> : null}*/}
         </div>

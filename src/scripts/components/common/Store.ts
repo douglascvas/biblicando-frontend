@@ -18,7 +18,7 @@ export class Store<E> {
     this._onChange.trigger(items, oldItems);
   }
 
-  public onChange(callback: (after: E, before: E) => void) {
+  public onChange(callback: (newValue: E[]) => void) {
     this._onChange.subscribe(callback);
   }
 }

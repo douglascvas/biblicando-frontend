@@ -1,5 +1,5 @@
 import {Logger} from "../common/loggerFactory";
-import {StudySection} from "../bible/biblePage/StudySection";
+import {StudySection} from "../studySection/StudySection";
 import {Bible} from "../bible/Bible";
 import {ServiceContainer} from "../common/ServiceContainer";
 import {StoreContainer} from "../common/StoreContainer";

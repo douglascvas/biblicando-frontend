@@ -1,4 +1,4 @@
-import {Chapter} from "./chapter";
+import {Chapter} from "./Chapter";
 import {LoggerFactory, Logger} from "../common/loggerFactory";
 import {HttpClientFactory, HttpClient} from "../common/HttpClient";
 

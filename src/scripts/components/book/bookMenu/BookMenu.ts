@@ -1,22 +1,22 @@
 import {Menu} from "../../menu/Menu";
-import {Bible} from "../Bible";
+import {Book} from "../Book";
 import {Overlay} from "../../common/overlay";
 import {MenuBody} from "../../menu/MenuBody";
 import {Search} from "../../search/Search";
 import {ServiceContainer} from "../../common/ServiceContainer";
-import {BibleMenuBody} from "./menuBody/BibleMenuBody";
+import {BookMenuBody} from "./menuBody/BookMenuBody";
 import {MenuItem} from "../../menu/MenuItem";
 import {MenuFilter} from "../../menu/MenuFilter";
 import {SectionContext} from "../../studySection/SectionContext";
 
-export class BibleMenu extends Menu<Bible> {
+export class BookMenu extends Menu<Book> {
   private _search: Search;
-  private _menuBody: MenuBody<Bible>;
+  private _menuBody: MenuBody<Book>;
 
   public constructor(_overlay: Overlay,
                      private _sectionContext: SectionContext,
                      private _serviceContainer: ServiceContainer) {
-    super(_overlay, _serviceContainer.getLoggerFactory().getLogger('BibleMenu'));
+    super(_overlay, _serviceContainer.getLoggerFactory().getLogger('BookMenu'));
 
     this.createSearch();
     this.createItemList();
@@ -29,25 +29,25 @@ export class BibleMenu extends Menu<Bible> {
   }
 
   protected createItemList(): void {
-    this._menuBody = new BibleMenuBody(this._serviceContainer);
-    this._sectionContext.onBiblesChange(bibles => this.setMenuItems(bibles));
-    this.setMenuItems(this._sectionContext.bibles);
+    this._menuBody = new BookMenuBody(this._serviceContainer);
+    this._sectionContext.onBooksChange(books => this.setMenuItems(books));
+    this.setMenuItems(this._sectionContext.books);
   }
 
-  private setMenuItems(bibles: Bible[]) {
-    this._menuBody.setItems(this.toMenuItems(bibles));
+  private setMenuItems(books: Book[]) {
+    this._menuBody.setItems(this.toMenuItems(books));
   }
 
-  private toMenuItems(bibles: Bible[]): MenuItem<Bible>[] {
-    return (bibles || []).map((bible: Bible) => this.bibleToMenuItem(bible));
+  private toMenuItems(books: Book[]): MenuItem<Book>[] {
+    return (books || []).map((book: Book) => this.bookToMenuItem(book));
   }
 
-  private bibleToMenuItem(bible: Bible): MenuItem<Bible> {
-    return new MenuItem(`${bible.languageCode} - ${bible.name}`, bible, this.selectItem.bind(this));
+  private bookToMenuItem(book: Book): MenuItem<Book> {
+    return new MenuItem(`${book.number} - ${book.name}`, book, this.selectItem.bind(this));
   }
 
   private searchChanged(query: string): void {
-    this._menuBody.setFilter(new MenuFilter<Bible>(query));
+    this._menuBody.setFilter(new MenuFilter<Book>(query));
   }
 
   private searchKeyDown(event): void {
@@ -58,7 +58,7 @@ export class BibleMenu extends Menu<Bible> {
       return this.hide();
     } else if (event.keyCode === 13) {
       // ENTER
-      const items: MenuItem<Bible>[] = this._menuBody.getItems() || [];
+      const items: MenuItem<Book>[] = this._menuBody.getItems() || [];
       if (!items.length) {
         return;
       }
@@ -70,7 +70,7 @@ export class BibleMenu extends Menu<Bible> {
     return this._search;
   }
 
-  get menuBody(): MenuBody<Bible> {
+  get menuBody(): MenuBody<Book> {
     return this._menuBody;
   }
 }

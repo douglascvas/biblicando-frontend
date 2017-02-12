@@ -19,7 +19,7 @@ function getAppEntry(options) {
 }
 
 function getVendorEntry(options) {
-  let production = ['react', 'react-dom', 'react-helmet'];
+  let production = ['react', 'react-dom', 'react-helmet', 'axios'];
   let development = [];//'sourcemapped-stacktrace'];
   return [...production, ...(options.development ? development : [])]
 }

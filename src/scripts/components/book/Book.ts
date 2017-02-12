@@ -1,7 +1,7 @@
 'use strict';
 
 import {Bible} from "../bible/Bible";
-import {Chapter} from "../chapter/chapter";
+import {Chapter} from "../chapter/Chapter";
 
 export class Book {
   _id:string;
