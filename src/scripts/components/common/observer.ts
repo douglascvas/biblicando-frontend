@@ -5,28 +5,25 @@ export class Observer<E> {
     this._listeners = [];
   }
 
-  public subscribe(listener: (...E) => void) {
-    const self = this;
-    self._listeners.push(listener);
+  public subscribe(listener: (...E) => void): Function {
+    this._listeners.push(listener);
     return () => {
-      let fnIndex = self._listeners.indexOf(listener);
-      while (fnIndex >= 0) {
-        self._listeners.splice(fnIndex, 1);
-        fnIndex = self._listeners.indexOf(listener);
+      let fnIndex;
+      while ((fnIndex = this._listeners.indexOf(listener)) >= 0) {
+        this._listeners.splice(fnIndex, 1);
       }
     };
   }
 
-  public trigger(...value: E[]) {
-    this._listeners.forEach(fn => {
+  public trigger(...value: E[]): Promise<any> {
+    const args = arguments;
+    const result: any[] = this._listeners.map(fn => {
       if (typeof fn === 'function') {
-        try {
-          fn.apply(fn, value);
-        } catch (e) {
-          console.log(e);
-        }
+        return fn.apply(fn, value);
       }
-    })
+      return null;
+    });
+    return Promise.all(result);
   }
 
 }

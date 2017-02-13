@@ -1,4 +1,4 @@
-import {Menu} from "../../menu/Menu";
+import {AbstractMenu} from "../../menu/AbstractMenu";
 import {Book} from "../Book";
 import {Overlay} from "../../common/overlay";
 import {MenuBody} from "../../menu/MenuBody";
@@ -8,34 +8,50 @@ import {BookMenuBody} from "./menuBody/BookMenuBody";
 import {MenuItem} from "../../menu/MenuItem";
 import {MenuFilter} from "../../menu/MenuFilter";
 import {SectionContext} from "../../studySection/SectionContext";
+import KeyboardEvent = React.KeyboardEvent;
 
-export class BookMenu extends Menu<Book> {
+export class BookMenu extends AbstractMenu<Book> {
   private _search: Search;
   private _menuBody: MenuBody<Book>;
+
+  private _unregisterFunctions: Function[];
 
   public constructor(_overlay: Overlay,
                      private _sectionContext: SectionContext,
                      private _serviceContainer: ServiceContainer) {
     super(_overlay, _serviceContainer.getLoggerFactory().getLogger('BookMenu'));
 
+    this._unregisterFunctions = [];
     this.createSearch();
     this.createItemList();
+
+    this.onSelect(this.selectBook.bind(this));
+  }
+
+  public unregister() {
+    this._unregisterFunctions.forEach(fn => fn());
+  }
+
+  private selectBook(menuItem: MenuItem<Book>): void {
+    this._sectionContext.setCurrentBook(menuItem.data);
   }
 
   protected createSearch(): void {
     this._search = new Search();
-    this._search.onQueryChange(this.searchChanged.bind(this));
-    this._search.onKeyPress(this.searchKeyDown.bind(this));
+    const onQueryChangeUnregister = this._search.onQueryChange(this.searchChanged.bind(this));
+    const onKeyPressUnregister = this._search.onKeyPress(this.searchKeyDown.bind(this));
+    this._unregisterFunctions.push(onQueryChangeUnregister, onKeyPressUnregister);
   }
 
   protected createItemList(): void {
     this._menuBody = new BookMenuBody(this._serviceContainer);
-    this._sectionContext.onBooksChange(books => this.setMenuItems(books));
+    const onBooksChangeUnregister = this._sectionContext.onBooksChange(books => this.setMenuItems(books));
+    this._unregisterFunctions.push(onBooksChangeUnregister);
     this.setMenuItems(this._sectionContext.books);
   }
 
-  private setMenuItems(books: Book[]) {
-    this._menuBody.setItems(this.toMenuItems(books));
+  private setMenuItems(books: Book[]): Promise<void> {
+    return this._menuBody.setItems(this.toMenuItems(books));
   }
 
   private toMenuItems(books: Book[]): MenuItem<Book>[] {
@@ -46,13 +62,13 @@ export class BookMenu extends Menu<Book> {
     return new MenuItem(`${book.number} - ${book.name}`, book, this.selectItem.bind(this));
   }
 
-  private searchChanged(query: string): void {
-    this._menuBody.setFilter(new MenuFilter<Book>(query));
+  private searchChanged(query: string): Promise<void> {
+    return this._menuBody.setFilter(new MenuFilter<Book>(query));
   }
 
-  private searchKeyDown(event): void {
+  private searchKeyDown(event: KeyboardEvent<any>): Promise<void> {
     if (!event) {
-      return;
+      return null;
     } else if (event.keyCode === 27) {
       // ESCAPE
       return this.hide();
@@ -60,9 +76,9 @@ export class BookMenu extends Menu<Book> {
       // ENTER
       const items: MenuItem<Book>[] = this._menuBody.getItems() || [];
       if (!items.length) {
-        return;
+        return null;
       }
-      items[0].select();
+      return items[0].select();
     }
   }
 

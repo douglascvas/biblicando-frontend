@@ -1,6 +1,6 @@
 import {StudySection} from "./StudySection";
 import * as React from "react";
-import MenuBarComponent from "../menuBar/MenuBarComponent";
+import StudySectionMenuComponent from "../menuBar/StudySectionMenuComponent";
 
 export interface StudySectionProperties {
   id: string,
@@ -10,33 +10,42 @@ export interface StudySectionProperties {
 export default class StudySectionComponent extends React.Component<StudySectionProperties,StudySection> {
   page: StudySection;
   public continuousVerses: boolean;
+  private _unregisterFunctions: Function[];
 
   constructor(properties: StudySectionProperties) {
     super(properties);
 
-    this.state = properties.studySection;
-
+    this._unregisterFunctions = [];
     this.switchDisplayMode = this.switchDisplayMode.bind(this);
-    this.state.onContinousModeChange(() => this.studySectionChanged());
+  }
+
+  public componentWillMount() {
+    const onContinousModeChangeUnregister = this.props.studySection.onContinousModeChange(() => this.studySectionChanged());
+    this._unregisterFunctions.push(onContinousModeChangeUnregister);
+  }
+
+  public componentWillUnmount() {
+    this._unregisterFunctions.forEach(fn => fn());
   }
 
   private studySectionChanged() {
-    this.setState(this.state);
+    this.setState({});
   }
 
   private switchDisplayMode() {
-    this.state.switchDisplayMode();
+    this.props.studySection.switchDisplayMode();
   }
 
   public render() {
-    const currentBook = this.state.currentBook || {} as any;
-    const currentChapter = this.state.currentChapter || {} as any;
-    const currentBible = this.state.currentBible || {} as any;
+    const currentBook = this.props.studySection.getCurrentBook() || {} as any;
+    const currentChapter = this.props.studySection.getCurrentChapter() || {} as any;
+    const currentBible = this.props.studySection.getCurrentBible() || {} as any;
+
     const displayModeClass = this.continuousVerses ? 'fa-bars' : 'fa-ellipsis-h';
 
     return (
       <div>
-        <MenuBarComponent id={`bible-page:${this.props.id}`} menuBar={this.state.menuBar}/>
+        <StudySectionMenuComponent id={`bible-page:${this.props.id}`} studySectionMenu={this.props.studySection.studySectionMenu}/>
 
         <div className="bible-page__body">
           <div className="bible-page__content">

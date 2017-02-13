@@ -16,10 +16,21 @@ export interface ChapterMenuProperties {
 }
 
 export default class ChapterMenuComponent extends React.Component<ChapterMenuProperties,ChapterMenuState> {
+  private _unregisterFunctions: Function[];
+
   constructor(props: ChapterMenuProperties, context: any) {
     super(props, context);
 
-    props.menu.onToggle(() => this.setState({}));
+    this._unregisterFunctions = [];
+  }
+
+  public componentWillMount() {
+    const onToggleUnregister = this.props.menu.onToggle(() => this.setState({}));
+    this._unregisterFunctions.push(onToggleUnregister);
+  }
+
+  public componentWillUnmount() {
+    this._unregisterFunctions.forEach(fn => fn());
   }
 
   public render() {

@@ -6,90 +6,126 @@ import {Observer} from "../common/observer";
 
 export class SectionContext {
   private _bibles: Bible[];
-  private _biblesChangedObserver: Observer<Bible[]>;
+  private _biblesChangeObserver: Observer<Bible[]>;
+
   private _currentBible: Bible;
+  private _currentBibleChangeObserver: Observer<Bible>;
 
   private _books: Book[];
-  private _booksChangedObserver: Observer<Book[]>;
+  private _booksChangeObserver: Observer<Book[]>;
+
   private _currentBook: Book;
+  private _currentBookChangeObserver: Observer<Book>;
 
   private _chapters: Chapter[];
-  private _chaptersChangedObserver: Observer<Chapter[]>;
+  private _chaptersChangeObserver: Observer<Chapter[]>;
+
   private _currentChapter: Chapter;
+  private _currentChapterChangeObserver: Observer<Chapter>;
 
   private _verses: Verse[];
-  private _versesChangedObserver: Observer<Verse[]>;
-  private _contextChangedObserver: Observer<SectionContext>;
+  private _versesChangeObserver: Observer<Verse[]>;
+  private _contextChangeObserver: Observer<SectionContext>;
 
   constructor() {
     this._bibles = [];
+    this._biblesChangeObserver = new Observer();
+    this._currentBibleChangeObserver = new Observer();
+
     this._books = [];
+    this._booksChangeObserver = new Observer();
+    this._currentBookChangeObserver = new Observer();
+
     this._chapters = [];
+    this._chaptersChangeObserver = new Observer();
+    this._currentChapterChangeObserver = new Observer();
+
     this._verses = [];
-    this._contextChangedObserver = new Observer();
-    this._biblesChangedObserver = new Observer();
-    this._booksChangedObserver = new Observer();
-    this._chaptersChangedObserver = new Observer();
-    this._versesChangedObserver = new Observer();
+    this._contextChangeObserver = new Observer();
+    this._versesChangeObserver = new Observer();
   }
 
-  public setBibles(bibles: Bible[]): void {
+  public async setBibles(bibles: Bible[]): Promise<void> {
     this._bibles = bibles || [];
-    this._biblesChangedObserver.trigger(this._bibles);
-    this.contextChanged();
+    await this._biblesChangeObserver.trigger(this._bibles);
+    return this.contextChanged();
   }
 
-  public setBooks(books: Book[]): void {
+  public async setBooks(books: Book[]): Promise<void> {
     this._books = books || [];
-    this._booksChangedObserver.trigger(this._books);
-    this.contextChanged();
+    await this._booksChangeObserver.trigger(this._books);
+    return this.contextChanged();
   }
 
-  public setChapters(chapters: Chapter[]): void {
+  public async setChapters(chapters: Chapter[]): Promise<void> {
     this._chapters = chapters || [];
-    this._chaptersChangedObserver.trigger(this._chapters);
-    this.contextChanged();
+    await this._chaptersChangeObserver.trigger(this._chapters);
+    return this.contextChanged();
   }
 
-  public versestVerses(verses: Verse[]): void {
+  public async setVerses(verses: Verse[]): Promise<void> {
     this._verses = verses || [];
-    this._versesChangedObserver.trigger(this._verses);
-    this.contextChanged();
+    await this._versesChangeObserver.trigger(this._verses);
+    return this.contextChanged();
   }
 
-  public setCurrentBible(currentBible: Bible): void {
+  public async setCurrentBible(currentBible: Bible): Promise<void> {
+    if(!currentBible || currentBible === this.currentBible){
+      return;
+    }
     this._currentBible = currentBible;
-    this.contextChanged();
+    await this._currentBibleChangeObserver.trigger(currentBible);
+    return this.contextChanged();
   }
 
-  public setCurrentBook(currentBook: Book): void {
+  public setCurrentBook(currentBook: Book): Promise<void> {
+    if(!currentBook || currentBook === this.currentBook){
+      return;
+    }
     this._currentBook = currentBook;
-    this.contextChanged();
+    this._currentBookChangeObserver = new Observer();
+    return this.contextChanged();
   }
 
-  public setCurrentChapter(currentChapter: Chapter): void {
+  public setCurrentChapter(currentChapter: Chapter): Promise<void> {
+    if(!currentChapter || currentChapter === this.currentChapter){
+      return;
+    }
     this._currentChapter = currentChapter;
-    this.contextChanged();
+    this._currentChapterChangeObserver = new Observer();
+    return this.contextChanged();
   }
 
-  public onContextChange(callback: (sectionContext: SectionContext) => void) {
-    this._contextChangedObserver.subscribe(callback);
+  public onContextChange(callback: (sectionContext: SectionContext) => void): Function {
+    return this._contextChangeObserver.subscribe(callback);
   }
 
-  public onBiblesChange(callback: (bibles: Bible[]) => void) {
-    this._biblesChangedObserver.subscribe(callback);
+  public onBiblesChange(callback: (bibles: Bible[]) => void): Function {
+    return this._biblesChangeObserver.subscribe(callback);
   }
 
-  public onBooksChange(callback: (books: Book[]) => void) {
-    this._booksChangedObserver.subscribe(callback);
+  public onCurrentBibleChange(callback: (bible: Bible) => void): Function {
+    return this._currentBibleChangeObserver.subscribe(callback);
   }
 
-  public onChaptersChange(callback: (chapters: Chapter[]) => void) {
-    this._chaptersChangedObserver.subscribe(callback);
+  public onBooksChange(callback: (books: Book[]) => void): Function {
+    return this._booksChangeObserver.subscribe(callback);
   }
 
-  public onVersesChange(callback: (verses: Verse[]) => void) {
-    this._versesChangedObserver.subscribe(callback);
+  public onCurrentBookChange(callback: (book: Book) => void): Function {
+    return this._currentBookChangeObserver.subscribe(callback);
+  }
+
+  public onChaptersChange(callback: (chapters: Chapter[]) => void): Function {
+    return this._chaptersChangeObserver.subscribe(callback);
+  }
+
+  public onCurrentChapterChange(callback: (chapter: Chapter) => void): Function {
+    return this._currentChapterChangeObserver.subscribe(callback);
+  }
+
+  public onVersesChange(callback: (verses: Verse[]) => void): Function {
+    return this._versesChangeObserver.subscribe(callback);
   }
 
   get bibles(): Bible[] {
@@ -120,8 +156,8 @@ export class SectionContext {
     return this._verses;
   }
 
-  private contextChanged() {
-    this._contextChangedObserver.trigger();
+  private contextChanged(): Promise<void> {
+    return this._contextChangeObserver.trigger();
   }
 
 }

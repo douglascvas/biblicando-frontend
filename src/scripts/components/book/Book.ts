@@ -10,7 +10,7 @@ export class Book {
   name:string;
   number:number;
   description:string;
-  testament:string;
+  categories:string[];
   copyright:string;
   author:string;
   abbreviation:string;

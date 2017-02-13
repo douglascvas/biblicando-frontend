@@ -12,9 +12,9 @@ export abstract class MenuBody<E> {
     this._onChangeObserver = new Observer<MenuItem<E>[]>();
   }
 
-  public setItems(items: MenuItem<E>[]) {
+  public setItems(items: MenuItem<E>[]): Promise<void> {
     this._items = items;
-    this.itemsChanged();
+    return this.itemsChanged();
   }
 
   public getItems(): MenuItem<E>[] {
@@ -28,13 +28,13 @@ export abstract class MenuBody<E> {
     return this._onChangeObserver.subscribe(callback);
   }
 
-  public setFilter(newFilter: MenuFilter<E>): void {
+  public setFilter(newFilter: MenuFilter<E>): Promise<void> {
     this._logger.debug(`Changing filter to: "${newFilter.query}"`);
     this._filter = newFilter;
-    this.itemsChanged();
+    return this.itemsChanged();
   }
 
-  protected itemsChanged(): void {
-    this._onChangeObserver.trigger(this.getItems());
+  protected itemsChanged(): Promise<void> {
+    return this._onChangeObserver.trigger(this.getItems());
   }
 }

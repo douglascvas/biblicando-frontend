@@ -3,7 +3,7 @@ import {Logger} from "../common/loggerFactory";
 import {Overlay} from "../common/overlay";
 import {MenuItem} from "./MenuItem";
 
-export abstract class Menu<E> {
+export abstract class AbstractMenu<E> {
   private _selected: MenuItem<E>;
   private _visible: boolean;
   private _onSelectObserver: Observer<MenuItem<E>>;
@@ -20,10 +20,14 @@ export abstract class Menu<E> {
     _overlay.onShow(() => this.hide());
   }
 
-  public selectItem(selectedItem: MenuItem<E>) {
+  public unregister() {
+    // can be overwritten by a child class
+  }
+
+  public selectItem(selectedItem: MenuItem<E>): Promise<void> {
     this._logger.debug(`Selected item ${selectedItem}`);
     this._selected = selectedItem;
-    this._onSelectObserver.trigger(selectedItem);
+    return this._onSelectObserver.trigger(selectedItem);
   }
 
   public onSelect(listener): Function {
@@ -55,24 +59,23 @@ export abstract class Menu<E> {
     return this._visible;
   }
 
-  public show(): void {
-    this._overlay.show();
+  public async show(): Promise<void> {
+    await this._overlay.show();
     this._visible = true;
-    this._onShowObserver.trigger();
+    return this._onShowObserver.trigger();
   }
 
-  public hide(): void {
-    this._overlay.hide();
+  public async hide(): Promise<void> {
+    await this._overlay.hide();
     this._visible = false;
-    this._onHideObserver.trigger();
+    return this._onHideObserver.trigger();
   }
 
-  public toggle(): void {
+  public toggle(): Promise<void> {
     if (this._visible) {
-      this.hide();
-    } else {
-      this.show();
+      return this.hide();
     }
+    this.show();
   }
 
 }

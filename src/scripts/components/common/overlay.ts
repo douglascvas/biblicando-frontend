@@ -18,22 +18,21 @@ export class Overlay {
     this._onHide.subscribe(fn);
   }
 
-  public show() {
-    this._onShow.trigger();
+  public show(): Promise<void> {
     this._visible = true;
+    return this._onShow.trigger();
   }
 
-  public hide() {
-    this._onHide.trigger();
+  public hide(): Promise<void> {
     this._visible = false;
+    return this._onHide.trigger();
   }
 
-  public toggle() {
+  public toggle(): Promise<void> {
     if (this._visible) {
-      this.hide();
-    } else {
-      this.show();
+      return this.hide();
     }
+    return this.show();
   }
 
   public get visible(): boolean {

@@ -15,7 +15,7 @@ export class ChapterService {
   public fetchChapters(book) {
     var time = (new Date()).getTime();
     return this._httpClient.fetch(`api/v1/book/${book._id}/chapters?time=${time}`)
-      .then(httpResponse => httpResponse.json())
+      .then(httpResponse => httpResponse.data)
       .then((chapters: Chapter[]) => {
         this._logger.debug("Loaded", (chapters || []).length, "chapters");
         return chapters;

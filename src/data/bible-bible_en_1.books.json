@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "bible-bible_en_1.book-gen",
+    "remoteId": "remote.bible-bible_en_1.book-gen",
+    "remoteSource": "sourceApi",
+    "name": "Genesis",
+    "number": "1",
+    "description": "The beggining",
+    "categories": [
+      "old-testament"
+    ],
+    "copyright": "All rights reserved",
+    "author": "Moses",
+    "abbreviation": "gen",
+    "numberOfChapters": 50,
+    "updatedAt": "",
+    "bible": null,
+    "chapters": []
+  },
+  {
+    "_id": "bible-bible_en_1.book-exo",
+    "remoteId": "remote.bible-bible_en_1.book-exo",
+    "remoteSource": "sourceApi",
+    "name": "Exodus",
+    "number": "2",
+    "description": "The exit from Egypt",
+    "categories": [
+      "old-testament"
+    ],
+    "copyright": "All rights reserved",
+    "author": "Moses",
+    "abbreviation": "exo",
+    "numberOfChapters": 40,
+    "updatedAt": "",
+    "bible": null,
+    "chapters": []
+  },
+  {
+    "_id": "bible-bible_en_1.book-lev",
+    "remoteId": "remote.bible-bible_en_1.book-lev",
+    "remoteSource": "sourceApi",
+    "name": "Leviticus",
+    "number": "2",
+    "description": "The law",
+    "categories": [
+      "old-testament"
+    ],
+    "copyright": "All rights reserved",
+    "author": "Moses",
+    "abbreviation": "lev",
+    "numberOfChapters": 27,
+    "updatedAt": "",
+    "bible": null,
+    "chapters": []
+  }
+]

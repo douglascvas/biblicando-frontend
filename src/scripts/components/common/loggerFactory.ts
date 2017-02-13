@@ -5,7 +5,7 @@ export class LoggerFactory {
     this._loggers = {};
   }
 
-  public getLogger(loggerClassName):Logger {
+  public getLogger(loggerClassName): Logger {
     return new Logger(loggerClassName);
   }
 }
@@ -14,23 +14,23 @@ export class Logger {
   constructor(private _name) {
   }
 
-  public log(...args:String[]) {
+  public log(...args: String[]) {
     this._log('info', this._toArray(arguments));
   }
 
-  public error(...args:String[]) {
+  public error(...args: String[]) {
     this._log('error', this._toArray(arguments));
   }
 
-  public warn(...args:String[]) {
+  public warn(...args: String[]) {
     this._log('warn', this._toArray(arguments));
   }
 
-  public debug(...args:any[]) {
+  public debug(...args: any[]) {
     this._log('debug', this._toArray(arguments));
   }
 
-  private _toArray(args:IArguments):any[] {
+  private _toArray(args: IArguments): any[] {
     return Array.prototype.slice.apply(args);
   }
 
@@ -47,18 +47,20 @@ export class Logger {
   }
 
   private _levelGetMessageSeparator() {
-    return ' - ';
+    return '-';
   }
 
-  private _getMessagePrefix(level:String):String {
+  private _getMessagePrefix(level: String): String {
+    const now = new Date();
+    const dateStr = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
     return this._formatLevel(level) + ' ' +
-      this._getTime() + ' ' +
+      dateStr + ' ' +
       this._formatIdentifier(this._name) +
       this._levelGetMessageSeparator();
   }
 
-  private _log(level:String, args:any[]) {
-    var messagePrefix:String = this._getMessagePrefix('debug');
+  private _log(level: String, args: any[]) {
+    var messagePrefix: String = this._getMessagePrefix('debug');
     var logArgs = Array.prototype.slice.apply(args);
     logArgs.unshift(messagePrefix);
     console.log.apply(console, logArgs);

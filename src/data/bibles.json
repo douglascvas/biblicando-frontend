@@ -1,7 +1,7 @@
 [
   {
-    "_id": "111",
-    "remoteId": "222",
+    "_id": "bible_en_1",
+    "remoteId": "remote.bible_en_1",
     "remoteSource": "biblesOrg",
     "name": "King James",
     "publisher": "",
@@ -16,8 +16,8 @@
     "books": []
   },
   {
-    "_id": "333",
-    "remoteId": "444",
+    "_id": "bible_pt_1",
+    "remoteId": "remote.bible_pt_1",
     "remoteSource": "biblesOrg",
     "name": "Joao Ferreira de Almeida",
     "publisher": "",

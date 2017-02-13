@@ -16,10 +16,21 @@ export interface BibleMenuProperties {
 }
 
 export default class BibleMenuComponent extends React.Component<BibleMenuProperties,BibleMenuState> {
+  private _unregisterFunctions: Function[];
+
   constructor(props: BibleMenuProperties, context: any) {
     super(props, context);
 
-    props.menu.onToggle(() => this.setState({}));
+    this._unregisterFunctions = [];
+  }
+
+  public componentWillMount() {
+    const onToggleUnregister = this.props.menu.onToggle(() => this.setState({}));
+    this._unregisterFunctions.push(onToggleUnregister);
+  }
+
+  public componentWillUnmount() {
+    this._unregisterFunctions.forEach(fn => fn());
   }
 
   public render() {

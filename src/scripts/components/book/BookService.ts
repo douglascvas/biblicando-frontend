@@ -18,7 +18,7 @@ export class BookService {
     const self = this;
     const url = this._config.getBooksUrl(bible._id);
     return self._httpClient.fetch(url)
-      .then((httpResponse: any) => httpResponse.json())
+      .then((httpResponse: any) => httpResponse.data)
       .then((books: Book[]) => {
         this._logger.debug("Loaded", (books || []).length, "books");
         return books;

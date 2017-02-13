@@ -1,4 +1,4 @@
-import {Menu} from "../../menu/Menu";
+import {AbstractMenu} from "../../menu/AbstractMenu";
 import {Chapter} from "../Chapter";
 import {Overlay} from "../../common/overlay";
 import {MenuBody} from "../../menu/MenuBody";
@@ -9,33 +9,48 @@ import {MenuItem} from "../../menu/MenuItem";
 import {MenuFilter} from "../../menu/MenuFilter";
 import {SectionContext} from "../../studySection/SectionContext";
 
-export class ChapterMenu extends Menu<Chapter> {
+export class ChapterMenu extends AbstractMenu<Chapter> {
   private _search: Search;
   private _menuBody: MenuBody<Chapter>;
+
+  private _unregisterFunctions: Function[];
 
   public constructor(_overlay: Overlay,
                      private _sectionContext: SectionContext,
                      private _serviceContainer: ServiceContainer) {
     super(_overlay, _serviceContainer.getLoggerFactory().getLogger('ChapterMenu'));
 
+    this._unregisterFunctions = [];
     this.createSearch();
     this.createItemList();
+
+    this.onSelect(this.selectChapter.bind(this));
   }
 
-  protected createSearch(): void {
+  public unregister(): void {
+    this._unregisterFunctions.forEach(fn => fn());
+  }
+
+  private selectChapter(menuItem: MenuItem<Chapter>): Promise<void> {
+    return this._sectionContext.setCurrentChapter(menuItem.data);
+  }
+
+  private createSearch(): void {
     this._search = new Search();
-    this._search.onQueryChange(this.searchChanged.bind(this));
-    this._search.onKeyPress(this.searchKeyDown.bind(this));
+    const onQueryChangeUnregister = this._search.onQueryChange(this.searchChanged.bind(this));
+    const onKeyPressUnregister = this._search.onKeyPress(this.searchKeyDown.bind(this));
+    this._unregisterFunctions.push(onQueryChangeUnregister, onKeyPressUnregister);
   }
 
-  protected createItemList(): void {
+  private createItemList(): void {
     this._menuBody = new ChapterMenuBody(this._serviceContainer);
-    this._sectionContext.onChaptersChange(chapters => this.setMenuItems(chapters));
+    const onChaptersChangeUnregister = this._sectionContext.onChaptersChange(chapters => this.setMenuItems(chapters));
+    this._unregisterFunctions.push(onChaptersChangeUnregister);
     this.setMenuItems(this._sectionContext.chapters);
   }
 
-  private setMenuItems(chapters: Chapter[]) {
-    this._menuBody.setItems(this.toMenuItems(chapters));
+  private setMenuItems(chapters: Chapter[]): Promise<void> {
+    return this._menuBody.setItems(this.toMenuItems(chapters));
   }
 
   private toMenuItems(chapters: Chapter[]): MenuItem<Chapter>[] {
@@ -46,11 +61,11 @@ export class ChapterMenu extends Menu<Chapter> {
     return new MenuItem(`${chapter.number}`, chapter, this.selectItem.bind(this));
   }
 
-  private searchChanged(query: string): void {
-    this._menuBody.setFilter(new MenuFilter<Chapter>(query));
+  private searchChanged(query: string): Promise<void> {
+    return this._menuBody.setFilter(new MenuFilter<Chapter>(query));
   }
 
-  private searchKeyDown(event): void {
+  private searchKeyDown(event): Promise<void> {
     if (!event) {
       return;
     } else if (event.keyCode === 27) {
@@ -59,10 +74,7 @@ export class ChapterMenu extends Menu<Chapter> {
     } else if (event.keyCode === 13) {
       // ENTER
       const items: MenuItem<Chapter>[] = this._menuBody.getItems() || [];
-      if (!items.length) {
-        return;
-      }
-      items[0].select();
+      return items.length && items[0].select();
     }
   }
 

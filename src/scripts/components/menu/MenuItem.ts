@@ -1,10 +1,10 @@
 export class MenuItem<E> {
   constructor(public readonly label: string,
               public readonly data: E,
-              private readonly onSelect: (menuItem: MenuItem<E>) => void) {
+              private readonly onSelect: (menuItem: MenuItem<E>) => Promise<void>) {
   }
 
-  public select() {
-    this.onSelect(this);
+  public select(): Promise<void> {
+    return this.onSelect(this);
   }
 }

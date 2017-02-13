@@ -6,6 +6,6 @@ export default class ConfigDev implements Config {
   }
 
   getBooksUrl(bibleId: string): string {
-    return `/data/books.json`
+    return `/data/bible-${bibleId}.books.json`
   }
 }

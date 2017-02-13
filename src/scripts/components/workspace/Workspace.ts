@@ -14,21 +14,28 @@ export class Workspace {
     this._logger = _serviceContainer.getLoggerFactory().getLogger('Workspace');
   }
 
-  public loadBibles() {
-    return this._serviceContainer.getBibleService().fetchBibles()
-      .then(bibles => this.updateContainer(bibles));
+  public async loadBibles(): Promise<void> {
+    const bibles = await this._serviceContainer.getBibleService().fetchBibles();
+    return this.updateContainer(bibles);
   }
 
-  private updateContainer(bibles: Bible[]): void {
-    this._storeContainer.getBibleStore().replaceAll(bibles);
+  private updateContainer(bibles: Bible[]): Promise<void> {
+    return this._storeContainer.getBibleStore().replaceAll(bibles);
   }
 
   private createSection(): StudySection {
     return new StudySection(this._storeContainer, this._serviceContainer);
   }
 
-  private initialize() {
+  private removeSection(section: StudySection): void {
+    section.unregister();
+    const index = this._sections.indexOf(section);
+    this._sections.splice(index, 1);
+  }
+
+  private initialize(): void {
     this._sections = [this.createSection()];
+    this.loadBibles();
   }
 
   get sections(): StudySection[] {

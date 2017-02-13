@@ -12,13 +12,13 @@ export class Store<E> {
     return this._items;
   }
 
-  public replaceAll(items: E[]): void {
+  public replaceAll(items: E[]): Promise<void> {
     const oldItems = this._items;
     this._items = items;
-    this._onChange.trigger(items, oldItems);
+    return this._onChange.trigger(items, oldItems);
   }
 
-  public onChange(callback: (newValue: E[]) => void) {
-    this._onChange.subscribe(callback);
+  public onChange(callback: (newValue: E[]) => void): Function {
+    return this._onChange.subscribe(callback);
   }
 }

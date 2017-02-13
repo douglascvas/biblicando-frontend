@@ -6,77 +6,67 @@ import {Chapter} from "../chapter/Chapter";
 import {Logger} from "../common/loggerFactory";
 import {Overlay} from "../common/overlay";
 import {BibleMenu} from "../bible/bibleMenu/BibleMenu";
-import {StoreContainer} from "../common/StoreContainer";
 import {ServiceContainer} from "../common/ServiceContainer";
 import {SectionContext} from "../studySection/SectionContext";
+import {MenuItem} from "../menu/MenuItem";
 
-export class MenuBar {
+export class StudySectionMenu {
   public overlay: Overlay;
   public bibleMenu: BibleMenu;
   public bookMenu: BookMenu;
   public chapterMenu: ChapterMenu;
   private _logger: Logger;
 
+  private _unregisterFunctions: Function[];
+
   constructor(private _sectionContext: SectionContext,
-              private _storeContainer: StoreContainer,
               private _serviceContainer: ServiceContainer) {
 
     this._logger = _serviceContainer.getLoggerFactory().getLogger('MenuBar');
 
+    this._unregisterFunctions = [];
     this.overlay = new Overlay();
     this.createBibleMenu();
     this.createBookMenu();
     this.createChapterMenu();
-
-    // this.bibleMenu.onSelect(bible => this._bibleSelected(bible));
-    // this.bookMenu.onSelect(book => this._bookSelected(book));
-    // this.chapterMenu.onSelect(chapter => this._chapterSelected(chapter));
   }
 
-  public hideAll() {
-    this.bibleMenu.hide();
-    // this.bookMenu.hide();
-    // this.chapterMenu.hide();
+  public unregister(): void {
+    this._unregisterFunctions.forEach(fn => fn());
+  }
+
+  public async hideAll(): Promise<void> {
+    await this.bibleMenu.hide();
+    await this.bookMenu.hide();
+    await this.chapterMenu.hide();
   }
 
   public onBibleMenuToggle(callback: Function): Function {
     return this.bibleMenu.onToggle(callback);
   }
 
-  private _bibleSelected(bible: Bible) {
-    this.hideAll();
+  private _bibleSelected(menuItem: MenuItem<Bible>): Promise<void> {
+    return this.hideAll();
   }
 
-  private _bookSelected(book: Book) {
-    this.hideAll();
+  private _bookSelected(menuItem: MenuItem<Book>): Promise<void> {
+    return this.hideAll();
   }
 
-  private _chapterSelected(chapter: Chapter) {
-    this.hideAll();
+  private _chapterSelected(menuItem: MenuItem<Chapter>): Promise<void> {
+    return this.hideAll();
   }
 
-  public bibleMenuButtonClicked(): void {
-    this.bibleMenu.toggle();
+  public bibleMenuButtonClicked(): Promise<void> {
+    return this.bibleMenu.toggle();
   }
 
-  public bookMenuButtonClicked(): void {
-    this.bookMenu.toggle();
+  public bookMenuButtonClicked(): Promise<void> {
+    return this.bookMenu.toggle();
   }
 
-  public chapterMenuButtonClicked(): void {
-    this.chapterMenu.toggle();
-  }
-
-  public onBibleSelect(listener: (Bible) => void) {
-    return this.bibleMenu.onSelect(listener);
-  }
-
-  public onBookSelect(listener: (Book) => void) {
-    // return this.bookMenu.onSelect(listener);
-  }
-
-  public onChapterSelect(listener: (Chapter) => void) {
-    // return this.chapterMenu.onSelect(listener);
+  public chapterMenuButtonClicked(): Promise<void> {
+    return this.chapterMenu.toggle();
   }
 
   public isOverlayVisible() {
@@ -85,13 +75,19 @@ export class MenuBar {
 
   private createBibleMenu(): void {
     this.bibleMenu = new BibleMenu(this.overlay, this._sectionContext, this._serviceContainer);
+    this.bibleMenu.onSelect((menuItem: MenuItem<Bible>) => this._bibleSelected(menuItem));
+    this._unregisterFunctions.push(() => this.bibleMenu.unregister());
   }
 
   private createBookMenu(): void {
     this.bookMenu = new BookMenu(this.overlay, this._sectionContext, this._serviceContainer);
+    this.bookMenu.onSelect((menuItem: MenuItem<Book>) => this._bookSelected(menuItem));
+    this._unregisterFunctions.push(() => this.bookMenu.unregister());
   }
 
   private createChapterMenu(): void {
     this.chapterMenu = new ChapterMenu(this.overlay, this._sectionContext, this._serviceContainer);
+    this.chapterMenu.onSelect((menuItem: MenuItem<Chapter>) => this._chapterSelected(menuItem));
+    this._unregisterFunctions.push(() => this.chapterMenu.unregister());
   }
 }

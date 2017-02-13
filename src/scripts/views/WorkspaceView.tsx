@@ -16,7 +16,6 @@ export default class WorkspaceView extends React.Component<any,any> {
     const serviceContainer = new ServiceContainer();
     const storeContainer = new StoreContainer();
     this._workspace = new Workspace(storeContainer, serviceContainer);
-    this._workspace.loadBibles();
   }
 
   render() {
