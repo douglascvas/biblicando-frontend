@@ -25,6 +25,9 @@ export class BibleMenu extends AbstractMenu<Bible> {
     this.createItemList();
 
     this.onSelect(this.selectBible.bind(this));
+
+    this.onShow(() => this._logger.debug("Bible menu opened"));
+    this.onHide(() => this._logger.debug("Bible menu closed"));
   }
 
   public unregister(): void {

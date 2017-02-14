@@ -1,4 +1,4 @@
-import {Observer} from "./observer";
+import {Observer} from "./Observer";
 
 export class Store<E> {
   private _items: E[];

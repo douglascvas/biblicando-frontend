@@ -2,7 +2,6 @@ import {BookMenu} from "../book/bookMenu/BookMenu";
 import {ChapterMenu} from "../chapter/chapterMenu/ChapterMenu";
 import {Bible} from "../bible/Bible";
 import {Book} from "../book/Book";
-import {Chapter} from "../chapter/Chapter";
 import {Logger} from "../common/loggerFactory";
 import {Overlay} from "../common/overlay";
 import {BibleMenu} from "../bible/bibleMenu/BibleMenu";
@@ -45,6 +44,14 @@ export class StudySectionMenu {
     return this.bibleMenu.onToggle(callback);
   }
 
+  public onBookMenuToggle(callback: Function): Function {
+    return this.bookMenu.onToggle(callback);
+  }
+
+  public onChapterMenuToggle(callback: Function): Function {
+    return this.chapterMenu.onToggle(callback);
+  }
+
   private _bibleSelected(menuItem: MenuItem<Bible>): Promise<void> {
     return this.hideAll();
   }
@@ -53,7 +60,7 @@ export class StudySectionMenu {
     return this.hideAll();
   }
 
-  private _chapterSelected(menuItem: MenuItem<Chapter>): Promise<void> {
+  private _chapterSelected(menuItem: MenuItem<number>): Promise<void> {
     return this.hideAll();
   }
 
@@ -75,19 +82,22 @@ export class StudySectionMenu {
 
   private createBibleMenu(): void {
     this.bibleMenu = new BibleMenu(this.overlay, this._sectionContext, this._serviceContainer);
-    this.bibleMenu.onSelect((menuItem: MenuItem<Bible>) => this._bibleSelected(menuItem));
-    this._unregisterFunctions.push(() => this.bibleMenu.unregister());
+    const onSelectUnsubscribe = this.bibleMenu.onSelect((menuItem: MenuItem<Bible>) => this._bibleSelected(menuItem));
+    const onBeforeShowUnsubscribe = this.bibleMenu.onBeforeShow(() => this.hideAll());
+    this._unregisterFunctions.push(() => this.bibleMenu.unregister(), onSelectUnsubscribe, onBeforeShowUnsubscribe);
   }
 
   private createBookMenu(): void {
     this.bookMenu = new BookMenu(this.overlay, this._sectionContext, this._serviceContainer);
-    this.bookMenu.onSelect((menuItem: MenuItem<Book>) => this._bookSelected(menuItem));
-    this._unregisterFunctions.push(() => this.bookMenu.unregister());
+    const onSelectUnsubscribe = this.bookMenu.onSelect((menuItem: MenuItem<Book>) => this._bookSelected(menuItem));
+    const onBeforeShowUnsubscribe = this.bookMenu.onBeforeShow(() => this.hideAll());
+    this._unregisterFunctions.push(() => this.bookMenu.unregister(), onSelectUnsubscribe, onBeforeShowUnsubscribe);
   }
 
   private createChapterMenu(): void {
     this.chapterMenu = new ChapterMenu(this.overlay, this._sectionContext, this._serviceContainer);
-    this.chapterMenu.onSelect((menuItem: MenuItem<Chapter>) => this._chapterSelected(menuItem));
-    this._unregisterFunctions.push(() => this.chapterMenu.unregister());
+    const onSelectUnsubscribe = this.chapterMenu.onSelect((menuItem: MenuItem<number>) => this._chapterSelected(menuItem));
+    const onBeforeShowUnsubscribe = this.chapterMenu.onBeforeShow(() => this.hideAll());
+    this._unregisterFunctions.push(() => this.chapterMenu.unregister(), onSelectUnsubscribe, onBeforeShowUnsubscribe);
   }
 }

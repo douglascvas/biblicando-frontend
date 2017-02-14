@@ -1,7 +1,7 @@
 import {BibleService} from "../bible/BibleService";
 import {HttpClientFactory} from "./HttpClient";
 import {BookService} from "../book/BookService";
-import {ChapterService} from "../chapter/chapterService";
+import {ChapterService} from "../chapter/ChapterService";
 import {LoggerFactory} from "./loggerFactory";
 import {VerseService} from "../verse/verseService";
 import {Config} from "../../config/config";
@@ -57,7 +57,7 @@ export class ServiceContainer {
 
   public getChapterService(): ChapterService {
     if (!this._chapterService) {
-      this._chapterService = new ChapterService(this.getHttpClientFactory(), this.getLoggerFactory());
+      this._chapterService = new ChapterService(this.getConfig(), this.getHttpClientFactory(), this.getLoggerFactory());
     }
     return this._chapterService;
   }

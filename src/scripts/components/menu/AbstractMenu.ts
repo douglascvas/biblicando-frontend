@@ -1,4 +1,4 @@
-import {Observer} from "../common/observer";
+import {Observer} from "../common/Observer";
 import {Logger} from "../common/loggerFactory";
 import {Overlay} from "../common/overlay";
 import {MenuItem} from "./MenuItem";
@@ -7,6 +7,7 @@ export abstract class AbstractMenu<E> {
   private _selected: MenuItem<E>;
   private _visible: boolean;
   private _onSelectObserver: Observer<MenuItem<E>>;
+  private _onBeforeShowObserver: Observer<MenuItem<E>>;
   private _onShowObserver: Observer<MenuItem<E>>;
   private _onHideObserver: Observer<MenuItem<E>>;
 
@@ -14,10 +15,11 @@ export abstract class AbstractMenu<E> {
               protected _logger: Logger) {
     this._visible = false;
     this._onSelectObserver = new Observer();
+    this._onBeforeShowObserver = new Observer();
     this._onShowObserver = new Observer();
     this._onHideObserver = new Observer();
 
-    _overlay.onShow(() => this.hide());
+    // _overlay.onShow(() => this.hide());
   }
 
   public unregister() {
@@ -25,7 +27,7 @@ export abstract class AbstractMenu<E> {
   }
 
   public selectItem(selectedItem: MenuItem<E>): Promise<void> {
-    this._logger.debug(`Selected item ${selectedItem}`);
+    this._logger.debug('Selected item', selectedItem);
     this._selected = selectedItem;
     return this._onSelectObserver.trigger(selectedItem);
   }
@@ -36,6 +38,10 @@ export abstract class AbstractMenu<E> {
 
   public onShow(listener): Function {
     return this._onShowObserver.subscribe(listener);
+  }
+
+  public onBeforeShow(listener): Function {
+    return this._onBeforeShowObserver.subscribe(listener);
   }
 
   public onHide(listener): Function {
@@ -60,12 +66,19 @@ export abstract class AbstractMenu<E> {
   }
 
   public async show(): Promise<void> {
+    if (this._visible) {
+      return;
+    }
+    await this._onBeforeShowObserver.trigger();
     await this._overlay.show();
     this._visible = true;
     return this._onShowObserver.trigger();
   }
 
   public async hide(): Promise<void> {
+    if (!this._visible) {
+      return;
+    }
     await this._overlay.hide();
     this._visible = false;
     return this._onHideObserver.trigger();

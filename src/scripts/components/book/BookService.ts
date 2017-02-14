@@ -2,6 +2,7 @@ import {Book} from "./Book";
 import {LoggerFactory, Logger} from "../common/loggerFactory";
 import {HttpClient, HttpClientFactory} from "../common/HttpClient";
 import {Config} from "../../config/config";
+import {Bible} from "../bible/Bible";
 
 export class BookService {
   private _logger: Logger;
@@ -14,14 +15,11 @@ export class BookService {
     this._httpClient = _httpClientFactory.createClient();
   }
 
-  public fetchBooks(bible) {
-    const self = this;
+  public async fetchBooks(bible: Bible): Promise<Book[]> {
     const url = this._config.getBooksUrl(bible._id);
-    return self._httpClient.fetch(url)
-      .then((httpResponse: any) => httpResponse.data)
-      .then((books: Book[]) => {
-        this._logger.debug("Loaded", (books || []).length, "books");
-        return books;
-      });
+    const response = await this._httpClient.fetch(url);
+    const books: Book[] = response.data || [];
+    this._logger.debug("Loaded", books.length, "books");
+    return books;
   }
 }

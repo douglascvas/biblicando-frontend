@@ -25,6 +25,9 @@ export class ChapterMenu extends AbstractMenu<Chapter> {
     this.createItemList();
 
     this.onSelect(this.selectChapter.bind(this));
+
+    this.onShow(() => this._logger.debug("Chapter menu opened"));
+    this.onHide(() => this._logger.debug("Chapter menu closed"));
   }
 
   public unregister(): void {

@@ -2,7 +2,7 @@ import {Bible} from "../bible/Bible";
 import {Book} from "../book/Book";
 import {Chapter} from "../chapter/Chapter";
 import {Verse} from "../verse/verse";
-import {Observer} from "../common/observer";
+import {Observer} from "../common/Observer";
 
 export class SectionContext {
   private _bibles: Bible[];
@@ -70,29 +70,32 @@ export class SectionContext {
   }
 
   public async setCurrentBible(currentBible: Bible): Promise<void> {
-    if(!currentBible || currentBible === this.currentBible){
+    if (!currentBible || currentBible === this.currentBible) {
       return;
     }
+    const lastBible = this._currentBible;
     this._currentBible = currentBible;
-    await this._currentBibleChangeObserver.trigger(currentBible);
+    await this._currentBibleChangeObserver.trigger(currentBible, lastBible);
     return this.contextChanged();
   }
 
   public setCurrentBook(currentBook: Book): Promise<void> {
-    if(!currentBook || currentBook === this.currentBook){
+    if (!currentBook || currentBook === this.currentBook) {
       return;
     }
+    const lastBook: Book = this._currentBook;
     this._currentBook = currentBook;
-    this._currentBookChangeObserver = new Observer();
+    this._currentBookChangeObserver.trigger(currentBook, lastBook);
     return this.contextChanged();
   }
 
   public setCurrentChapter(currentChapter: Chapter): Promise<void> {
-    if(!currentChapter || currentChapter === this.currentChapter){
+    if (!currentChapter || currentChapter === this.currentChapter) {
       return;
     }
+    const lastChapter: Chapter = this._currentChapter;
     this._currentChapter = currentChapter;
-    this._currentChapterChangeObserver = new Observer();
+    this._currentChapterChangeObserver.trigger(currentChapter, lastChapter);
     return this.contextChanged();
   }
 
@@ -104,7 +107,7 @@ export class SectionContext {
     return this._biblesChangeObserver.subscribe(callback);
   }
 
-  public onCurrentBibleChange(callback: (bible: Bible) => void): Function {
+  public onCurrentBibleChange(callback: (newBible: Bible, oldBible?: Bible) => void): Function {
     return this._currentBibleChangeObserver.subscribe(callback);
   }
 
@@ -112,7 +115,7 @@ export class SectionContext {
     return this._booksChangeObserver.subscribe(callback);
   }
 
-  public onCurrentBookChange(callback: (book: Book) => void): Function {
+  public onCurrentBookChange(callback: (newBook: Book, oldBook?: Book) => void): Function {
     return this._currentBookChangeObserver.subscribe(callback);
   }
 
@@ -120,7 +123,7 @@ export class SectionContext {
     return this._chaptersChangeObserver.subscribe(callback);
   }
 
-  public onCurrentChapterChange(callback: (chapter: Chapter) => void): Function {
+  public onCurrentChapterChange(callback: (newChapter: Chapter, oldChapter?: Chapter) => void): Function {
     return this._currentChapterChangeObserver.subscribe(callback);
   }
 

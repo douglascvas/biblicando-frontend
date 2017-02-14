@@ -1,9 +1,9 @@
-import {Chapter} from "../Chapter";
 import * as React from "react";
 import {MenuFilter} from "../../menu/MenuFilter";
 import SearchComponent from "../../search/SearchComponent";
 import ChapterMenuBodyComponent from "./menuBody/ChapterMenuBodyComponent";
 import {ChapterMenu} from "./ChapterMenu";
+import {Chapter} from "../Chapter";
 
 export interface ChapterMenuState {
   filter: MenuFilter<Chapter>
@@ -39,7 +39,7 @@ export default class ChapterMenuComponent extends React.Component<ChapterMenuPro
         <div className="row menu__body-wrapper">
           <div className="col s12 left chapter-menu__body">
             <SearchComponent id={`${this.props.id}:chapter-menu-search`} search={this.props.menu.search} className="chapter-menu__search input-field">
-              Chapter Name
+              Chapter Number
             </SearchComponent>
             <ChapterMenuBodyComponent id={`${this.props.id}:chapter-menu-body`}
                                       menuBody={this.props.menu.menuBody}

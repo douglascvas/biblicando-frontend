@@ -19,10 +19,12 @@ interface StudySectionMenuItem {
 
 export default class StudySectionMenuComponent extends React.Component<StudySectionMenuProperties, StudySectionMenu> {
   private menuItems: StudySectionMenuItem[];
-  private _bibleMenuToggleUnsubscribe: Function;
+  private _unregisterFunctions: Function[];
 
   constructor(props: StudySectionMenuProperties, context: any) {
     super(props, context);
+
+    this._unregisterFunctions = [];
 
     this.menuItems = [
       {label: 'Version', icon: 'fa-language', onClick: this.toggleBibleMenu.bind(this)},
@@ -32,11 +34,14 @@ export default class StudySectionMenuComponent extends React.Component<StudySect
   }
 
   public componentWillMount() {
-    this._bibleMenuToggleUnsubscribe = this.props.studySectionMenu.onBibleMenuToggle(this.onToggle.bind(this));
+    const bibleMenuToggleUnsubscribe = this.props.studySectionMenu.onBibleMenuToggle(this.onToggle.bind(this));
+    const bookMenuToggleUnsubscribe = this.props.studySectionMenu.onBookMenuToggle(this.onToggle.bind(this));
+    const chapterMenuToggleUnsubscribe = this.props.studySectionMenu.onChapterMenuToggle(this.onToggle.bind(this));
+    this._unregisterFunctions.push(bibleMenuToggleUnsubscribe, bookMenuToggleUnsubscribe, chapterMenuToggleUnsubscribe);
   }
 
   public componentWillUnmount() {
-    this._bibleMenuToggleUnsubscribe();
+    this._unregisterFunctions.forEach(fn => fn());
   }
 
   private onToggle() {
@@ -72,12 +77,14 @@ export default class StudySectionMenuComponent extends React.Component<StudySect
                                                        menu={this.props.studySectionMenu.bibleMenu}
                                                        className="menu__wrapper push--left"/>);
     const createBookMenu = () => (<BookMenuComponent id={`${this.props.id}:book-menu`}
-                                                     menu={this.state.bookMenu}
+                                                     menu={this.props.studySectionMenu.bookMenu}
                                                      className="menu__wrapper push--left"/>);
     const createChapterMenu = () => (<ChapterMenuComponent id={`${this.props.id}:chapter-menu`}
-                                                           menu={this.state.chapterMenu}
+                                                           menu={this.props.studySectionMenu.chapterMenu}
                                                            className="menu__wrapper push--left"/>);
-
+    const createOverlay = () => (<div id={`${this.props.id}:overlay`}
+                                      className="overlay study-section__overlay"
+                                      onClick={()=>this.closeMenu()}></div>);
     return (
       <div>
         <nav className="page__navbar navbar-default navbar-fixed-top" role="navigation">
@@ -85,10 +92,9 @@ export default class StudySectionMenuComponent extends React.Component<StudySect
             <ul>{menuItems}</ul>
           </div>
         </nav>
-        <OverlayComponent id={`${this.props.id}:overlay`}
-                          overlay={this.props.studySectionMenu.overlay}
-                          className="bible-page__overlay"
-                          onClick={this.closeMenu.bind(this)}/>
+
+        {this.props.studySectionMenu.isOverlayVisible() ? createOverlay() : null}
+
         <div className="col s12">
           {this.props.studySectionMenu.bibleMenu.visible ? createBibleMenu() : null}
           {this.props.studySectionMenu.bookMenu.visible ? createBookMenu() : null}

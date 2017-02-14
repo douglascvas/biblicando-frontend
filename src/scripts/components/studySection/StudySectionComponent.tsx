@@ -45,17 +45,17 @@ export default class StudySectionComponent extends React.Component<StudySectionP
 
     return (
       <div>
-        <StudySectionMenuComponent id={`bible-page:${this.props.id}`} studySectionMenu={this.props.studySection.studySectionMenu}/>
+        <StudySectionMenuComponent id={`study-section:${this.props.id}`} studySectionMenu={this.props.studySection.studySectionMenu}/>
 
-        <div className="bible-page__body">
-          <div className="bible-page__content">
-            <div className="bible-page__display-mode" onClick={this.switchDisplayMode}>
+        <div className="study-section__body">
+          <div className="study-section__content">
+            <div className="study-section__display-mode" onClick={this.switchDisplayMode}>
               <i className={`fa ${displayModeClass}`} aria-hidden="true"></i>
             </div>
-            <h4 className="center bible-page__book-name">
+            <h4 className="center study-section__book-name">
               {`${currentBook.name || ''} ${currentChapter.number || ''}`}
             </h4>
-            <h6 className="center bible-page__bible-name">
+            <h6 className="center study-section__bible-name">
               {`${currentBible.name || ''}`}
             </h6>
             {/*<VerseList className={`verse-list ${this.continuousVerses ? 'continuous' : ''}`} verses={this.page.currentVerses}/>*/}

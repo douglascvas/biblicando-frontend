@@ -26,6 +26,9 @@ export class BookMenu extends AbstractMenu<Book> {
     this.createItemList();
 
     this.onSelect(this.selectBook.bind(this));
+
+    this.onShow(() => this._logger.debug("Book menu opened"));
+    this.onHide(() => this._logger.debug("Book menu closed"));
   }
 
   public unregister() {

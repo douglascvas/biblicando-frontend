@@ -1,4 +1,4 @@
-import {Observer} from "../common/observer";
+import {Observer} from "../common/Observer";
 
 export class Search {
   private _changeQueryObserver: Observer<string>;

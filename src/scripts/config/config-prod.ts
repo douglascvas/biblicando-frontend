@@ -9,4 +9,8 @@ export class ConfigProd implements Config {
     return `api/v1/bible/${bibleId}/books?time=${(new Date()).getTime()}`;
   }
 
+  getChaptersUrl(bookId: string): string {
+    return `api/v1/book/${bookId}/chapters?time=${(new Date()).getTime()}`;
+  }
+
 }

@@ -1,16 +1,16 @@
 [
   {
-    "_id": "bible-bible_pt_1.book-gen",
-    "remoteId": "remote.bible-bible_pt_1.book-gen",
+    "_id": "bible_en_1.gen",
+    "remoteId": "remote.bible-bible_en_1.book-gen",
     "remoteSource": "sourceApi",
     "name": "Genesis",
     "number": "1",
-    "description": "O começo",
+    "description": "The beggining",
     "categories": [
       "old-testament"
     ],
     "copyright": "All rights reserved",
-    "author": "Moisés",
+    "author": "Moses",
     "abbreviation": "gen",
     "numberOfChapters": 50,
     "updatedAt": "",
@@ -18,17 +18,17 @@
     "chapters": []
   },
   {
-    "_id": "bible-bible_pt_1.book-exo",
-    "remoteId": "remote.bible-bible_pt_1.book-exo",
+    "_id": "bible_en_1.exo",
+    "remoteId": "remote.bible-bible_en_1.book-exo",
     "remoteSource": "sourceApi",
-    "name": "Êxodo",
+    "name": "Exodus",
     "number": "2",
-    "description": "A saída do Egito",
+    "description": "The exit from Egypt",
     "categories": [
       "old-testament"
     ],
     "copyright": "All rights reserved",
-    "author": "Moisés",
+    "author": "Moses",
     "abbreviation": "exo",
     "numberOfChapters": 40,
     "updatedAt": "",
@@ -36,17 +36,17 @@
     "chapters": []
   },
   {
-    "_id": "bible-bible_pt_1.book-lev",
-    "remoteId": "remote.bible-bible_pt_1.book-lev",
+    "_id": "bible_en_1.lev",
+    "remoteId": "remote.bible-bible_en_1.book-lev",
     "remoteSource": "sourceApi",
-    "name": "Levítico",
+    "name": "Leviticus",
     "number": "2",
-    "description": "A Lei",
+    "description": "The law",
     "categories": [
       "old-testament"
     ],
     "copyright": "All rights reserved",
-    "author": "Moisés",
+    "author": "Moses",
     "abbreviation": "lev",
     "numberOfChapters": 27,
     "updatedAt": "",

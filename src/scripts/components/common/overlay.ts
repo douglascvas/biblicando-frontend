@@ -1,4 +1,4 @@
-import {Observer} from "./observer";
+import {Observer} from "./Observer";
 
 export class Overlay {
   private _onHide: Observer<any>;

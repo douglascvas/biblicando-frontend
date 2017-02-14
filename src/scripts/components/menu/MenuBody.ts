@@ -1,4 +1,4 @@
-import {Observer} from "../common/observer";
+import {Observer} from "../common/Observer";
 import {Logger} from "../common/loggerFactory";
 import {MenuItem} from "./MenuItem";
 import {MenuFilter} from "./MenuFilter";

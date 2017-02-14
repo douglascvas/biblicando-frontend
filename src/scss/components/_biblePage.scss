@@ -1,4 +1,4 @@
-.bible-page {
+.study-section {
   &__book-name {
     font-family: 'Oleo Script', cursive;
     margin: 1rem 0 0 0;
@@ -14,7 +14,7 @@
   }
   &__content {
     position: relative;
-    background-color: $bible-page-bg;
+    background-color: $study-section-bg;
     max-width: 46rem;
     margin: auto;
     padding: 0.75rem 0.75rem 0;

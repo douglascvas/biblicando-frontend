@@ -1,13 +1,13 @@
 import {SectionContext} from "./SectionContext";
-import {Observer} from "../common/observer";
+import {Observer} from "../common/Observer";
 import {Bible} from "../bible/Bible";
 import {Book} from "../book/Book";
-import {Chapter} from "../chapter/Chapter";
 import {Verse} from "../verse/verse";
 import {Logger} from "../common/loggerFactory";
 import {StoreContainer} from "../common/StoreContainer";
 import {ServiceContainer} from "../common/ServiceContainer";
 import {StudySectionMenu} from "../menuBar/StudySectionMenu";
+import {Chapter} from "../chapter/Chapter";
 
 export class StudySection {
   private _logger: Logger;
@@ -26,7 +26,6 @@ export class StudySection {
     this._unregisterFunctions = [];
     this.createSectionContext();
     this.createStudySectionMenu(_serviceContainer);
-    this.registerBiblesStoreListener();
     this.setupContinuousMode();
   }
 
@@ -53,17 +52,14 @@ export class StudySection {
     this._unregisterFunctions.push(() => this._studySectionMenu.unregister());
   }
 
-  private registerBiblesStoreListener() {
-    const onBiblesStoreChangeUnregister = this._storeContainer.getBibleStore().onChange((bibles: Bible[]) => this.biblesChanged(bibles));
-    this._unregisterFunctions.push(onBiblesStoreChangeUnregister);
-  }
-
   private createSectionContext() {
     this._sectionContext = new SectionContext();
-    const onCurrentBibleChangeUnregister = this._sectionContext.onCurrentBibleChange(bible => this.currentBibleChanged(bible));
-    const onCurrentBookChangeUnregister = this._sectionContext.onCurrentBookChange(book => this.currentBookChanged(book));
-    const onCurrentChapterChangeUnregister = this._sectionContext.onCurrentChapterChange(chapter => this.currentChapterChanged(chapter));
-    this._unregisterFunctions.push(onCurrentBibleChangeUnregister, onCurrentBookChangeUnregister, onCurrentChapterChangeUnregister);
+    const onBiblesChangeUnregister = this._storeContainer.getBibleStore().onChange(bibles => this.biblesChanged(bibles));
+    const onCurrentBibleChangeUnregister = this._sectionContext.onCurrentBibleChange((newBible) => this.currentBibleChanged(newBible));
+    const onCurrentBookChangeUnregister = this._sectionContext.onCurrentBookChange((newBook, oldBook) => this.currentBookChanged(newBook, oldBook));
+    const onCurrentChapterChangeUnregister = this._sectionContext.onCurrentChapterChange((newChapter) => this.currentChapterChanged(newChapter));
+    this._unregisterFunctions.push(onCurrentBibleChangeUnregister, onCurrentBookChangeUnregister,
+      onCurrentChapterChangeUnregister, onBiblesChangeUnregister);
   }
 
   /**
@@ -76,8 +72,9 @@ export class StudySection {
   private async biblesChanged(bibles: Bible[]): Promise<void> {
     bibles = bibles || [];
     const currentBible = this._sectionContext.currentBible;
+    await this._sectionContext.setBibles(bibles);
     if (!currentBible) {
-      this._sectionContext.setCurrentBible(bibles[0]);
+      await this._sectionContext.setCurrentBible(bibles[0]);
     }
   }
 
@@ -93,27 +90,41 @@ export class StudySection {
     await this._sectionContext.setBooks(newBooks || []);
     await this._sectionContext.setCurrentBook(newBook);
 
-    return newBook && this.loadChapters(newBook);
+    return newBook && this.loadChapters(newBook, this.shouldPreserveChapter(newBook, lastBook));
   }
 
   /**
    * Book
    */
-  private currentBookChanged(book: Book): Promise<void> {
-    return this.loadChapters(book);
+  private currentBookChanged(newBook: Book, lastBook: Book): Promise<void> {
+    return this.loadChapters(newBook, this.shouldPreserveChapter(newBook, lastBook));
   }
 
-  private async loadChapters(book: Book): Promise<void> {
+  private shouldPreserveChapter(newBook: Book, lastBook: Book): boolean {
+    return newBook && lastBook &&
+      ((newBook.number && newBook.number === lastBook.number) || (newBook.abbreviation && newBook.abbreviation === newBook.abbreviation));
+  }
+
+  private async loadChapters(book: Book, preserveChapter?: boolean): Promise<void> {
     this._logger.debug("Loading chapters for book ", book._id);
     const newChapters: Chapter[] = (book.chapters && book.chapters.length) ? book.chapters :
       await this._serviceContainer.getChapterService().fetchChapters(book);
 
     book.chapters = newChapters;
-    const lastChapter = this._sectionContext.currentChapter;
-    const lastChapterNumber: number = lastChapter ? lastChapter.number : 0;
-    const newChapter = newChapters.find(chapter => (chapter.number === lastChapterNumber));
+    if (!newChapters.length) {
+      this._logger.debug(`No chapters found for book ${book._id}`);
+      return;
+    }
 
-    await this._sectionContext.setChapters(newChapters || []);
+    let newChapter = newChapters[0];
+    if (preserveChapter) {
+      const lastChapter = this._sectionContext.currentChapter;
+      if (lastChapter && book.numberOfChapters >= lastChapter.number) {
+        newChapter = newChapters.find(chapter => chapter.number === lastChapter.number);
+      }
+    }
+
+    await this._sectionContext.setChapters(newChapters);
     await this._sectionContext.setCurrentChapter(newChapter);
 
     return this.loadVerses(newChapter);

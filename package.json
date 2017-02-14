@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/chai": "^3.4.34",
     "@types/compression": "0.0.33",
     "@types/express": "^4.0.35",
     "@types/nunjucks": "0.0.32",
@@ -31,6 +32,7 @@
     "@types/react-helmet": "0.0.28",
     "@types/react-hot-loader": "^3.0.1",
     "@types/react-router": "^3.0.3",
+    "@types/sinon": "^1.16.35",
     "@types/source-map-support": "^0.2.28",
     "@types/webpack": "^2.2.5",
     "@types/webpack-dev-server": "^1.12.6",
@@ -107,6 +109,7 @@
     "style-loader": "^0.13.1",
     "template-html-loader": "1.0.0",
     "ts-loader": "^2.0.0",
+    "ts-node": "^2.1.0",
     "tsify": "^3.0.1",
     "typed-css-modules": "^0.1.13",
     "typed-css-modules-loader": "0.0.4",

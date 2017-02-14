@@ -16,10 +16,7 @@ export class Workspace {
 
   public async loadBibles(): Promise<void> {
     const bibles = await this._serviceContainer.getBibleService().fetchBibles();
-    return this.updateContainer(bibles);
-  }
-
-  private updateContainer(bibles: Bible[]): Promise<void> {
+    this._logger.debug('Loaded', bibles.length, 'bibles');
     return this._storeContainer.getBibleStore().replaceAll(bibles);
   }
 
