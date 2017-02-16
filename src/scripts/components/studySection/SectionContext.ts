@@ -1,8 +1,10 @@
 import {Bible} from "../bible/Bible";
 import {Book} from "../book/Book";
 import {Chapter} from "../chapter/Chapter";
-import {Verse} from "../verse/verse";
+import {Verse} from "../verse/Verse";
 import {Observer} from "../common/Observer";
+import {ServiceContainer} from "../common/ServiceContainer";
+import {Logger} from "../common/loggerFactory";
 
 export class SectionContext {
   private _bibles: Bible[];
@@ -27,7 +29,9 @@ export class SectionContext {
   private _versesChangeObserver: Observer<Verse[]>;
   private _contextChangeObserver: Observer<SectionContext>;
 
-  constructor() {
+  private _logger: Logger;
+
+  constructor(_serviceContainer: ServiceContainer) {
     this._bibles = [];
     this._biblesChangeObserver = new Observer();
     this._currentBibleChangeObserver = new Observer();
@@ -43,28 +47,34 @@ export class SectionContext {
     this._verses = [];
     this._contextChangeObserver = new Observer();
     this._versesChangeObserver = new Observer();
+
+    this._logger = _serviceContainer.getLoggerFactory().getLogger('SectionContext');
   }
 
   public async setBibles(bibles: Bible[]): Promise<void> {
     this._bibles = bibles || [];
+    this._logger.debug(`Bibles changed. New bibles length:`, bibles.length);
     await this._biblesChangeObserver.trigger(this._bibles);
     return this.contextChanged();
   }
 
   public async setBooks(books: Book[]): Promise<void> {
     this._books = books || [];
+    this._logger.debug(`Books changed. New books length:`, books.length);
     await this._booksChangeObserver.trigger(this._books);
     return this.contextChanged();
   }
 
   public async setChapters(chapters: Chapter[]): Promise<void> {
     this._chapters = chapters || [];
+    this._logger.debug(`Chapters changed. New chapters length:`, chapters.length);
     await this._chaptersChangeObserver.trigger(this._chapters);
     return this.contextChanged();
   }
 
   public async setVerses(verses: Verse[]): Promise<void> {
     this._verses = verses || [];
+    this._logger.debug(`Verses changed. New verses length:`, verses.length);
     await this._versesChangeObserver.trigger(this._verses);
     return this.contextChanged();
   }
@@ -75,6 +85,7 @@ export class SectionContext {
     }
     const lastBible = this._currentBible;
     this._currentBible = currentBible;
+    this._logger.debug(`Current bible changed from ${lastBible ? lastBible._id : null} to ${currentBible._id}.`);
     await this._currentBibleChangeObserver.trigger(currentBible, lastBible);
     return this.contextChanged();
   }
@@ -85,6 +96,7 @@ export class SectionContext {
     }
     const lastBook: Book = this._currentBook;
     this._currentBook = currentBook;
+    this._logger.debug(`Current book changed from ${lastBook ? lastBook._id : null} to ${currentBook._id}.`);
     this._currentBookChangeObserver.trigger(currentBook, lastBook);
     return this.contextChanged();
   }
@@ -95,6 +107,7 @@ export class SectionContext {
     }
     const lastChapter: Chapter = this._currentChapter;
     this._currentChapter = currentChapter;
+    this._logger.debug(`Current chapter changed from ${lastChapter ? lastChapter._id : null} to ${currentChapter._id}.`);
     this._currentChapterChangeObserver.trigger(currentChapter, lastChapter);
     return this.contextChanged();
   }

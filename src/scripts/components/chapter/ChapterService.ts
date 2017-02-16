@@ -2,7 +2,7 @@ import {Chapter} from "./Chapter";
 import {LoggerFactory, Logger} from "../common/loggerFactory";
 import {HttpClientFactory, HttpClient} from "../common/HttpClient";
 import {Book} from "../book/Book";
-import {Config} from "../../config/config";
+import {Config} from "../../config/Config";
 
 export class ChapterService {
   private _logger: Logger;

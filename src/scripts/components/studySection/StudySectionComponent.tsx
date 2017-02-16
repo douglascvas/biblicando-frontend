@@ -1,6 +1,7 @@
 import {StudySection} from "./StudySection";
 import * as React from "react";
 import StudySectionMenuComponent from "../menuBar/StudySectionMenuComponent";
+import VerseListComponent from "../verse/verseList/VerseListComponent";
 
 export interface StudySectionProperties {
   id: string,
@@ -9,7 +10,6 @@ export interface StudySectionProperties {
 
 export default class StudySectionComponent extends React.Component<StudySectionProperties,StudySection> {
   page: StudySection;
-  public continuousVerses: boolean;
   private _unregisterFunctions: Function[];
 
   constructor(properties: StudySectionProperties) {
@@ -20,8 +20,9 @@ export default class StudySectionComponent extends React.Component<StudySectionP
   }
 
   public componentWillMount() {
+    const onVersesChange = this.props.studySection.onVersesChange(() => this.studySectionChanged());
     const onContinousModeChangeUnregister = this.props.studySection.onContinousModeChange(() => this.studySectionChanged());
-    this._unregisterFunctions.push(onContinousModeChangeUnregister);
+    this._unregisterFunctions.push(onContinousModeChangeUnregister, onVersesChange);
   }
 
   public componentWillUnmount() {
@@ -41,16 +42,17 @@ export default class StudySectionComponent extends React.Component<StudySectionP
     const currentChapter = this.props.studySection.getCurrentChapter() || {} as any;
     const currentBible = this.props.studySection.getCurrentBible() || {} as any;
 
-    const displayModeClass = this.continuousVerses ? 'fa-bars' : 'fa-ellipsis-h';
+    const displayModeIconClass = this.props.studySection.continousMode ? 'fa-bars' : 'fa-ellipsis-h';
+    const displayModeVerseListClass = this.props.studySection.continousMode ? 'continuous' : '';
 
     return (
       <div>
-        <StudySectionMenuComponent id={`study-section:${this.props.id}`} studySectionMenu={this.props.studySection.studySectionMenu}/>
+        <StudySectionMenuComponent id={`${this.props.id}:study-section`} studySectionMenu={this.props.studySection.studySectionMenu}/>
 
         <div className="study-section__body">
           <div className="study-section__content">
             <div className="study-section__display-mode" onClick={this.switchDisplayMode}>
-              <i className={`fa ${displayModeClass}`} aria-hidden="true"></i>
+              <i className={`fa ${displayModeIconClass}`} aria-hidden="true"></i>
             </div>
             <h4 className="center study-section__book-name">
               {`${currentBook.name || ''} ${currentChapter.number || ''}`}
@@ -58,7 +60,8 @@ export default class StudySectionComponent extends React.Component<StudySectionP
             <h6 className="center study-section__bible-name">
               {`${currentBible.name || ''}`}
             </h6>
-            {/*<VerseList className={`verse-list ${this.continuousVerses ? 'continuous' : ''}`} verses={this.page.currentVerses}/>*/}
+            <VerseListComponent id={`${this.props.id}:verse-list`} className={`verse-list ${displayModeVerseListClass}`}
+                                verseList={this.props.studySection.verseList}/>
           </div>
         </div>
       </div>

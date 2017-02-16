@@ -3,9 +3,9 @@ import {HttpClientFactory} from "./HttpClient";
 import {BookService} from "../book/BookService";
 import {ChapterService} from "../chapter/ChapterService";
 import {LoggerFactory} from "./loggerFactory";
-import {VerseService} from "../verse/verseService";
-import {Config} from "../../config/config";
-import {ConfigProd} from "../../config/config-prod";
+import {VerseService} from "../verse/VerseService";
+import {Config} from "../../config/Config";
+import {ConfigProd} from "../../config/ConfigProd";
 
 export class ServiceContainer {
   private _httpClientFactory: HttpClientFactory;
@@ -41,7 +41,7 @@ export class ServiceContainer {
     if (!this._config) {
       let ConfigClass: any = ConfigProd;
       if (process.env.NODE_ENV === 'development') {
-        ConfigClass = require('../../config/config-dev').default;
+        ConfigClass = require('../../config/ConfigDev').default;
       }
       this._config = new ConfigClass();
     }
@@ -64,7 +64,7 @@ export class ServiceContainer {
 
   public getVerseService(): VerseService {
     if (!this._verseService) {
-      this._verseService = new VerseService(this.getHttpClientFactory(), this.getLoggerFactory());
+      this._verseService = new VerseService(this.getConfig(), this.getHttpClientFactory(), this.getLoggerFactory());
     }
     return this._verseService;
   }

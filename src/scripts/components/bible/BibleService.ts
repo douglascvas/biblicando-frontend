@@ -1,5 +1,5 @@
 import {HttpClientFactory, HttpClient} from "../common/HttpClient";
-import {Config} from "../../config/config";
+import {Config} from "../../config/Config";
 
 export class BibleService {
   private _httpClient: HttpClient;

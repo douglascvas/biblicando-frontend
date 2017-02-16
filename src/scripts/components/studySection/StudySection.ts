@@ -2,12 +2,16 @@ import {SectionContext} from "./SectionContext";
 import {Observer} from "../common/Observer";
 import {Bible} from "../bible/Bible";
 import {Book} from "../book/Book";
-import {Verse} from "../verse/verse";
+import {Verse} from "../verse/Verse";
 import {Logger} from "../common/loggerFactory";
 import {StoreContainer} from "../common/StoreContainer";
 import {ServiceContainer} from "../common/ServiceContainer";
 import {StudySectionMenu} from "../menuBar/StudySectionMenu";
 import {Chapter} from "../chapter/Chapter";
+import {BookService} from "../book/BookService";
+import {ChapterService} from "../chapter/ChapterService";
+import {VerseService} from "../verse/VerseService";
+import {VerseList} from "../verse/verseList/VerseList";
 
 export class StudySection {
   private _logger: Logger;
@@ -19,6 +23,8 @@ export class StudySection {
   private _studySectionMenu: StudySectionMenu;
   private _unregisterFunctions: Function[];
 
+  private _verseList: VerseList;
+
   constructor(private _storeContainer: StoreContainer,
               private _serviceContainer: ServiceContainer,) {
     this._logger = _serviceContainer.getLoggerFactory().getLogger('StudySection');
@@ -26,6 +32,7 @@ export class StudySection {
     this._unregisterFunctions = [];
     this.createSectionContext();
     this.createStudySectionMenu(_serviceContainer);
+    this.createVerseList();
     this.setupContinuousMode();
   }
 
@@ -42,6 +49,10 @@ export class StudySection {
     return this._continousModeChangeObserver.subscribe(callback);
   }
 
+  public onVersesChange(callback: (verses) => void): Function {
+    return this._sectionContext.onVersesChange(callback);
+  }
+
   private setupContinuousMode() {
     this._continousMode = false;
     this._continousModeChangeObserver = new Observer();
@@ -52,14 +63,18 @@ export class StudySection {
     this._unregisterFunctions.push(() => this._studySectionMenu.unregister());
   }
 
-  private createSectionContext() {
-    this._sectionContext = new SectionContext();
+  private createSectionContext(): void {
+    this._sectionContext = new SectionContext(this._serviceContainer);
     const onBiblesChangeUnregister = this._storeContainer.getBibleStore().onChange(bibles => this.biblesChanged(bibles));
     const onCurrentBibleChangeUnregister = this._sectionContext.onCurrentBibleChange((newBible) => this.currentBibleChanged(newBible));
     const onCurrentBookChangeUnregister = this._sectionContext.onCurrentBookChange((newBook, oldBook) => this.currentBookChanged(newBook, oldBook));
     const onCurrentChapterChangeUnregister = this._sectionContext.onCurrentChapterChange((newChapter) => this.currentChapterChanged(newChapter));
     this._unregisterFunctions.push(onCurrentBibleChangeUnregister, onCurrentBookChangeUnregister,
       onCurrentChapterChangeUnregister, onBiblesChangeUnregister);
+  }
+
+  private createVerseList(): void {
+    this._verseList = new VerseList(this._sectionContext);
   }
 
   /**
@@ -80,17 +95,16 @@ export class StudySection {
 
   private async loadBooks(bible: Bible): Promise<void> {
     this._logger.debug("Loading books for bible ", bible._id);
-    const newBooks: Book[] = (bible.books && bible.books.length) ? bible.books : await this._serviceContainer.getBookService().fetchBooks(bible);
+    const bookService: BookService = this._serviceContainer.getBookService();
+    const newBooks: Book[] = (bible.books && bible.books.length) ? bible.books : await bookService.fetchBooks(bible);
     bible.books = newBooks;
 
     const lastBook = this._sectionContext.currentBook;
-    const lastBookNumber: number = lastBook ? lastBook.number : 0;
+    const lastBookNumber: number = lastBook ? lastBook.number : 1;
     const newBook = newBooks.find(book => (book.number === lastBookNumber));
 
     await this._sectionContext.setBooks(newBooks || []);
     await this._sectionContext.setCurrentBook(newBook);
-
-    return newBook && this.loadChapters(newBook, this.shouldPreserveChapter(newBook, lastBook));
   }
 
   /**
@@ -107,8 +121,8 @@ export class StudySection {
 
   private async loadChapters(book: Book, preserveChapter?: boolean): Promise<void> {
     this._logger.debug("Loading chapters for book ", book._id);
-    const newChapters: Chapter[] = (book.chapters && book.chapters.length) ? book.chapters :
-      await this._serviceContainer.getChapterService().fetchChapters(book);
+    const chapterService: ChapterService = this._serviceContainer.getChapterService();
+    const newChapters: Chapter[] = (book.chapters && book.chapters.length) ? book.chapters : await chapterService.fetchChapters(book);
 
     book.chapters = newChapters;
     if (!newChapters.length) {
@@ -126,8 +140,6 @@ export class StudySection {
 
     await this._sectionContext.setChapters(newChapters);
     await this._sectionContext.setCurrentChapter(newChapter);
-
-    return this.loadVerses(newChapter);
   }
 
   /**
@@ -139,8 +151,8 @@ export class StudySection {
 
   private async loadVerses(chapter: Chapter): Promise<void> {
     this._logger.debug("Loading verses for chapter ", chapter._id);
-    const newVerses: Verse[] = (chapter.verses && chapter.verses.length) ? chapter.verses :
-      await this._serviceContainer.getVerseService().fetchVerses(chapter);
+    const verseService: VerseService = this._serviceContainer.getVerseService();
+    const newVerses: Verse[] = (chapter.verses && chapter.verses.length) ? chapter.verses : await verseService.fetchVerses(chapter);
 
     chapter.verses = newVerses;
 
@@ -159,6 +171,10 @@ export class StudySection {
     return this._sectionContext;
   }
 
+  get verseList(): VerseList {
+    return this._verseList;
+  }
+
   public getCurrentBible() {
     return this._sectionContext.currentBible;
   }
@@ -170,4 +186,6 @@ export class StudySection {
   public getCurrentChapter() {
     return this._sectionContext.currentChapter;
   }
+
+
 }

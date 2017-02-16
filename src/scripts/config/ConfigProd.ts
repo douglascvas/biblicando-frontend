@@ -1,4 +1,4 @@
-import {Config} from "./config";
+import {Config} from "./Config";
 
 export class ConfigProd implements Config {
   getBiblesUrl(): string {
@@ -13,4 +13,7 @@ export class ConfigProd implements Config {
     return `api/v1/book/${bookId}/chapters?time=${(new Date()).getTime()}`;
   }
 
+  getVersesUrl(chapterId: string): string {
+    return `api/v1/chapter/${chapterId}/verses?time=${(new Date()).getTime()}`;
+  }
 }

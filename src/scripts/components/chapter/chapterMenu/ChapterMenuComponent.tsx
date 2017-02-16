@@ -43,7 +43,7 @@ export default class ChapterMenuComponent extends React.Component<ChapterMenuPro
             </SearchComponent>
             <ChapterMenuBodyComponent id={`${this.props.id}:chapter-menu-body`}
                                       menuBody={this.props.menu.menuBody}
-                                      className="collection chapter-menu__list"/>
+                                      className="col s12 left"/>
           </div>
         </div>
       </div>

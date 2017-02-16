@@ -1,7 +1,7 @@
 import {Book} from "./Book";
 import {LoggerFactory, Logger} from "../common/loggerFactory";
 import {HttpClient, HttpClientFactory} from "../common/HttpClient";
-import {Config} from "../../config/config";
+import {Config} from "../../config/Config";
 import {Bible} from "../bible/Bible";
 
 export class BookService {

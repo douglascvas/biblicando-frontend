@@ -4,34 +4,40 @@ import {assert} from "chai";
 import * as sinon from "sinon";
 import {Book} from "../../../../scripts/components/book/Book";
 import {Chapter} from "../../../../scripts/components/chapter/Chapter";
+import {ServiceContainer} from "../../../../scripts/components/common/ServiceContainer";
+import {LoggerFactory} from "../../../../scripts/components/common/loggerFactory";
 
 describe('SectionContext', () => {
   let sectionContext: SectionContext;
 
   beforeEach(() => {
-    sectionContext = new SectionContext();
+    let serviceContainer = <any>sinon.createStubInstance(ServiceContainer);
+    let loggerFactory = new LoggerFactory();
+    serviceContainer.getLoggerFactory.returns(loggerFactory);
+    sectionContext = new SectionContext(serviceContainer);
   });
 
   describe('Bibles', () => {
-    it('should save the bibles', () => {
+    it('should save the bibles', async() => {
       // given
       const bibles: Bible[] = [buildBible("1"), buildBible("2")];
 
       // when
+      await
       sectionContext.setBibles(bibles);
 
       // then
       assert.equal(sectionContext.bibles, bibles);
     });
 
-    it('should notify listener when bibles are updated', () => {
+    it('should notify listener when bibles are updated', async() => {
       // given
       const bibles: Bible[] = [buildBible("1"), buildBible("2")];
       const listener: any = sinon.mock();
       sectionContext.onBiblesChange(listener);
 
       // when
-      sectionContext.setBibles(bibles);
+      await sectionContext.setBibles(bibles);
 
       // then
       assert.isTrue(listener.calledOnce);
@@ -39,25 +45,26 @@ describe('SectionContext', () => {
   });
 
   describe('Current bible', () => {
-    it('should update the current bible', () => {
+    it('should update the current bible', async() => {
       // given
       const bible: Bible = buildBible();
 
       // when
+      await
       sectionContext.setCurrentBible(bible);
 
       // then
       assert.equal(sectionContext.currentBible, bible);
     });
 
-    it('should notify listener when current bible is updated', () => {
+    it('should notify listener when current bible is updated', async() => {
       // given
       const bible: Bible = buildBible();
       const listener: any = sinon.mock();
       sectionContext.onCurrentBibleChange(listener);
 
       // when
-      sectionContext.setCurrentBible(bible);
+      await sectionContext.setCurrentBible(bible);
 
       // then
       assert.isTrue(listener.calledOnce);
@@ -65,25 +72,25 @@ describe('SectionContext', () => {
   });
 
   describe('Books', () => {
-    it('should save the books', () => {
+    it('should save the books', async() => {
       // given
       const books: Book[] = [buildBook("1"), buildBook("2")];
 
       // when
-      sectionContext.setBooks(books);
+      await sectionContext.setBooks(books);
 
       // then
       assert.equal(sectionContext.books, books);
     });
 
-    it('should notify listener when books are updated', () => {
+    it('should notify listener when books are updated', async() => {
       // given
       const books: Book[] = [buildBook("1"), buildBook("2")];
       const listener: any = sinon.mock();
       sectionContext.onBooksChange(listener);
 
       // when
-      sectionContext.setBooks(books);
+      await sectionContext.setBooks(books);
 
       // then
       assert.isTrue(listener.calledOnce);
@@ -91,25 +98,25 @@ describe('SectionContext', () => {
   });
 
   describe('Current book', () => {
-    it('should update the current book', () => {
+    it('should update the current book', async() => {
       // given
       const book: Book = buildBook();
 
       // when
-      sectionContext.setCurrentBook(book);
+      await sectionContext.setCurrentBook(book);
 
       // then
       assert.equal(sectionContext.currentBook, book);
     });
 
-    it('should notify listener when current book is updated', () => {
+    it('should notify listener when current book is updated', async() => {
       // given
       const book: Book = buildBook();
       const listener: any = sinon.mock();
       sectionContext.onCurrentBookChange(listener);
 
       // when
-      sectionContext.setCurrentBook(book);
+      await sectionContext.setCurrentBook(book);
 
       // then
       assert.isTrue(listener.calledOnce);
@@ -117,24 +124,25 @@ describe('SectionContext', () => {
   });
 
   describe('Chapters', () => {
-    it('should save the chapters', () => {
+    it('should save the chapters', async() => {
       // given
       const chapters: Chapter[] = [buildChapter("1"), buildChapter("2")];
 
       // when
-      sectionContext.setChapters(chapters);
+      await sectionContext.setChapters(chapters);
 
       // then
       assert.equal(sectionContext.chapters, chapters);
     });
 
-    it('should notify listener when chapters are updated', () => {
+    it('should notify listener when chapters are updated', async() => {
       // given
       const chapters: Chapter[] = [buildChapter("1"), buildChapter("2")];
       const listener: any = sinon.mock();
       sectionContext.onChaptersChange(listener);
 
       // when
+      await
       sectionContext.setChapters(chapters);
 
       // then
@@ -143,25 +151,25 @@ describe('SectionContext', () => {
   });
 
   describe('Current chapter', () => {
-    it('should update the current chapter', () => {
+    it('should update the current chapter', async() => {
       // given
       const chapter: Chapter = buildChapter();
 
       // when
-      sectionContext.setCurrentChapter(chapter);
+      await sectionContext.setCurrentChapter(chapter);
 
       // then
       assert.equal(sectionContext.currentChapter, chapter);
     });
 
-    it('should notify listener when current chapter is updated', () => {
+    it('should notify listener when current chapter is updated', async () => {
       // given
       const chapter: Chapter = buildChapter();
       const listener: any = sinon.mock();
       sectionContext.onCurrentChapterChange(listener);
 
       // when
-      sectionContext.setCurrentChapter(chapter);
+      await sectionContext.setCurrentChapter(chapter);
 
       // then
       assert.isTrue(listener.calledOnce);

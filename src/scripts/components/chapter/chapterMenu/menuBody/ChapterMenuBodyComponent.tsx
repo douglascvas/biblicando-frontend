@@ -27,13 +27,15 @@ export default class ChapterMenuBodyComponent extends React.Component<ChapterMen
 
   public render() {
     const chapterItems = this.props.menuBody.getItems().map((item: MenuItem<Chapter>, index: number) => (
-      <a href="javascript:void(0)" key={`chapter_${index}`} className="collection-item" onClick={()=>item.select()}>
+      <a href="javascript:void(0)" key={`chapter_${index}`} className="col s1 menu__item" onClick={()=>item.select()}>
         <span>{item.label}</span>
       </a>));
 
     return (
       <div className={this.props.className}>
+        <div className="row">
         {chapterItems}
+        </div>
       </div>
     )
   }

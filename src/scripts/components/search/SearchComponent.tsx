@@ -1,7 +1,6 @@
 import * as React from "react";
 import {Search} from "./Search";
 import ChangeEvent = React.ChangeEvent;
-import Component = React.Component;
 
 export interface SearchProperties {
   id: string,
@@ -13,7 +12,8 @@ export interface SearchState {
   query: string;
 }
 
-export default class SearchComponent extends Component<SearchProperties,SearchState> {
+export default class SearchComponent extends React.Component<SearchProperties,SearchState> {
+  private textInput: HTMLInputElement;
 
   constructor(props: SearchProperties, context: any) {
     super(props, context);
@@ -31,12 +31,17 @@ export default class SearchComponent extends Component<SearchProperties,SearchSt
     this.props.search.triggerQueryChange(event.target.value);
   }
 
+  public componentDidMount() {
+    this.textInput.focus();
+  }
+
   public render() {
     return (
-      <div className={this.props.className}>
+      <div id={this.props.id||'search'} className={this.props.className}>
         <i className="fa fa-search material-icons prefix" aria-hidden="true"></i>
-        <input id={`search:${this.props.id}`}
+        <input id={`${this.props.id}:search-input`}
                value={this.props.search.query}
+               ref={(input) => { this.textInput = input; }}
                type="text"
                className="validate"
                onKeyDown={this.processKeyDown}
