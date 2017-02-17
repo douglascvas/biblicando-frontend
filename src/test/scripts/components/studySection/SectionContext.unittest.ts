@@ -1,11 +1,11 @@
-import {SectionContext} from "../../../../scripts/components/studySection/SectionContext";
-import {Bible} from "../../../../scripts/components/bible/Bible";
+import {SectionContext} from "../../../../main/scripts/components/studySection/SectionContext";
+import {Bible} from "../../../../main/scripts/components/bible/Bible";
 import {assert} from "chai";
 import * as sinon from "sinon";
-import {Book} from "../../../../scripts/components/book/Book";
-import {Chapter} from "../../../../scripts/components/chapter/Chapter";
-import {ServiceContainer} from "../../../../scripts/components/common/ServiceContainer";
-import {LoggerFactory} from "../../../../scripts/components/common/loggerFactory";
+import {Book} from "../../../../main/scripts/components/book/Book";
+import {Chapter} from "../../../../main/scripts/components/chapter/Chapter";
+import {ServiceContainer} from "../../../../main/scripts/components/common/ServiceContainer";
+import {LoggerFactory} from "../../../../main/scripts/components/common/LoggerFactory";
 
 describe('SectionContext', () => {
   let sectionContext: SectionContext;

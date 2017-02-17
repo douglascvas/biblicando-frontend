@@ -7,7 +7,8 @@
     "buildDirTests": "./build_tests",
     "devHost": "localhost",
     "devPort": 8000,
-    "title": "Biblicando"
+    "title": "Biblicando",
+    "useGulp": true
   },
   "scripts": {
     "build": "NODE_ENV=production npm run webpack",
@@ -110,6 +111,7 @@
     "style-loader": "^0.13.1",
     "template-html-loader": "1.0.0",
     "ts-loader": "^2.0.0",
+    "ts-nameof": "^0.7.1",
     "ts-node": "^2.1.0",
     "tsify": "^3.0.1",
     "typed-css-modules": "^0.1.13",

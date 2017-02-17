@@ -19,8 +19,8 @@ function getAppEntry(options) {
 }
 
 function getVendorEntry(options) {
-  let production = ['react', 'react-dom', 'react-helmet', 'axios'];
-  let development = [];//'sourcemapped-stacktrace'];
+  let production = ['react', 'react-dom', 'react-helmet', 'react-router', 'axios'];
+  let development = [];
   return [...production, ...(options.development ? development : [])]
 }
 
@@ -33,7 +33,7 @@ function getEntries(options) {
 }
 
 module.exports = (options) => ({
-  context: options.useGulp ? paths.output.dirs.root : paths.input.dirs.source,
+  context: options.useGulp ? paths.output.dirs.js : paths.input.dirs.source,
   cache: options.development,
   target: 'web',
   devtool: options.development ? 'inline-source-map' : false,

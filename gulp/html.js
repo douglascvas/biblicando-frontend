@@ -4,6 +4,6 @@ const gulp = require('gulp');
 
 module.exports = options => () => {
   return gulp.src(paths.input.files.html)
-    .pipe(changed(paths.output.dirs.root))
-    .pipe(gulp.dest(paths.output.dirs.root));
+    .pipe(changed(paths.output.dirs.htmlTemplates))
+    .pipe(gulp.dest(paths.output.dirs.htmlTemplates));
 };

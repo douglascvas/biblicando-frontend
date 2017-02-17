@@ -7,7 +7,7 @@ function absolutePath(relativePath) {
 
 const paths = {
   typings: `${root}/typings`,
-  source: `${root}/src`,
+  source: `${root}/src/main`,
   output: `${root}/build`,
   dist: `${root}/build/dist`
 };
@@ -73,6 +73,8 @@ module.exports = {
       images: `${paths.dist}/images`,
       files: `${paths.dist}`,
       dist: `${paths.dist}`,
+      js: `${paths.output}/main`,
+      htmlTemplates: `${paths.output}/main`,
       root: paths.output,
       styles: `${paths.dist}/styles`,
       scripts: `${paths.dist}/scripts`,

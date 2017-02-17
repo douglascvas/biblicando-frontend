@@ -18,6 +18,7 @@ module.exports = (options) => {
 
   return [
     // prints more readable module names in the browser console on HMR updates
+    new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: `scripts/[name].${options.version}.js`}),
     new webpack.NamedModulesPlugin(),
     //
     new webpack.optimize.OccurrenceOrderPlugin,
