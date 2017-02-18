@@ -1,7 +1,8 @@
 import {Factory} from "../common/BasicFactory";
 import {SectionContext} from "./SectionContext";
 import {Container} from "../common/Container";
-import {LoggerFactory, ConsoleLoggerFactory} from "../common/LoggerFactory";
+import {LoggerFactory} from "../common/logger/LoggerFactory";
+import {ConsoleLoggerFactory} from "../common/logger/ConsoleLoggerFactory";
 
 export class SectionContextFactory implements Factory<SectionContext> {
   constructor(private _container: Container) {

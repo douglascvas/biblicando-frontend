@@ -3,7 +3,8 @@ import {Book} from "../book/Book";
 import {Chapter} from "../chapter/Chapter";
 import {Verse} from "../verse/Verse";
 import {Observer} from "../common/Observer";
-import {Logger, LoggerFactory} from "../common/LoggerFactory";
+import {LoggerFactory} from "../common/logger/LoggerFactory";
+import {Logger} from "../common/logger/Logger";
 
 export class SectionContext {
   private _bibles: Bible[];

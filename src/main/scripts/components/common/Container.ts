@@ -6,6 +6,11 @@ export class Container {
   }
 
   public getValue<E>(key: any, factoryMethod?: () => E): E {
-    return this._instanceMap.get(key);
+    let instance: E = this._instanceMap.get(key);
+    if (instance === undefined && typeof factoryMethod === 'function') {
+      instance = factoryMethod();
+      this._instanceMap.set(key, instance);
+    }
+    return instance;
   }
 }

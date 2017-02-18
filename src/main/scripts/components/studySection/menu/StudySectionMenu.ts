@@ -3,10 +3,11 @@ import {AbstractMenu} from "../../menu/AbstractMenu";
 import {Bible} from "../../bible/Bible";
 import {Book} from "../../book/Book";
 import {Chapter} from "../../chapter/Chapter";
-import {Logger, LoggerFactory} from "../../common/LoggerFactory";
+import {LoggerFactory} from "../../common/logger/LoggerFactory";
 import {Factory} from "../../common/BasicFactory";
 import {MenuItem} from "../../menu/MenuItem";
 import {MenuFactory} from "../../common/MenuFactory";
+import {Logger} from "../../common/logger/Logger";
 
 export class StudySectionMenu {
   public overlay: Overlay;

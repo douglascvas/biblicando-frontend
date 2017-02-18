@@ -1,4 +1,5 @@
-import {LoggerFactory, Logger} from "../common/LoggerFactory";
+import {LoggerFactory} from "../common/logger/LoggerFactory";
+import {Logger} from "../common/logger/Logger";
 
 export class Main {
   private _logger: Logger;

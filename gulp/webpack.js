@@ -7,7 +7,7 @@ module.exports = (options) => (cb) => {
   if (options.development) {
     return cb();
   }
-  webpack(webpackConfig(options), (err, stats) => {
+  webpack(webpackConfig, (err, stats) => {
     if (err) {
       throw new gutil.PluginError("webpack", err);
     }

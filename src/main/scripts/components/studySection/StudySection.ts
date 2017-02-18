@@ -3,8 +3,7 @@ import {Observer} from "../common/Observer";
 import {Bible} from "../bible/Bible";
 import {Book} from "../book/Book";
 import {Verse} from "../verse/Verse";
-import {Logger} from "../common/LoggerFactory";
-import {ServiceContainer} from "../common/ServiceContainer";
+import {LoggerFactory} from "../common/logger/LoggerFactory";
 import {StudySectionMenu} from "./menu/StudySectionMenu";
 import {Chapter} from "../chapter/Chapter";
 import {BookService} from "../book/BookService";
@@ -13,6 +12,7 @@ import {VerseService} from "../verse/VerseService";
 import {VerseList} from "../verse/verseList/VerseList";
 import {BibleStore} from "../bible/BibleStore";
 import {Factory} from "../common/BasicFactory";
+import {Logger} from "../common/logger/Logger";
 
 export class StudySection {
   private _logger: Logger;
@@ -27,14 +27,18 @@ export class StudySection {
   private _verseList: VerseList;
 
   constructor(private _bibleStore: BibleStore,
+              private _bookService: BookService,
+              private _chapterService: ChapterService,
+              private _verseService: VerseService,
+              private _verseListFactory: Factory<VerseList>,
               private _sectionContextFactory: Factory<SectionContext>,
               private _studySectionMenuFactory: Factory<StudySectionMenu>,
-              private _serviceContainer: ServiceContainer) {
-    this._logger = _serviceContainer.getLoggerFactory().getLogger('StudySection');
+              private _loggerFactory: LoggerFactory) {
+    this._logger = _loggerFactory.getLogger('StudySection');
 
     this._unregisterFunctions = [];
     this.createSectionContext();
-    this.createStudySectionMenu(_serviceContainer);
+    this.createStudySectionMenu();
     this.createVerseList();
     this.setupContinuousMode();
   }
@@ -61,7 +65,7 @@ export class StudySection {
     this._continousModeChangeObserver = new Observer();
   }
 
-  private createStudySectionMenu(_serviceContainer: ServiceContainer) {
+  private createStudySectionMenu() {
     this._studySectionMenu = this._studySectionMenuFactory.create();
     this._unregisterFunctions.push(() => this._studySectionMenu.unregister());
   }
@@ -77,14 +81,14 @@ export class StudySection {
   }
 
   private createVerseList(): void {
-    this._verseList = new VerseList(this._sectionContext);
+    this._verseList = this._verseListFactory.create();
   }
 
   /**
    * Bible
    */
-  private currentBibleChanged(bible: Bible): void {
-    this.loadBooks(bible);
+  private currentBibleChanged(bible: Bible): Promise<void> {
+    return this.loadBooks(bible);
   }
 
   private async biblesChanged(bibles: Bible[]): Promise<void> {
@@ -98,8 +102,7 @@ export class StudySection {
 
   private async loadBooks(bible: Bible): Promise<void> {
     this._logger.debug("Loading books for bible ", bible._id);
-    const bookService: BookService = this._serviceContainer.getBookService();
-    const newBooks: Book[] = (bible.books && bible.books.length) ? bible.books : await bookService.fetchBooks(bible);
+    const newBooks: Book[] = (bible.books && bible.books.length) ? bible.books : await this._bookService.fetchBooks(bible._id);
     bible.books = newBooks;
 
     const lastBook = this._sectionContext.currentBook;
@@ -124,8 +127,7 @@ export class StudySection {
 
   private async loadChapters(book: Book, preserveChapter?: boolean): Promise<void> {
     this._logger.debug("Loading chapters for book ", book._id);
-    const chapterService: ChapterService = this._serviceContainer.getChapterService();
-    const newChapters: Chapter[] = (book.chapters && book.chapters.length) ? book.chapters : await chapterService.fetchChapters(book);
+    const newChapters: Chapter[] = (book.chapters && book.chapters.length) ? book.chapters : await this._chapterService.fetchChapters(book._id);
 
     book.chapters = newChapters;
     if (!newChapters.length) {
@@ -154,8 +156,7 @@ export class StudySection {
 
   private async loadVerses(chapter: Chapter): Promise<void> {
     this._logger.debug("Loading verses for chapter ", chapter._id);
-    const verseService: VerseService = this._serviceContainer.getVerseService();
-    const newVerses: Verse[] = (chapter.verses && chapter.verses.length) ? chapter.verses : await verseService.fetchVerses(chapter);
+    const newVerses: Verse[] = (chapter.verses && chapter.verses.length) ? chapter.verses : await this._verseService.fetchVerses(chapter._id);
 
     chapter.verses = newVerses;
 

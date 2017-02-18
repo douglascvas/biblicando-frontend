@@ -1,12 +1,9 @@
-import {Book} from "../Book";
 import * as React from "react";
-import {MenuFilter} from "../../menu/MenuFilter";
 import SearchComponent from "../../search/SearchComponent";
 import BookMenuBodyComponent from "./menuBody/BookMenuBodyComponent";
 import {BookMenu} from "./BookMenu";
 
 export interface BookMenuState {
-  filter: MenuFilter<Book>
 }
 
 export interface BookMenuProperties {

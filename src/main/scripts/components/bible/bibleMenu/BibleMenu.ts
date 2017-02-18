@@ -5,9 +5,11 @@ import {MenuBody} from "../../menu/MenuBody";
 import {Search} from "../../search/Search";
 import {MenuItem} from "../../menu/MenuItem";
 import {SectionContext} from "../../studySection/SectionContext";
-import {LoggerFactory} from "../../common/LoggerFactory";
+import {LoggerFactory} from "../../common/logger/LoggerFactory";
 import {Factory} from "../../common/BasicFactory";
 import {MenuFilterFactory} from "../../menu/MenuFilterFactory";
+import {BibleMenuBody} from "./menuBody/BibleMenuBody";
+import {MenuItemFactory} from "../../menu/MenuItemFactory";
 
 export class BibleMenu extends AbstractMenu<Bible> {
   private _search: Search;
@@ -16,8 +18,10 @@ export class BibleMenu extends AbstractMenu<Bible> {
   private _unregisterFunctions: Function[];
 
   public constructor(_overlay: Overlay,
+                     private _menuItemFactory: MenuItemFactory,
+                     private _searchFactory: Factory<Search>,
                      private _menuFilterFactory: MenuFilterFactory,
-                     private _bibleMenuBodyFactory: Factory<MenuBody<Bible>>,
+                     private _bibleMenuBodyFactory: Factory<BibleMenuBody>,
                      private _sectionContext: SectionContext,
                      private _loggerFactory: LoggerFactory) {
     super(_overlay, _loggerFactory.getLogger('BibleMenu'));
@@ -41,7 +45,7 @@ export class BibleMenu extends AbstractMenu<Bible> {
   }
 
   protected createSearch(): void {
-    this._search = new Search();
+    this._search = this._searchFactory.create();
     const onQueryChangeUnregister = this._search.onQueryChange(this.searchChanged.bind(this));
     const onKeyPressUnregister = this._search.onKeyPress(this.searchKeyDown.bind(this));
     this._unregisterFunctions.push(onQueryChangeUnregister, onKeyPressUnregister);
@@ -63,7 +67,7 @@ export class BibleMenu extends AbstractMenu<Bible> {
   }
 
   private bibleToMenuItem(bible: Bible): MenuItem<Bible> {
-    return new MenuItem(`${bible.languageCode} - ${bible.name}`, bible, this.selectItem.bind(this));
+    return this._menuItemFactory.create(`${bible.languageCode} - ${bible.name}`, bible, this.selectItem.bind(this));
   }
 
   private searchChanged(query: string): Promise<void> {

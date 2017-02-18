@@ -4,27 +4,25 @@ import {assert} from "chai";
 import * as sinon from "sinon";
 import {Book} from "../../../../main/scripts/components/book/Book";
 import {Chapter} from "../../../../main/scripts/components/chapter/Chapter";
-import {ServiceContainer} from "../../../../main/scripts/components/common/ServiceContainer";
-import {LoggerFactory} from "../../../../main/scripts/components/common/LoggerFactory";
+import {TestLoggerFactory} from "../common/logger/TestLoggerFactory";
+import {Verse} from "../../../../main/scripts/components/verse/Verse";
 
 describe('SectionContext', () => {
   let sectionContext: SectionContext;
 
   beforeEach(() => {
-    let serviceContainer = <any>sinon.createStubInstance(ServiceContainer);
-    let loggerFactory = new LoggerFactory();
-    serviceContainer.getLoggerFactory.returns(loggerFactory);
-    sectionContext = new SectionContext(serviceContainer);
+    let loggerFactory = new TestLoggerFactory();
+    sectionContext = new SectionContext(loggerFactory);
   });
 
-  describe('Bibles', () => {
+  describe('setBibles', () => {
     it('should save the bibles', async() => {
       // given
-      const bibles: Bible[] = [buildBible("1"), buildBible("2")];
+      const bibles: Bible[] = [aBible("1"), aBible("2")];
 
       // when
       await
-      sectionContext.setBibles(bibles);
+        sectionContext.setBibles(bibles);
 
       // then
       assert.equal(sectionContext.bibles, bibles);
@@ -32,7 +30,7 @@ describe('SectionContext', () => {
 
     it('should notify listener when bibles are updated', async() => {
       // given
-      const bibles: Bible[] = [buildBible("1"), buildBible("2")];
+      const bibles: Bible[] = [aBible("1"), aBible("2")];
       const listener: any = sinon.mock();
       sectionContext.onBiblesChange(listener);
 
@@ -44,14 +42,14 @@ describe('SectionContext', () => {
     });
   });
 
-  describe('Current bible', () => {
+  describe('setCurrentBible', () => {
     it('should update the current bible', async() => {
       // given
-      const bible: Bible = buildBible();
+      const bible: Bible = aBible();
 
       // when
       await
-      sectionContext.setCurrentBible(bible);
+        sectionContext.setCurrentBible(bible);
 
       // then
       assert.equal(sectionContext.currentBible, bible);
@@ -59,7 +57,7 @@ describe('SectionContext', () => {
 
     it('should notify listener when current bible is updated', async() => {
       // given
-      const bible: Bible = buildBible();
+      const bible: Bible = aBible();
       const listener: any = sinon.mock();
       sectionContext.onCurrentBibleChange(listener);
 
@@ -71,10 +69,10 @@ describe('SectionContext', () => {
     });
   });
 
-  describe('Books', () => {
+  describe('setBooks', () => {
     it('should save the books', async() => {
       // given
-      const books: Book[] = [buildBook("1"), buildBook("2")];
+      const books: Book[] = [aBook("1"), aBook("2")];
 
       // when
       await sectionContext.setBooks(books);
@@ -85,7 +83,7 @@ describe('SectionContext', () => {
 
     it('should notify listener when books are updated', async() => {
       // given
-      const books: Book[] = [buildBook("1"), buildBook("2")];
+      const books: Book[] = [aBook("1"), aBook("2")];
       const listener: any = sinon.mock();
       sectionContext.onBooksChange(listener);
 
@@ -97,10 +95,10 @@ describe('SectionContext', () => {
     });
   });
 
-  describe('Current book', () => {
+  describe('setCurrentBook', () => {
     it('should update the current book', async() => {
       // given
-      const book: Book = buildBook();
+      const book: Book = aBook();
 
       // when
       await sectionContext.setCurrentBook(book);
@@ -111,7 +109,7 @@ describe('SectionContext', () => {
 
     it('should notify listener when current book is updated', async() => {
       // given
-      const book: Book = buildBook();
+      const book: Book = aBook();
       const listener: any = sinon.mock();
       sectionContext.onCurrentBookChange(listener);
 
@@ -123,10 +121,10 @@ describe('SectionContext', () => {
     });
   });
 
-  describe('Chapters', () => {
+  describe('setChapters', () => {
     it('should save the chapters', async() => {
       // given
-      const chapters: Chapter[] = [buildChapter("1"), buildChapter("2")];
+      const chapters: Chapter[] = [aChapter("1"), aChapter("2")];
 
       // when
       await sectionContext.setChapters(chapters);
@@ -137,23 +135,23 @@ describe('SectionContext', () => {
 
     it('should notify listener when chapters are updated', async() => {
       // given
-      const chapters: Chapter[] = [buildChapter("1"), buildChapter("2")];
+      const chapters: Chapter[] = [aChapter("1"), aChapter("2")];
       const listener: any = sinon.mock();
       sectionContext.onChaptersChange(listener);
 
       // when
       await
-      sectionContext.setChapters(chapters);
+        sectionContext.setChapters(chapters);
 
       // then
       assert.isTrue(listener.calledOnce);
     });
   });
 
-  describe('Current chapter', () => {
+  describe('setCurrentChapter', () => {
     it('should update the current chapter', async() => {
       // given
-      const chapter: Chapter = buildChapter();
+      const chapter: Chapter = aChapter();
 
       // when
       await sectionContext.setCurrentChapter(chapter);
@@ -162,9 +160,9 @@ describe('SectionContext', () => {
       assert.equal(sectionContext.currentChapter, chapter);
     });
 
-    it('should notify listener when current chapter is updated', async () => {
+    it('should notify listener when current chapter is updated', async() => {
       // given
-      const chapter: Chapter = buildChapter();
+      const chapter: Chapter = aChapter();
       const listener: any = sinon.mock();
       sectionContext.onCurrentChapterChange(listener);
 
@@ -176,8 +174,34 @@ describe('SectionContext', () => {
     });
   });
 
+  describe('Verses', () => {
+    it('should save the verses', async() => {
+      // given
+      const verses: Verse[] = [aVerse("1"), aVerse("2")];
 
-  function buildBible(prefix?: string) {
+      // when
+      await sectionContext.setVerses(verses);
+
+      // then
+      assert.equal(sectionContext.verses, verses);
+    });
+
+    it('should notify listener when verses are updated', async() => {
+      // given
+      const verses: Verse[] = [aVerse("1"), aVerse("2")];
+      const listener: any = sinon.mock();
+      sectionContext.onVersesChange(listener);
+
+      // when
+      await
+        sectionContext.setVerses(verses);
+
+      // then
+      assert.isTrue(listener.calledOnce);
+    });
+  });
+
+  function aBible(prefix?: string): Bible {
     prefix = prefix || "1";
     const bible: Bible = new Bible();
     bible.name = `${prefix}_test_bible`;
@@ -185,7 +209,7 @@ describe('SectionContext', () => {
     return bible;
   }
 
-  function buildBook(prefix?: string) {
+  function aBook(prefix?: string): Book {
     prefix = prefix || "1";
     const book: Book = new Book();
     book.name = `${prefix}_test_book`;
@@ -193,10 +217,17 @@ describe('SectionContext', () => {
     return book;
   }
 
-  function buildChapter(prefix?: string) {
+  function aChapter(prefix?: string): Chapter {
     prefix = prefix || "1";
     const chapter: Chapter = new Chapter();
     chapter._id = `${prefix}_test_chapter_id`;
     return chapter;
+  }
+
+  function aVerse(prefix?: string): Verse {
+    prefix = prefix || "1";
+    const verse: Verse = new Verse();
+    verse._id = `${prefix}_test_verse_id`;
+    return verse;
   }
 });

@@ -6,8 +6,9 @@ import {Search} from "../../search/Search";
 import {MenuItem} from "../../menu/MenuItem";
 import {SectionContext} from "../../studySection/SectionContext";
 import {Factory} from "../../common/BasicFactory";
-import {LoggerFactory} from "../../common/LoggerFactory";
+import {LoggerFactory} from "../../common/logger/LoggerFactory";
 import {MenuFilterFactory} from "../../menu/MenuFilterFactory";
+import {MenuItemFactory} from "../../menu/MenuItemFactory";
 import KeyboardEvent = React.KeyboardEvent;
 
 export class BookMenu extends AbstractMenu<Book> {
@@ -16,6 +17,8 @@ export class BookMenu extends AbstractMenu<Book> {
   private _unregisterFunctions: Function[];
 
   public constructor(_overlay: Overlay,
+                     private _menuItemFactory: MenuItemFactory,
+                     private _searchFactory: Factory<Search>,
                      private _menuFilterFactory: MenuFilterFactory,
                      private _bookMenuBodyFactory: Factory<MenuBody<Book>>,
                      private _sectionContext: SectionContext,
@@ -41,7 +44,7 @@ export class BookMenu extends AbstractMenu<Book> {
   }
 
   protected createSearch(): void {
-    this._search = new Search();
+    this._search = this._searchFactory.create();
     const onQueryChangeUnregister = this._search.onQueryChange(this.searchChanged.bind(this));
     const onKeyPressUnregister = this._search.onKeyPress(this.searchKeyDown.bind(this));
     this._unregisterFunctions.push(onQueryChangeUnregister, onKeyPressUnregister);
@@ -63,7 +66,7 @@ export class BookMenu extends AbstractMenu<Book> {
   }
 
   private bookToMenuItem(book: Book): MenuItem<Book> {
-    return new MenuItem(`${book.number} - ${book.name}`, book, this.selectItem.bind(this));
+    return this._menuItemFactory.create(`${book.number} - ${book.name}`, book, this.selectItem.bind(this));
   }
 
   private searchChanged(query: string): Promise<void> {

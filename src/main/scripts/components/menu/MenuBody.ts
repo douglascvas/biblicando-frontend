@@ -1,7 +1,7 @@
 import {Observer} from "../common/Observer";
-import {Logger} from "../common/LoggerFactory";
 import {MenuItem} from "./MenuItem";
 import {MenuFilter} from "./MenuFilter";
+import {Logger} from "../common/logger/Logger";
 
 export abstract class MenuBody<E> {
   private _items: MenuItem<E>[];

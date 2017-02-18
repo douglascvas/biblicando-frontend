@@ -9,8 +9,16 @@ import * as webpack from "webpack";
 import * as nunjucks from "nunjucks";
 import * as path from "path";
 
-function configureServer(app, options) {
-  app.set('port', process.env.PORT || options.devPort);
+// copied by gulp
+const packageJson = require('./package.json');
+
+const devMode = process.env.NODE_ENV === 'development';
+const port = process.env.PORT || packageJson.config.port;
+const host = process.env.HOST || packageJson.config.host;
+
+function configureServer(app) {
+
+  app.set('port', port);
   app.set('views', __dirname);
   app.set('view engine', 'html');
   nunjucks.configure(app.get('views'), {
@@ -18,7 +26,7 @@ function configureServer(app, options) {
     express: app
   });
   app.use(compression());
-  app.use(express.static(path.join(__dirname, './dist/')));
+  app.use(express.static(path.join(__dirname, '../dist')));
   app.use((req, res, next) => {
     const routesPath = './scripts/routes';
     delete require.cache[require.resolve(routesPath)];
@@ -32,42 +40,33 @@ function configureServer(app, options) {
       } else if (!renderProps || renderProps.routes[renderProps.routes.length - 1].path === '*') {
         next();
       } else {
-        const html = options.serverSideRendering ? ReactDOMServer.renderToString(<RouterContext {...renderProps} />) : '';
-        return res.render('index', {content: html, title: 'Home', version: options.version});
+        const html = devMode ? '' : ReactDOMServer.renderToString(<RouterContext {...renderProps} />);
+        return res.render('index', {content: html, title: 'Home', version: packageJson.version});
       }
     });
   });
 }
 
-function createServer(webpackConfig, options) {
-  if (options.development) {
+function createServer() {
+  if (devMode) {
+    const webpackConfig = require('../../webpack/config');
     console.log('Creating dev server...');
     return new WebpackDevServer(webpack(webpackConfig), Object.assign({
-      setup: app => configureServer(app, options)
+      setup: app => configureServer(app)
     }, webpackConfig.devServer));
   }
   console.log('Creating production server...');
-  return express();
+  const app = express();
+  configureServer(app);
+  return app;
 }
 
-export default (options) => {
-  sourceMapSupport.install();
+sourceMapSupport.install();
 
-  console.log('Server side rendering ' + (options.serverSideRendering ? 'ENABLED' : 'DISABLED'));
-  console.log('Options:', options);
-
-  const port = options.devPort;
-  const host = options.devHost;
-
-  const config = require('../../webpack/config')(options);
-
-  const server = createServer(config, options);
-
-  server.listen(port, host, function (err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log(`Listening at http://${host}:${port}`);
-    // opn(url);
-  });
-};
+const server = createServer();
+server.listen(port, host, function (err) {
+  if (err) {
+    console.log(err);
+  }
+  console.log(`Listening at http://${host}:${port}`);
+});

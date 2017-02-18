@@ -1,38 +1,43 @@
-import {Logger} from "../common/LoggerFactory";
+import {LoggerFactory} from "../common/logger/LoggerFactory";
 import {StudySection} from "../studySection/StudySection";
-import {ServiceContainer} from "../common/ServiceContainer";
-import {StoreContainer} from "../common/StoreContainer";
+import {BibleService} from "../bible/BibleService";
+import {BibleStore} from "../bible/BibleStore";
+import {Factory} from "../common/BasicFactory";
+import {Logger} from "../common/logger/Logger";
 
 export class Workspace {
   private _logger: Logger;
   private _sections: StudySection[];
 
-  constructor(private _studySectionFactory: StudySection,
-              private _storeContainer: StoreContainer,
-              private _serviceContainer: ServiceContainer) {
-    this.initialize();
-    this._logger = _serviceContainer.getLoggerFactory().getLogger('Workspace');
+  constructor(private _studySectionFactory: Factory<StudySection>,
+              private _bibleService: BibleService,
+              private _bibleStore: BibleStore,
+              _loggerFactory: LoggerFactory) {
+    this._logger = _loggerFactory.getLogger(Workspace);
+    this._sections = [];
+  }
+
+  public initialize(): Promise<void> {
+    this.createSection();
+    return this.loadBibles();
   }
 
   public async loadBibles(): Promise<void> {
-    const bibles = await this._serviceContainer.getBibleService().fetchBibles();
+    const bibles = await this._bibleService.fetchBibles();
     this._logger.debug('Loaded', bibles.length, 'bibles');
-    return this._storeContainer.getBibleStore().replaceAll(bibles);
+    return this._bibleStore.replaceAll(bibles);
   }
 
-  private createSection(): StudySection {
-    return new StudySection(this._storeContainer, this._serviceContainer);
+  public createSection(): StudySection {
+    const section: StudySection = this._studySectionFactory.create();
+    this._sections.push(section);
+    return section;
   }
 
-  private removeSection(section: StudySection): void {
+  public removeSection(section: StudySection): void {
     section.unregister();
     const index = this._sections.indexOf(section);
     this._sections.splice(index, 1);
-  }
-
-  private initialize(): void {
-    this._sections = [this.createSection()];
-    this.loadBibles();
   }
 
   get sections(): StudySection[] {

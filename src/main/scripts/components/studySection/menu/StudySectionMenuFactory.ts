@@ -10,7 +10,8 @@ import {MenuFactory} from "../../common/MenuFactory";
 import {Book} from "../../book/Book";
 import {Chapter} from "../../chapter/Chapter";
 import {BookMenuFactory} from "../../book/bookMenu/BookMenuFactory";
-import {LoggerFactory, ConsoleLoggerFactory} from "../../common/LoggerFactory";
+import {LoggerFactory} from "../../common/logger/LoggerFactory";
+import {ConsoleLoggerFactory} from "../../common/logger/ConsoleLoggerFactory";
 
 export class StudySectionMenuFactory implements Factory<StudySectionMenu> {
   constructor(private _container: Container) {

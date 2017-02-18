@@ -1,44 +1,129 @@
-import {SectionContext} from "../../../../main/scripts/components/studySection/SectionContext";
 import {Bible} from "../../../../main/scripts/components/bible/Bible";
 import {assert} from "chai";
 import * as Sinon from "sinon";
-import {Book} from "../../../../main/scripts/components/book/Book";
-import {Chapter} from "../../../../main/scripts/components/chapter/Chapter";
-import {ServiceContainer} from "../../../../main/scripts/components/common/ServiceContainer";
-import {LoggerFactory} from "../../../../main/scripts/components/common/LoggerFactory";
+import {LoggerFactory} from "../../../../main/scripts/components/common/logger/LoggerFactory";
 import {Workspace} from "../../../../main/scripts/components/workspace/Workspace";
-import {StoreContainer} from "../../../../main/scripts/components/common/StoreContainer";
+import {Factory} from "../../../../main/scripts/components/common/BasicFactory";
+import {StudySection} from "../../../../main/scripts/components/studySection/StudySection";
+import {BibleService} from "../../../../main/scripts/components/bible/BibleService";
+import {BibleStore} from "../../../../main/scripts/components/bible/BibleStore";
+import {StudySectionFactory} from "../../../../main/scripts/components/studySection/StudySectionFactory";
+import {TestLoggerFactory} from "../common/logger/TestLoggerFactory";
 import SinonMockStatic = Sinon.SinonMockStatic;
 import SinonMock = Sinon.SinonMock;
 
 describe('Workspace', () => {
-  let workspace: Workspace;
-  let storeContainer: StoreContainer;
-  let serviceContainer: ServiceContainer;
+  let workspace: Workspace,
+    studySectionFactory: Factory<StudySection>,
+    bibleService: BibleService,
+    bibleStore: BibleStore,
+    loggerFactory: LoggerFactory;
 
   beforeEach(() => {
-    let storeContainer: StoreContainer = Sinon.createStubInstance(StoreContainer);
-    let serviceContainer: ServiceContainer = Sinon.createStubInstance(ServiceContainer);
-    (<any>serviceContainer.getLoggerFactory).returns(new LoggerFactory());
-
+    studySectionFactory = <any>Sinon.createStubInstance(StudySectionFactory);
+    bibleService = <any>Sinon.createStubInstance(BibleService);
+    bibleStore = <any>Sinon.createStubInstance(BibleStore);
+    loggerFactory = new TestLoggerFactory();
+    workspace = new Workspace(studySectionFactory, bibleService, bibleStore, loggerFactory);
   });
 
-  describe('Bibles', () => {
-    it('should create an initial study section', async () => {
+  describe('Initialize', () => {
+    it('should create an initial study section', async() => {
       // given
+      const studySection: StudySection = aStudySection();
+      (<Sinon.SinonStub>bibleService.fetchBibles).returns([aBible()]);
+      (<Sinon.SinonStub>studySectionFactory.create).returns(studySection);
 
       // when
-      workspace = new Workspace(storeContainer, serviceContainer);
+      await workspace.initialize();
 
       // then
-      assert.equal(1, 1);
+      assert.sameMembers(workspace.sections, [studySection]);
     });
 
+    it('should load the bibles from the server and save in the BibleStore', async() => {
+      // assume
+      const bibles = [aBible('1'), aBible('2')];
 
+      // given
+      (<Sinon.SinonStub>bibleService.fetchBibles).returns(bibles);
+
+      // when
+      await workspace.initialize();
+
+      // then
+      assert.isTrue((<Sinon.SinonStub>bibleStore.replaceAll).calledWith(bibles));
+    });
   });
 
+  describe('loadBibles', () => {
+    it('should load the bibles from the server and save in the BibleStore', async() => {
+      // assume
+      const bibles = [aBible('1'), aBible('2')];
 
-  function buildBible(prefix?: string) {
+      // given
+      (<Sinon.SinonStub>bibleService.fetchBibles).returns(bibles);
+
+      // when
+      await workspace.initialize();
+
+      // then
+      assert.isTrue((<Sinon.SinonStub>bibleStore.replaceAll).calledWith(bibles));
+    });
+  });
+
+  describe('createSection', () => {
+    it('should create a new section, add it to the list of sections and return it', async() => {
+      // given
+      (<Sinon.SinonStub>bibleService.fetchBibles).returns([]);
+      (<Sinon.SinonStub>studySectionFactory.create).returns(aStudySection());
+      await workspace.initialize();
+
+      // when
+      const newSection = workspace.createSection();
+
+      // then
+      assert.strictEqual(workspace.sections.length, 2);
+      assert.strictEqual(workspace.sections[1], newSection);
+    });
+  });
+
+  describe('removeSection', () => {
+    it('should remove a section', async() => {
+      // given
+      studySectionFactory.create = aStudySection;
+      (<Sinon.SinonStub>bibleService.fetchBibles).returns([]);
+      await workspace.initialize();
+      const newSection = workspace.createSection();
+
+      // when
+      workspace.removeSection(newSection);
+
+      // then
+      assert.strictEqual(workspace.sections.length, 1);
+      assert.notStrictEqual(workspace.sections[0], newSection);
+    });
+
+    it('should unregister the section before removing it', async() => {
+      // given
+      studySectionFactory.create = aStudySection;
+      (<Sinon.SinonStub>bibleService.fetchBibles).returns([]);
+      await workspace.initialize();
+      const newSection = workspace.createSection();
+
+      // when
+      workspace.removeSection(newSection);
+
+      // then
+      assert.isTrue((<Sinon.SinonStub>newSection.unregister).calledOnce);
+    });
+  });
+
+  function aStudySection(): StudySection {
+    return Sinon.createStubInstance(StudySection);
+  }
+
+  function aBible(prefix?: string) {
     prefix = prefix || "1";
     const bible: Bible = new Bible();
     bible.name = `${prefix}_test_bible`;
@@ -46,18 +131,4 @@ describe('Workspace', () => {
     return bible;
   }
 
-  function buildBook(prefix?: string) {
-    prefix = prefix || "1";
-    const book: Book = new Book();
-    book.name = `${prefix}_test_book`;
-    book._id = `${prefix}_test_book_id`;
-    return book;
-  }
-
-  function buildChapter(prefix?: string) {
-    prefix = prefix || "1";
-    const chapter: Chapter = new Chapter();
-    chapter._id = `${prefix}_test_chapter_id`;
-    return chapter;
-  }
 });

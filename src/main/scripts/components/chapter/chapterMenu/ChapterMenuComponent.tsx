@@ -1,12 +1,9 @@
 import * as React from "react";
-import {MenuFilter} from "../../menu/MenuFilter";
 import SearchComponent from "../../search/SearchComponent";
 import ChapterMenuBodyComponent from "./menuBody/ChapterMenuBodyComponent";
 import {ChapterMenu} from "./ChapterMenu";
-import {Chapter} from "../Chapter";
 
 export interface ChapterMenuState {
-  filter: MenuFilter<Chapter>
 }
 
 export interface ChapterMenuProperties {

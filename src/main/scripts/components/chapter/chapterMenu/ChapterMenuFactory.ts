@@ -5,9 +5,12 @@ import {Overlay} from "../../menu/Overlay";
 import {Container} from "../../common/Container";
 import {MenuFactory} from "../../common/MenuFactory";
 import {ChapterMenuBodyFactory} from "./menuBody/ChapterMenuBodyFactory";
-import {LoggerFactory, ConsoleLoggerFactory} from "../../common/LoggerFactory";
+import {LoggerFactory} from "../../common/logger/LoggerFactory";
 import {SectionContextFactory} from "../../studySection/SectionContextFactory";
 import {MenuFilterFactory, MenuFilterFactoryDefault} from "../../menu/MenuFilterFactory";
+import {MenuItemFactory, MenuItemFactoryDefault} from "../../menu/MenuItemFactory";
+import {SearchFactory} from "../../search/SearchFactory";
+import {ConsoleLoggerFactory} from "../../common/logger/ConsoleLoggerFactory";
 
 export class ChapterMenuFactory implements MenuFactory<Chapter> {
   constructor(private _container: Container) {
@@ -15,11 +18,21 @@ export class ChapterMenuFactory implements MenuFactory<Chapter> {
 
   public create(overlay: Overlay): AbstractMenu<Chapter> {
     return new ChapterMenu(overlay,
+      this.getMenuItemFactory(),
+      this.getSearchFactory(),
       this.getMenuFilterFactory(),
       this.getChapterMenuBodyFactory(),
       this.getSectionContextFactory().create(),
       this.getLoggerFactory()
     );
+  }
+
+  private getMenuItemFactory(): MenuItemFactory {
+    return this._container.getValue(MenuItemFactory, () => new MenuItemFactoryDefault());
+  }
+
+  private getSearchFactory(): SearchFactory {
+    return this._container.getValue(SearchFactory, () => new SearchFactory());
   }
 
   private getMenuFilterFactory(): MenuFilterFactory {

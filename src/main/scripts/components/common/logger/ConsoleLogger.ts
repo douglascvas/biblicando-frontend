@@ -1,20 +1,6 @@
-export abstract class LoggerFactory {
-  abstract getLogger(loggerClassName): Logger;
-}
+import {Logger} from "./Logger";
 
-export class ConsoleLoggerFactory implements LoggerFactory {
-  private _loggers;
-
-  constructor() {
-    this._loggers = {};
-  }
-
-  public getLogger(loggerClassName): Logger {
-    return new Logger(loggerClassName);
-  }
-}
-
-export class Logger {
+export class ConsoleLogger implements Logger {
   constructor(private _name) {
   }
 

@@ -1,7 +1,7 @@
 import {Observer} from "../common/Observer";
-import {Logger} from "../common/LoggerFactory";
 import {Overlay} from "./Overlay";
 import {MenuItem} from "./MenuItem";
+import {Logger} from "../common/logger/Logger";
 
 export abstract class AbstractMenu<E> {
   private _selected: MenuItem<E>;

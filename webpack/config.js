@@ -1,10 +1,10 @@
 const path = require('path');
 const util = require('util');
-const pkg = require('../package.json');
 const loaders = require('./loaders');
 const plugins = require('./plugins');
 const autoprefixer = require('autoprefixer');
 const paths = require('../paths');
+const projectOptions = require('../projectOptions');
 
 function getAppEntry(options) {
   const devEntries = [
@@ -32,35 +32,35 @@ function getEntries(options) {
   return entries;
 }
 
-module.exports = (options) => ({
-  context: options.useGulp ? paths.output.dirs.js : paths.input.dirs.source,
-  cache: options.development,
+module.exports = {
+  context: projectOptions.useGulp ? paths.output.dirs.js : paths.input.dirs.source,
+  cache: projectOptions.development,
   target: 'web',
-  devtool: options.development ? 'inline-source-map' : false,
-  entry: getEntries(options),
+  devtool: projectOptions.development ? 'inline-source-map' : false,
+  entry: getEntries(projectOptions),
   output: {
-    path: path.resolve(options.buildDir + '/dist/'),
+    path: path.resolve(projectOptions.buildDir + '/dist/'),
     publicPath: '/',
-    filename: `scripts/[name].${options.version}.js`,
+    filename: `scripts/[name].${projectOptions.version}.js`,
     pathinfo: false,
-    // sourceMapFilename: `scripts/[name].${options.version}.map`
+    // sourceMapFilename: `scripts/[name].${projectOptions.version}.map`
     devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
   },
   module: {
-    rules: loaders(options)
+    rules: loaders(projectOptions)
   },
-  plugins: plugins(options),
+  plugins: plugins(projectOptions),
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.tsx', '.ts', '.js', 'jsx', '.json'],
   },
   devServer: {
-    contentBase: path.resolve(options.buildDir) + '/dist',
+    contentBase: path.resolve(projectOptions.buildDir) + '/dist',
     historyApiFallback: true,
-    port: options.devPort,
+    port: projectOptions.devPort,
     publicPath: '/',
     hot: true,
     noInfo: false,
     inline: true,
     stats: {colors: true}
   }
-});
+};

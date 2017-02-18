@@ -1,7 +1,8 @@
 import Axios from "axios";
+import {Factory} from "./BasicFactory";
 
-export class HttpClientFactory {
-  public createClient(): HttpClient {
+export class HttpClientFactory implements Factory<HttpClient> {
+  public create(): HttpClient {
     return new HttpClient();
   }
 }

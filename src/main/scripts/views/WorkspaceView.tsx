@@ -2,8 +2,8 @@ import * as React from "react";
 import * as Helmet from "react-helmet";
 import WorkspaceComponent from "../components/workspace/WorkspaceComponent";
 import {Workspace} from "../components/workspace/Workspace";
-import {ServiceContainer} from "../components/common/ServiceContainer";
-import {StoreContainer} from "../components/common/StoreContainer";
+import {WorkspaceFactory} from "../components/workspace/WorkspaceFactory";
+import {Container} from "../components/common/Container";
 
 export default class WorkspaceView extends React.Component<any,any> {
   private _workspace: Workspace;
@@ -12,10 +12,10 @@ export default class WorkspaceView extends React.Component<any,any> {
     super(props);
   }
 
-  componentWillMount() {
-    const serviceContainer = new ServiceContainer();
-    const storeContainer = new StoreContainer();
-    this._workspace = new Workspace(storeContainer, serviceContainer);
+  async componentWillMount() {
+    const container = new Container();
+    this._workspace = new WorkspaceFactory(container).create();
+    await this._workspace.initialize();
   }
 
   render() {

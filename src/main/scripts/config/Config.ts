@@ -1,6 +1,9 @@
-export interface Config {
-  getBiblesUrl(): string;
-  getBooksUrl(bibleId: string): string;
-  getChaptersUrl(bookId: string): string;
-  getVersesUrl(chapterId: string): string;
+export abstract class Config {
+  abstract getBiblesUrl(): string;
+
+  abstract getBooksUrl(bibleId: string): string;
+
+  abstract getChaptersUrl(bookId: string): string;
+
+  abstract getVersesUrl(chapterId: string): string;
 }

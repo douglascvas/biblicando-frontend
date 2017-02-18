@@ -1,8 +1,8 @@
 import {Chapter} from "./Chapter";
-import {LoggerFactory, Logger} from "../common/LoggerFactory";
+import {LoggerFactory} from "../common/logger/LoggerFactory";
 import {HttpClientFactory, HttpClient} from "../common/HttpClient";
-import {Book} from "../book/Book";
 import {Config} from "../../config/Config";
+import {Logger} from "../common/logger/Logger";
 
 export class ChapterService {
   private _logger: Logger;
@@ -12,11 +12,11 @@ export class ChapterService {
               private _httpClientFactory: HttpClientFactory,
               private _loggerFactory: LoggerFactory) {
     this._logger = _loggerFactory.getLogger('ChapterService');
-    this._httpClient = _httpClientFactory.createClient();
+    this._httpClient = _httpClientFactory.create();
   }
 
-  public async fetchChapters(book: Book): Promise<Chapter[]> {
-    const url = this._config.getChaptersUrl(book._id);
+  public async fetchChapters(bookId: string): Promise<Chapter[]> {
+    const url = this._config.getChaptersUrl(bookId);
     const response = await this._httpClient.fetch(url);
     const chapters: Chapter[] = response.data || [];
     this._logger.debug("Loaded", chapters.length, "chapters");
