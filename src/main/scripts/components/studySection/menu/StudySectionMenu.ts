@@ -14,6 +14,7 @@ export class StudySectionMenu {
   public bibleMenu: AbstractMenu<Bible>;
   public bookMenu: AbstractMenu<Book>;
   public chapterMenu: AbstractMenu<Chapter>;
+  public _menus: AbstractMenu<any>[];
   private _logger: Logger;
 
   private _unregisterFunctions: Function[];
@@ -26,81 +27,51 @@ export class StudySectionMenu {
 
     this._logger = _loggerFactory.getLogger('MenuBar');
 
+    this._menus = [];
     this._unregisterFunctions = [];
     this.overlay = _overlayFactory.create();
-    this.createBibleMenu();
-    this.createBookMenu();
-    this.createChapterMenu();
+    this.createMenus();
   }
 
   public unregister(): void {
     this._unregisterFunctions.forEach(fn => fn());
   }
 
-  public async hideAll(): Promise<void> {
-    await this.bibleMenu.hide();
-    await this.bookMenu.hide();
-    await this.chapterMenu.hide();
+  public onMenuToggle(callback: Function): Function {
+    const onMenuToggleUnsubscribe: Function[] = this._menus.map(menu => menu.onToggle(callback));
+    return () => onMenuToggleUnsubscribe.forEach(fn => fn());
   }
 
-  public onBibleMenuToggle(callback: Function): Function {
-    return this.bibleMenu.onToggle(callback);
+  public overlayClicked(): Promise<void> {
+    return this.hideAll()
   }
 
-  public onBookMenuToggle(callback: Function): Function {
-    return this.bookMenu.onToggle(callback);
-  }
-
-  public onChapterMenuToggle(callback: Function): Function {
-    return this.chapterMenu.onToggle(callback);
-  }
-
-  private _bibleSelected(menuItem: MenuItem<Bible>): Promise<void> {
-    return this.hideAll();
-  }
-
-  private _bookSelected(menuItem: MenuItem<Book>): Promise<void> {
-    return this.hideAll();
-  }
-
-  private _chapterSelected(menuItem: MenuItem<number>): Promise<void> {
-    return this.hideAll();
-  }
-
-  public bibleMenuButtonClicked(): Promise<void> {
-    return this.bibleMenu.toggle();
-  }
-
-  public bookMenuButtonClicked(): Promise<void> {
-    return this.bookMenu.toggle();
-  }
-
-  public chapterMenuButtonClicked(): Promise<void> {
-    return this.chapterMenu.toggle();
+  public async menuButtonClicked(menu: AbstractMenu<any>): Promise<void> {
+    await this.hideAll(menu);
+    return menu.toggle();
   }
 
   public isOverlayVisible() {
     return this.overlay.visible;
   }
 
-  private createBibleMenu(): void {
-    this.bibleMenu = this._bibleMenuFactory.create(this.overlay);
-    const onSelectUnsubscribe = this.bibleMenu.onSelect((menuItem: MenuItem<Bible>) => this._bibleSelected(menuItem));
-    const onBeforeShowUnsubscribe = this.bibleMenu.onBeforeShow(() => this.hideAll());
-    this._unregisterFunctions.push(() => this.bibleMenu.unregister(), onSelectUnsubscribe, onBeforeShowUnsubscribe);
+  private async hideAll(currentMenu?: AbstractMenu<any>): Promise<void> {
+    const promises = this._menus
+      .filter(menu => menu !== currentMenu)
+      .map(menu => menu.hide());
+    await Promise.all(promises);
   }
 
-  private createBookMenu(): void {
-    this.bookMenu = this._bookMenuFactory.create(this.overlay);
-    const onSelectUnsubscribe = this.bookMenu.onSelect((menuItem: MenuItem<Book>) => this._bookSelected(menuItem));
-    const onBeforeShowUnsubscribe = this.bookMenu.onBeforeShow(() => this.hideAll());
-    this._unregisterFunctions.push(() => this.bookMenu.unregister(), onSelectUnsubscribe, onBeforeShowUnsubscribe);
+  private menuItemSelected(menu: AbstractMenu<any>, menuItem: MenuItem<any>): Promise<void> {
+    return menu.hide();
   }
 
-  private createChapterMenu(): void {
-    this.chapterMenu = this._chapterMenuFactory.create(this.overlay);
-    const onSelectUnsubscribe = this.chapterMenu.onSelect((menuItem: MenuItem<number>) => this._chapterSelected(menuItem));
-    const onBeforeShowUnsubscribe = this.chapterMenu.onBeforeShow(() => this.hideAll());
-    this._unregisterFunctions.push(() => this.chapterMenu.unregister(), onSelectUnsubscribe, onBeforeShowUnsubscribe);
+  private createMenus(): void {
+    this._menus.push(this.bibleMenu = this._bibleMenuFactory.create(this.overlay));
+    this._menus.push(this.bookMenu = this._bookMenuFactory.create(this.overlay));
+    this._menus.push(this.chapterMenu = this._chapterMenuFactory.create(this.overlay));
+
+    const onSelectUnsubscribe: Function[] = this._menus.map(menu => menu.onSelect(menuItem => this.menuItemSelected(menu, menuItem)));
+    this._unregisterFunctions = [...this._unregisterFunctions, ...onSelectUnsubscribe];
   }
 }
