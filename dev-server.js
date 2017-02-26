@@ -9,8 +9,8 @@ const paths = require('./paths');
 const app = express();
 const compiler = webpack(config);
 
-const port = pkg.config.devPort;
-const host = pkg.config.devHost;
+const port = pkg.config.port;
+const host = pkg.config.host;
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,

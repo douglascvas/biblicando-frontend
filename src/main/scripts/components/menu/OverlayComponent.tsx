@@ -25,6 +25,6 @@ export default class OverlayComponent extends React.Component<OverlayProperties,
 
   public render() {
     const className = `overlay ${this.props.overlay.visible ? this.props.className : 'hide'}`;
-    return (<div className={className} onClick={this.overlayClick.bind(this)}></div>)
+    return (<bc-overlay className={className} onClick={this.overlayClick.bind(this)}></bc-overlay>)
   }
 }

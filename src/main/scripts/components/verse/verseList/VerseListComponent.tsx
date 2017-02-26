@@ -37,9 +37,9 @@ export default class VerseListComponent extends React.Component<VerseListPropert
         </span>
     ));
     return (
-      <span id={this.props.id} className={this.props.className}>
+      <bc-verse-list id={this.props.id} class={this.props.className}>
         {verses}
-      </span>
+      </bc-verse-list>
     )
   }
 

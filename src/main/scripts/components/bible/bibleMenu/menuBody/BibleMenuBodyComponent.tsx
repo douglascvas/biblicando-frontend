@@ -32,9 +32,9 @@ export default class BibleMenuBodyComponent extends React.Component<BibleMenuBod
       </a>));
 
     return (
-      <div className={this.props.className}>
+      <bc-bible-menu-body class={this.props.className}>
         {bibleItems}
-      </div>
+      </bc-bible-menu-body>
     )
   }
 

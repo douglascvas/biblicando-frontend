@@ -31,10 +31,7 @@ describe('StudySectionMenu', () => {
 
     onBibleSelectUnsubscribe: Function,
     onBookSelectUnsubscribe: Function,
-    onChapterSelectUnsubscribe: Function,
-    onBeforeShowBibleUnsubscribe: Function,
-    onBeforeShowBookUnsubscribe: Function,
-    onBeforeShowChapterUnsubscribe: Function;
+    onChapterSelectUnsubscribe: Function;
 
   beforeEach(() => {
     onBibleSelectUnsubscribe = Sinon.stub();

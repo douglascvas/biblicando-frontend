@@ -32,7 +32,7 @@ export default class BookMenuComponent extends React.Component<BookMenuPropertie
 
   public render() {
     return (
-      <div className={this.props.className}>
+      <bc-book-menu class={this.props.className}>
         <div className="row menu__body-wrapper">
           <div className="col s12 left book-menu__body">
             <SearchComponent id={`${this.props.id}:book-menu-search`} search={this.props.menu.search} className="book-menu__search input-field">
@@ -43,7 +43,7 @@ export default class BookMenuComponent extends React.Component<BookMenuPropertie
                                    className="collection book-menu__list"/>
           </div>
         </div>
-      </div>
+      </bc-book-menu>
     )
   }
 

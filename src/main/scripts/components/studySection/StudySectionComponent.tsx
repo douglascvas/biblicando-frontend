@@ -46,7 +46,7 @@ export default class StudySectionComponent extends React.Component<StudySectionP
     const displayModeVerseListClass = this.props.studySection.continousMode ? 'continuous' : '';
 
     return (
-      <div>
+      <bc-study-section>
         <StudySectionMenuComponent id={`${this.props.id}:study-section`} studySectionMenu={this.props.studySection.studySectionMenu}/>
 
         <div className="study-section__body">
@@ -64,7 +64,7 @@ export default class StudySectionComponent extends React.Component<StudySectionP
                                 verseList={this.props.studySection.verseList}/>
           </div>
         </div>
-      </div>
+      </bc-study-section>
     )
   }
 }

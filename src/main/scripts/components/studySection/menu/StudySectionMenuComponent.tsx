@@ -83,6 +83,7 @@ export default class StudySectionMenuComponent extends React.Component<StudySect
     ));
 
     const renderMenu = (MenuComponent, menuItem: StudySectionMenuItem) => (<MenuComponent id={`${this.props.id}:${menuItem.id}`}
+                                                                                          key={`${this.props.id}:${menuItem.id}`}
                                                                                           menu={menuItem.menu}
                                                                                           className="menu__wrapper push--left"/>);
     const currentMenu = this.menuItems
@@ -93,7 +94,7 @@ export default class StudySectionMenuComponent extends React.Component<StudySect
                                       className="overlay study-section__overlay"
                                       onClick={()=>this.overlayClicked()}></div>);
     return (
-      <div>
+      <bc-study-section-menu>
         <nav className="page__navbar navbar-default navbar-fixed-top" role="navigation">
           <div className="page__nav-wrapper">
             <ul>{menuItems}</ul>
@@ -105,7 +106,7 @@ export default class StudySectionMenuComponent extends React.Component<StudySect
         <div className="col s12">
           {currentMenu}
         </div>
-      </div>
+      </bc-study-section-menu>
     )
   }
 }

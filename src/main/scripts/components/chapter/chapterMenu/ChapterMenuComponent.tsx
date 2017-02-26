@@ -32,7 +32,7 @@ export default class ChapterMenuComponent extends React.Component<ChapterMenuPro
 
   public render() {
     return (
-      <div className={this.props.className}>
+      <bc-chapter-menu class={this.props.className}>
         <div className="row menu__body-wrapper">
           <div className="col s12 left chapter-menu__body">
             <SearchComponent id={`${this.props.id}:chapter-menu-search`} search={this.props.menu.search} className="chapter-menu__search input-field">
@@ -43,7 +43,7 @@ export default class ChapterMenuComponent extends React.Component<ChapterMenuPro
                                       className="col s12 left"/>
           </div>
         </div>
-      </div>
+      </bc-chapter-menu>
     )
   }
 

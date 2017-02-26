@@ -22,9 +22,9 @@ let htmlTask = require('./html');
 let scssTask = require('./scss');
 
 module.exports = options => () => {
-  console.log('### Watching changes on port', options.devPort);
+  console.log('### Watching changes on port', options.port);
   browserSync({
-    proxy: `http://localhost:${options.devPort}`,
+    proxy: `http://localhost:${options.port}`,
     open: false
   });
   watch(paths.input.files.html, gulp.series(htmlTask(options), reload));

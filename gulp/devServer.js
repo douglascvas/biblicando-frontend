@@ -5,8 +5,8 @@ const opn = require('opn');
 const pkg = require('../package.json');
 
 module.exports = (options) => () => {
-  const port = options.devPort;
-  const host = options.devHost;
+  const port = options.port;
+  const host = options.host;
 
   const configPath = '../webpack/config';
   const config = require(configPath);

@@ -32,11 +32,11 @@ export default class ChapterMenuBodyComponent extends React.Component<ChapterMen
       </a>));
 
     return (
-      <div className={this.props.className}>
+      <bc-chapter-menu-body class={this.props.className}>
         <div className="row">
         {chapterItems}
         </div>
-      </div>
+      </bc-chapter-menu-body>
     )
   }
 

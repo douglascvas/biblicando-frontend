@@ -21,9 +21,9 @@ export default class WorkspaceComponent extends React.Component<BibleStudyProps,
     ));
 
     return (
-      <div className={this.props.className}>
+      <bc-workspace class={this.props.className}>
         {sections}
-      </div>
+      </bc-workspace>
     )
   }
 }

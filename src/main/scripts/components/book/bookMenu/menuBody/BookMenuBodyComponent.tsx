@@ -32,9 +32,9 @@ export default class BookMenuBodyComponent extends React.Component<BookMenuBodyP
       </a>));
 
     return (
-      <div className={this.props.className}>
+      <bc-book-menu-body class={this.props.className}>
         {bookItems}
-      </div>
+      </bc-book-menu-body>
     )
   }
 

@@ -9,7 +9,7 @@ const projectOptions = require('../projectOptions');
 function getAppEntry(options) {
   const devEntries = [
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://${options.devHost}:${options.devPort}`,
+    `webpack-dev-server/client?http://${options.host}:${options.port}`,
     'webpack/hot/only-dev-server'
   ];
   return [
@@ -56,7 +56,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(projectOptions.buildDir) + '/dist',
     historyApiFallback: true,
-    port: projectOptions.devPort,
+    port: projectOptions.port,
     publicPath: '/',
     hot: true,
     noInfo: false,

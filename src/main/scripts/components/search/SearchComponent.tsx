@@ -37,7 +37,7 @@ export default class SearchComponent extends React.Component<SearchProperties,Se
 
   public render() {
     return (
-      <div id={this.props.id||'search'} className={this.props.className}>
+      <bc-search id={this.props.id||'search'} class={this.props.className}>
         <i className="fa fa-search material-icons prefix" aria-hidden="true"></i>
         <input id={`${this.props.id}:search-input`}
                value={this.props.search.query}
@@ -47,7 +47,7 @@ export default class SearchComponent extends React.Component<SearchProperties,Se
                onKeyDown={this.processKeyDown}
                onChange={this.processChange}/>
         <label htmlFor={`search:${this.props.id}`} className="active">{this.props.children}</label>
-      </div>
+      </bc-search>
     );
   }
 }
