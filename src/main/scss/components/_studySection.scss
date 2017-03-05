@@ -31,17 +31,17 @@
   }
   &__display-mode {
     width: 2.3rem;
-    height: 3rem;
+    height: 2.4rem;
     text-align: center;
     vertical-align: middle;
     padding: 0.3rem 0 0 0;
-    border-radius: 0.3rem 0 0 0.3rem;
+    border-radius: 0.3rem;
     background-color: $button-gray;
     position: absolute;
-    right: 0rem;
-    top: 1rem;
+    right: 2.6rem;
+    top: 2.6rem;
     cursor: pointer;
-    font-size: 1.3rem;
-    padding-top: 0.6rem;
+    font-size: 1rem;
+    padding-top: 0.5rem;
   }
 }

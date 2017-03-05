@@ -9,7 +9,6 @@ export interface StudySectionProperties {
 }
 
 export default class StudySectionComponent extends React.Component<StudySectionProperties,StudySection> {
-  page: StudySection;
   private _unregisterFunctions: Function[];
 
   constructor(properties: StudySectionProperties) {
@@ -42,12 +41,12 @@ export default class StudySectionComponent extends React.Component<StudySectionP
     const currentChapter = this.props.studySection.getCurrentChapter() || {} as any;
     const currentBible = this.props.studySection.getCurrentBible() || {} as any;
 
-    const displayModeIconClass = this.props.studySection.continousMode ? 'fa-bars' : 'fa-ellipsis-h';
+    const displayModeIconClass = this.props.studySection.continousMode ? 'fa-bars' : 'fa-pause';
     const displayModeVerseListClass = this.props.studySection.continousMode ? 'continuous' : '';
 
     return (
-      <bc-study-section>
-        <StudySectionMenuComponent id={`${this.props.id}:study-section`} studySectionMenu={this.props.studySection.studySectionMenu}/>
+      <bc-study-section id={this.props.id}>
+        <StudySectionMenuComponent id={`${this.props.id}:study-section-menu`} studySectionMenu={this.props.studySection.studySectionMenu}/>
 
         <div className="study-section__body">
           <div className="study-section__content">

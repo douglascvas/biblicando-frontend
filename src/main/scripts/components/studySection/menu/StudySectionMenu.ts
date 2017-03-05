@@ -8,6 +8,7 @@ import {Factory} from "../../common/BasicFactory";
 import {MenuItem} from "../../menu/MenuItem";
 import {MenuFactory} from "../../common/MenuFactory";
 import {Logger} from "../../common/logger/Logger";
+import {SectionContext} from "../SectionContext";
 
 export class StudySectionMenu {
   public overlay: Overlay;
@@ -20,6 +21,7 @@ export class StudySectionMenu {
   private _unregisterFunctions: Function[];
 
   constructor(_overlayFactory: Factory<Overlay>,
+              private _sectionContext: SectionContext,
               private _bibleMenuFactory: MenuFactory<Bible>,
               private _bookMenuFactory: MenuFactory<Book>,
               private _chapterMenuFactory: MenuFactory<Chapter>,
@@ -31,6 +33,27 @@ export class StudySectionMenu {
     this._unregisterFunctions = [];
     this.overlay = _overlayFactory.create();
     this.createMenus();
+  }
+
+  public onCurrentDataChange(callback: (bible) => void) {
+    let unregisterFunctions = [
+      this._sectionContext.onCurrentBibleChange(callback),
+      this._sectionContext.onCurrentBookChange(callback),
+      this._sectionContext.onCurrentChapterChange(callback)
+    ];
+    return () => unregisterFunctions.forEach(fn => fn());
+  }
+
+  public getCurrentBible() {
+    return this._sectionContext.currentBible;
+  }
+
+  public getCurrentBook() {
+    return this._sectionContext.currentBook;
+  }
+
+  public getCurrentChapter() {
+    return this._sectionContext.currentChapter;
   }
 
   public unregister(): void {

@@ -12,6 +12,7 @@ import {Chapter} from "../../chapter/Chapter";
 import {BookMenuFactory} from "../../book/bookMenu/BookMenuFactory";
 import {LoggerFactory} from "../../common/logger/LoggerFactory";
 import {ConsoleLoggerFactory} from "../../common/logger/ConsoleLoggerFactory";
+import {SectionContextFactory} from "../SectionContextFactory";
 
 export class StudySectionMenuFactory implements Factory<StudySectionMenu> {
   constructor(private _container: Container) {
@@ -19,11 +20,16 @@ export class StudySectionMenuFactory implements Factory<StudySectionMenu> {
 
   public create(): StudySectionMenu {
     return new StudySectionMenu(this.getOverlayFactory(),
+      this.getSectionContextFactory().create(),
       this.getBibleMenuFactory(),
       this.getBookMenuFactory(),
       this.getChapterMenuFactory(),
       this.getLoggerFactory()
     );
+  }
+
+  private getSectionContextFactory(): SectionContextFactory {
+    return this._container.getValue(SectionContextFactory, () => new SectionContextFactory(this._container));
   }
 
   private getOverlayFactory(): Factory<Overlay> {

@@ -1,5 +1,13 @@
 @import "variables";
-@import "../../../node_modules/materialize-css/sass/materialize";
+@import "../../../node_modules/materialize-css/sass/components/color";
+//@import "../../../node_modules/materialize-css/sass/components/mixins";
+@import "../../../node_modules/materialize-css/sass/components/variables";
+@import "../../../node_modules/materialize-css/sass/components/typography";
+@import "../../../node_modules/materialize-css/sass/components/normalize";
+@import "../../../node_modules/materialize-css/sass/components/global";
+@import "../../../node_modules/materialize-css/sass/components/grid";
+@import "../../../node_modules/materialize-css/sass/components/navbar";
+@import "../../../node_modules/materialize-css/sass/components/forms/input-fields";
 @import "mixins/calc";
 @import "mixins/columns";
 @import "base/menu";
@@ -9,9 +17,10 @@
 @import "base/navbar";
 @import "base/bible";
 @import "base/background";
+@import "base/button";
 @import "components/listMenu";
 @import "components/verseList";
-@import "components/biblePage";
+@import "components/studySection";
 @import "components/search";
 @import "font-awesome/font-awesome";
 //

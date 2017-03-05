@@ -2,29 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e38911a-4c4d-4c0e-8824-1c9ca9bcec86" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scss/components/_search.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scss/base/_button.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.tsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scripts/components/workspace/WorkspaceComponent.unittest.tsx" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/component/menuBarComponent.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scss/components/_biblePage.scss" afterPath="$PROJECT_DIR$/src/main/scss/components/_studySection.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/biblicando-frontend.iml" afterPath="$PROJECT_DIR$/.idea/biblicando-frontend.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev-server.js" afterPath="$PROJECT_DIR$/dev-server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulp/devServer.js" afterPath="$PROJECT_DIR$/gulp/devServer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulp/watch.js" afterPath="$PROJECT_DIR$/gulp/watch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/component/bibleMenuComponent.html" afterPath="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/component/bibleMenuComponent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/menuBody/BibleMenuBodyComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/menuBody/BibleMenuBodyComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/book/bookMenu/BookMenuComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/book/bookMenu/BookMenuComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/book/bookMenu/menuBody/BookMenuBodyComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/book/bookMenu/menuBody/BookMenuBodyComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/chapter/chapterMenu/ChapterMenuComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/chapter/chapterMenu/ChapterMenuComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/chapter/chapterMenu/menuBody/ChapterMenuBodyComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/chapter/chapterMenu/menuBody/ChapterMenuBodyComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/menu/OverlayComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/menu/OverlayComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/search/SearchComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/search/SearchComponent.tsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts" afterPath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/verse/verseList/VerseListComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/verse/verseList/VerseListComponent.tsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuFactory.ts" afterPath="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuFactory.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/declarations.d.ts" afterPath="$PROJECT_DIR$/src/main/scripts/declarations.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/index.tsx" afterPath="$PROJECT_DIR$/src/main/scripts/index.tsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scss/app.scss" afterPath="$PROJECT_DIR$/src/main/scss/app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scss/base/_navbar.scss" afterPath="$PROJECT_DIR$/src/main/scss/base/_navbar.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts" afterPath="$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack/config.js" afterPath="$PROJECT_DIR$/webpack/config.js" />
     </list>
     <list id="fbf43b8a-56e2-4e64-b6fa-567cb2e616ec" name="no_commit" comment="" />
     <ignored path="biblicando-frontend.iws" />
@@ -45,77 +38,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StudySectionMenuComponent.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx">
+      <file leaf-file-name="StudySectionComponent.unittest.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="100" column="16" lean-forward="false" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BibleMenuBodyComponent.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/menuBody/BibleMenuBodyComponent.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+            <state relative-caret-position="421">
+              <caret line="106" column="24" lean-forward="false" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
               <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OverlayComponent.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/menu/OverlayComponent.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="declarations.d.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/declarations.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="watch.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulp/watch.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="33" column="64" lean-forward="false" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppLayout.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/views/AppLayout.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="13" column="3" lean-forward="false" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/index.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#0#91#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,92 +53,64 @@
       <file leaf-file-name="StudySectionComponent.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="49" column="19" lean-forward="false" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorkspaceComponent.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+            <state relative-caret-position="-378">
+              <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#44#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BibleMenuComponent.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx">
+      <file leaf-file-name="StudySectionMenuComponent.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="38" column="57" lean-forward="true" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
+            <state relative-caret-position="185">
+              <caret line="94" column="36" lean-forward="false" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="36" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/app/app.html">
+      <file leaf-file-name="StudySectionMenu.unittest.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="57">
+              <caret line="264" column="6" lean-forward="false" selection-start-line="264" selection-start-column="6" selection-end-line="264" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="17" column="107" lean-forward="false" selection-start-line="17" selection-start-column="107" selection-end-line="17" selection-end-column="107" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bibleMenuComponent.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/component/bibleMenuComponent.html">
+      <file leaf-file-name="StudySectionMenu.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="34" column="54" lean-forward="true" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+            <state relative-caret-position="-288">
+              <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_box.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scss/base/_box.scss">
+      <file leaf-file-name="SectionContext.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/SectionContext.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_menu.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scss/base/_menu.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="12" column="82" lean-forward="true" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_search.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scss/components/_search.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.scss" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/scss/app.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            <state relative-caret-position="-144">
+              <caret line="150" column="6" lean-forward="false" selection-start-line="150" selection-start-column="6" selection-end-line="150" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -228,9 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_unregisterFunctions</find>
-      <find>switchDisplayMode</find>
-      <find>setCur</find>
       <find>jasm</find>
       <find>bible-page</find>
       <find>ove</find>
@@ -258,6 +156,9 @@
       <find>left</find>
       <find>overl</find>
       <find>menu__search</find>
+      <find>lighten</find>
+      <find>button</find>
+      <find>.light</find>
     </findStrings>
     <replaceStrings>
       <replace>chapter</replace>
@@ -272,16 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/scripts/views/WorkspaceView.tsx" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/bible/BibleService.ts" />
-        <option value="$PROJECT_DIR$/src/test/scripts/components/bible/BibleService.unittest.ts" />
-        <option value="$PROJECT_DIR$/src/test/scripts/components/book/BookService.unittest.ts" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/book/BookService.ts" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/chapter/ChapterService.ts" />
-        <option value="$PROJECT_DIR$/src/test/scripts/components/chapter/ChapterService.unittest.ts" />
-        <option value="$PROJECT_DIR$/src/test/scripts/components/verse/VerseService.unittest.ts" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/verse/VerseService.ts" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/bible/BibleStore.ts" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/bible/BibleStoreFactory.ts" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/common/Store.ts" />
         <option value="$PROJECT_DIR$/src/test/scripts/components/bible/BibleStore.unittest.ts" />
@@ -296,16 +187,10 @@
         <option value="$PROJECT_DIR$/gulp/package.js" />
         <option value="$PROJECT_DIR$/gulp/webpack.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/main/server.tsx" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/gulp/typescript.js" />
-        <option value="$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts" />
-        <option value="$PROJECT_DIR$/test.js" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/verse/verseList/VerseListComponent.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/menu/OverlayComponent.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/navbar/NavbarComponent.tsx" />
@@ -317,12 +202,28 @@
         <option value="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/menuBody/BibleMenuBodyComponent.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/declarations.d.ts" />
         <option value="$PROJECT_DIR$/gulp/watch.js" />
-        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/index.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx" />
         <option value="$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/component/bibleMenuComponent.html" />
         <option value="$PROJECT_DIR$/src/main/scss/components/_search.scss" />
+        <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/src/test/scripts/components/workspace/WorkspaceComponent.unittest.ts" />
+        <option value="$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx" />
+        <option value="$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.ts" />
+        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts" />
+        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuFactory.ts" />
+        <option value="$PROJECT_DIR$/src/main/scss/base/_base.scss" />
+        <option value="$PROJECT_DIR$/src/main/scss/_variables.scss" />
+        <option value="$PROJECT_DIR$/src/main/scss/base/_navbar.scss" />
+        <option value="$PROJECT_DIR$/src/main/scss/base/_button.scss" />
+        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx" />
+        <option value="$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx" />
+        <option value="$PROJECT_DIR$/src/main/scss/components/_studySection.scss" />
         <option value="$PROJECT_DIR$/src/main/scss/app.scss" />
+        <option value="$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts" />
+        <option value="$PROJECT_DIR$/src/test/scripts/components/workspace/WorkspaceComponent.unittest.tsx" />
+        <option value="$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.tsx" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -400,6 +301,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="biblicando-frontend">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -415,20 +330,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="biblicando-frontend">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="NBKnowledgePane" />
     </panes>
   </component>
@@ -437,7 +338,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v7.3.0/bin/node" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v6.1.0/bin/node" />
@@ -453,13 +354,6 @@
     <property name="ts.rename.search.for.js.occurrences" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/test/scripts/components/studySection/menu" />
-      <recent name="$PROJECT_DIR$/src/test/scripts/components/studySection" />
-      <recent name="$PROJECT_DIR$/src/test/scripts/components/verse" />
-      <recent name="$PROJECT_DIR$/src/test/scripts/components/chapter" />
-      <recent name="$PROJECT_DIR$/src/test/scripts/components/book" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/scripts/components/common/Logger.ts" />
       <recent name="$PROJECT_DIR$/src/main/scripts/components/bible" />
@@ -467,23 +361,15 @@
       <recent name="$PROJECT_DIR$/src/main/scripts/components/menu" />
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/scripts/components/studySection" />
+      <recent name="$PROJECT_DIR$/src/test/scripts/components/workspace" />
+      <recent name="$PROJECT_DIR$/src/test/scripts/components/studySection/menu" />
+      <recent name="$PROJECT_DIR$/src/test/scripts/components/verse" />
+      <recent name="$PROJECT_DIR$/src/test/scripts/components/chapter" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gulp.js.DEV">
-    <configuration default="false" name="StudySection" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>bdd</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/src/test/scripts/components/studySection/StudySection.unittest.ts</test-file>
-      <test-names>
-        <name value="StudySection" />
-      </test-names>
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Mocha.StudySectionComponent.should render the study section body">
     <configuration default="false" name="StudySectionMenu" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -499,7 +385,7 @@
       </test-names>
       <method />
     </configuration>
-    <configuration default="false" name="StudySectionMenu.constructor.should create an overlay" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Workspace.Initialize.should create an initial study section" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <working-directory>$PROJECT_DIR$</working-directory>
@@ -508,15 +394,15 @@
       <ui>bdd</ui>
       <extra-mocha-options>--require ts-node/register</extra-mocha-options>
       <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts</test-file>
+      <test-file>$PROJECT_DIR$/src/test/scripts/components/workspace/WorkspaceComponent.unittest.tsx</test-file>
       <test-names>
-        <name value="StudySectionMenu" />
-        <name value="constructor" />
-        <name value="should create an overlay" />
+        <name value="Workspace" />
+        <name value="Initialize" />
+        <name value="should create an initial study section" />
       </test-names>
       <method />
     </configuration>
-    <configuration default="false" name="StudySectionMenu.constructor" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="WorkspaceComponent" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <working-directory>$PROJECT_DIR$</working-directory>
@@ -525,14 +411,41 @@
       <ui>bdd</ui>
       <extra-mocha-options>--require ts-node/register</extra-mocha-options>
       <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts</test-file>
+      <test-file>$PROJECT_DIR$/src/test/scripts/components/workspace/WorkspaceComponent.unittest.tsx</test-file>
       <test-names>
-        <name value="StudySectionMenu" />
-        <name value="constructor" />
+        <name value="WorkspaceComponent" />
       </test-names>
       <method />
     </configuration>
-    <configuration default="false" name="test.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="StudySectionComponent" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.tsx</test-file>
+      <test-names>
+        <name value="StudySectionComponent" />
+      </test-names>
+      <method />
+    </configuration>
+    <configuration default="false" name="StudySectionComponent.should render the study section body" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.tsx</test-file>
+      <test-names>
+        <name value="StudySectionComponent" />
+        <name value="should render the study section body" />
+      </test-names>
       <method />
     </configuration>
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
@@ -740,19 +653,19 @@
       <item index="4" class="java.lang.String" itemvalue="Node.js.Build" />
       <item index="5" class="java.lang.String" itemvalue="npm.Build" />
       <item index="6" class="java.lang.String" itemvalue="npm.Dev (start)" />
-      <item index="7" class="java.lang.String" itemvalue="Mocha.StudySection" />
-      <item index="8" class="java.lang.String" itemvalue="Mocha.StudySectionMenu" />
-      <item index="9" class="java.lang.String" itemvalue="Mocha.StudySectionMenu.constructor.should create an overlay" />
-      <item index="10" class="java.lang.String" itemvalue="Mocha.StudySectionMenu.constructor" />
-      <item index="11" class="java.lang.String" itemvalue="Node.js.test.js" />
+      <item index="7" class="java.lang.String" itemvalue="Mocha.StudySectionMenu" />
+      <item index="8" class="java.lang.String" itemvalue="Mocha.Workspace.Initialize.should create an initial study section" />
+      <item index="9" class="java.lang.String" itemvalue="Mocha.WorkspaceComponent" />
+      <item index="10" class="java.lang.String" itemvalue="Mocha.StudySectionComponent" />
+      <item index="11" class="java.lang.String" itemvalue="Mocha.StudySectionComponent.should render the study section body" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.test.js" />
-        <item index="1" class="java.lang.String" itemvalue="Mocha.StudySectionMenu" />
-        <item index="2" class="java.lang.String" itemvalue="Mocha.StudySectionMenu.constructor" />
-        <item index="3" class="java.lang.String" itemvalue="Mocha.StudySectionMenu.constructor.should create an overlay" />
-        <item index="4" class="java.lang.String" itemvalue="Mocha.StudySection" />
+        <item index="0" class="java.lang.String" itemvalue="Mocha.StudySectionComponent.should render the study section body" />
+        <item index="1" class="java.lang.String" itemvalue="Mocha.StudySectionComponent" />
+        <item index="2" class="java.lang.String" itemvalue="Mocha.StudySectionMenu" />
+        <item index="3" class="java.lang.String" itemvalue="Mocha.WorkspaceComponent" />
+        <item index="4" class="java.lang.String" itemvalue="Mocha.Workspace.Initialize.should create an initial study section" />
       </list>
     </recent_temporary>
   </component>
@@ -794,6 +707,9 @@
       <workItem from="1487262447330" duration="92661000" />
       <workItem from="1488136386149" duration="3557000" />
       <workItem from="1488141663187" duration="711000" />
+      <workItem from="1488311777027" duration="1683000" />
+      <workItem from="1488484416082" duration="109000" />
+      <workItem from="1488700891102" duration="19639000" />
     </task>
     <task id="LOCAL-00001" summary="Added project base structure.&#10;">
       <created>1463863224633</created>
@@ -921,64 +837,71 @@
       <option name="project" value="LOCAL" />
       <updated>1487630942109</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Renamed tags.&#10;Fixed ports.">
+      <created>1488143535449</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1488143535449</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StudySection - 2017.02.18 at 20h 43m 46s.xml">
-      <configuration name="StudySection" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="StudySectionComponent - 2017.03.05 at 22h 28m 24s.xml">
+      <configuration name="StudySectionComponent" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySection - 2017.02.18 at 20h 45m 44s.xml">
-      <configuration name="StudySection" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="StudySectionComponent - 2017.03.05 at 22h 30m 23s.xml">
+      <configuration name="StudySectionComponent" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySection - 2017.02.18 at 21h 03m 11s.xml">
-      <configuration name="StudySection" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="StudySectionComponent - 2017.03.05 at 22h 32m 32s.xml">
+      <configuration name="StudySectionComponent" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySection - 2017.02.18 at 21h 16m 41s.xml">
-      <configuration name="StudySection" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="StudySectionComponent_should_render_the_study_section_body - 2017.03.05 at 22h 32m 59s.xml">
+      <configuration name="StudySectionComponent.should render the study section body" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySectionMenu - 2017.02.20 at 20h 40m 10s.xml">
+    <history-entry file="StudySectionMenu - 2017.03.05 at 22h 16m 28s.xml">
       <configuration name="StudySectionMenu" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySectionMenu - 2017.02.20 at 23h 48m 32s.xml">
+    <history-entry file="StudySectionMenu - 2017.03.05 at 22h 19m 59s.xml">
       <configuration name="StudySectionMenu" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySectionMenu_constructor - 2017.02.20 at 22h 23m 43s.xml">
-      <configuration name="StudySectionMenu.constructor" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="StudySectionMenu - 2017.03.05 at 22h 25m 35s.xml">
+      <configuration name="StudySectionMenu" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySectionMenu_constructor - 2017.02.20 at 23h 35m 23s.xml">
-      <configuration name="StudySectionMenu.constructor" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="WorkspaceComponent - 2017.03.05 at 16h 29m 20s.xml">
+      <configuration name="WorkspaceComponent" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySectionMenu_constructor_should_create_an_overlay - 2017.02.20 at 22h 15m 11s.xml">
-      <configuration name="StudySectionMenu.constructor.should create an overlay" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="WorkspaceComponent - 2017.03.05 at 16h 32m 26s.xml">
+      <configuration name="WorkspaceComponent" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="StudySectionMenu_constructor_should_create_an_overlay - 2017.02.20 at 22h 15m 50s.xml">
-      <configuration name="StudySectionMenu.constructor.should create an overlay" configurationId="mocha-javascript-test-runner" />
+    <history-entry file="WorkspaceComponent - 2017.03.05 at 16h 32m 45s.xml">
+      <configuration name="WorkspaceComponent" configurationId="mocha-javascript-test-runner" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="478794000" />
+    <option name="totallyTimeSpent" value="504883000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="743" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2912" sideWeight="0.29411766" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2688" sideWeight="0.4944155" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2912" sideWeight="0.29411766" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2688" sideWeight="0.4944155" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16157855" sideWeight="0.22799097" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264" sideWeight="0.71779597" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3648" sideWeight="0.732688" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3648" sideWeight="0.732688" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2048" sideWeight="0.4944155" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22859271" sideWeight="0.772009" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264" sideWeight="0.49143708" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24944155" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36" sideWeight="0.7058824" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3824" sideWeight="0.7058824" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -992,22 +915,23 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2912" sideWeight="0.29411766" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2688" sideWeight="0.4944155" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2688" sideWeight="0.4944155" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16157855" sideWeight="0.22799097" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3264" sideWeight="0.71779597" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3648" sideWeight="0.732688" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264" sideWeight="0.71779597" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3648" sideWeight="0.732688" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2048" sideWeight="0.4944155" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15785554" sideWeight="0.772009" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22859271" sideWeight="0.772009" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.264" sideWeight="0.49143708" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24944155" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3504" sideWeight="0.7058824" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2512" sideWeight="0.7058824" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1029,378 +953,23 @@
     <MESSAGE value="Moved sources.&#10;Adapted code to use Abstract Factory Pattern." />
     <MESSAGE value="Added some more factories and tests." />
     <MESSAGE value="Added some more tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some more tests." />
+    <MESSAGE value="Renamed tags.&#10;Fixed ports." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed tags.&#10;Fixed ports." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="135" />
+      <option name="time" value="151" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/workspace/Workspace.unittest.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/common/Store.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/SectionContext.unittest.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/common/logger/TestLogger.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/bible/BibleService.unittest.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/Bible.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/SectionContext.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="130" column="9" lean-forward="false" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectOptions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/paths.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="79" column="6" lean-forward="false" selection-start-line="79" selection-start-column="6" selection-end-line="79" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/webpack.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/main/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/server.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="165">
-            <caret line="29" column="49" lean-forward="false" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/package.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/StudySection.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/typescriptCompiler/external/lib.es6.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="1126" column="4" lean-forward="false" selection-start-line="1126" selection-start-column="4" selection-end-line="1126" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/menu/AbstractMenu.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/StudySection.unittest.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5152">
-          <caret line="341" column="9" lean-forward="false" selection-start-line="341" selection-start-column="9" selection-end-line="341" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#91#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/typescript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="79" lean-forward="false" selection-start-line="18" selection-start-column="79" selection-end-line="18" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="175" column="7" lean-forward="true" selection-start-line="175" selection-start-column="7" selection-end-line="175" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/workspace/Workspace.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/navbar/NavbarComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/chapter/chapterMenu/ChapterMenuComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/search/SearchComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/chapter/chapterMenu/menuBody/ChapterMenuBodyComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/book/bookMenu/BookMenuComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/book/bookMenu/menuBody/BookMenuBodyComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/verse/verseList/VerseListComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="36" column="15" lean-forward="true" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/declarations.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulp/watch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="33" column="64" lean-forward="false" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/menu/Overlay.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/menu/OverlayComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="100" column="16" lean-forward="false" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/menuBody/BibleMenuBodyComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="49" column="19" lean-forward="false" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/views/AppLayout.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="13" column="3" lean-forward="false" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/BibleMenuComponent.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="38" column="57" lean-forward="true" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1408,15 +977,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/component/bibleMenuComponent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="34" column="54" lean-forward="true" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
-          <folding />
+        <state relative-caret-position="-315">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1424,15 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scss/base/_menu.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="82" lean-forward="true" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1440,14 +998,397 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-amazon.js" />
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/enzyme/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="341" column="31" lean-forward="false" selection-start-line="341" selection-start-column="17" selection-end-line="341" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/workspace/Workspace.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/workspace/WorkspaceComponent.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/menu/AbstractMenu.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/common/Container.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/common/Store.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#36#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/BibleStore.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/common/sectionMenu.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/bible/bibleMenu/BibleMenu.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="32" column="27" lean-forward="true" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="51" column="3" lean-forward="true" selection-start-line="49" selection-start-column="2" selection-end-line="51" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/SectionContextFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="27" column="6" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/base/_bible.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/sass/lib/sass.jar!/org/jetbrains/plugins/sass/stdlib/sass_functions.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="305" column="10" lean-forward="false" selection-start-line="305" selection-start-column="10" selection-end-line="305" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/components/_transitions.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/components/_global.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2688">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/components/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="36" column="38" lean-forward="true" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/components/_color.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-336">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/components/_grid.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-720">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulp/scss.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/_style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3168">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/materialize-css/sass/materialize.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/base/_menu.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/base/_base.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/base/_button.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/components/_studySection.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="44" column="20" lean-forward="false" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scss/base/_navbar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scss/app.scss">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="73" lean-forward="true" selection-start-line="2" selection-start-column="73" selection-end-line="2" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/SectionContext.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="150" column="6" lean-forward="false" selection-start-line="150" selection-start-column="6" selection-end-line="150" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/SectionContext.unittest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2448">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/workspace/Workspace.unittest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="116" column="13" lean-forward="false" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/bible/BibleStore.unittest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/bible/BibleService.unittest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-691">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#70#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/StudySection.ts">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
-          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenuComponent.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="94" column="36" lean-forward="false" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/menu/StudySectionMenu.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-288">
+          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/menu/StudySectionMenu.unittest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="264" column="6" lean-forward="false" selection-start-line="264" selection-start-column="6" selection-end-line="264" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/StudySection.unittest.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="429" column="4" lean-forward="true" selection-start-line="429" selection-start-column="4" selection-end-line="430" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/workspace/WorkspaceComponent.unittest.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="107" lean-forward="false" selection-start-line="13" selection-start-column="107" selection-end-line="13" selection-end-column="107" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/components/studySection/StudySectionComponent.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scripts/components/studySection/StudySectionComponent.unittest.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="106" column="24" lean-forward="false" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="107" lean-forward="false" selection-start-line="17" selection-start-column="107" selection-end-line="17" selection-end-column="107" />
           <folding />
         </state>
       </provider>

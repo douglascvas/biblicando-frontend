@@ -16,6 +16,7 @@ import {StudySectionMenu} from "../../../../../main/scripts/components/studySect
 import {BibleMenu} from "../../../../../main/scripts/components/bible/bibleMenu/BibleMenu";
 import {BookMenu} from "../../../../../main/scripts/components/book/bookMenu/BookMenu";
 import {ChapterMenu} from "../../../../../main/scripts/components/chapter/chapterMenu/ChapterMenu";
+import {SectionContext} from "../../../../../main/scripts/components/studySection/SectionContext";
 
 describe('StudySectionMenu', () => {
   let studySectionMenu: StudySectionMenu,
@@ -28,20 +29,28 @@ describe('StudySectionMenu', () => {
     bookMenu: BookMenu,
     chapterMenu: ChapterMenu,
     overlay: Overlay,
+    sectionContext: SectionContext,
 
     onBibleSelectUnsubscribe: Function,
     onBookSelectUnsubscribe: Function,
-    onChapterSelectUnsubscribe: Function;
+    onChapterSelectUnsubscribe: Function,
+    onCurrentBibleChangeUnsubscribe: Function,
+    onCurrentBookChangeUnsubscribe: Function,
+    onCurrentChapterChangeUnsubscribe: Function;
 
   beforeEach(() => {
     onBibleSelectUnsubscribe = Sinon.stub();
     onBookSelectUnsubscribe = Sinon.stub();
     onChapterSelectUnsubscribe = Sinon.stub();
+    onCurrentBibleChangeUnsubscribe = Sinon.stub();
+    onCurrentBookChangeUnsubscribe = Sinon.stub();
+    onCurrentChapterChangeUnsubscribe = Sinon.stub();
 
     overlayFactory = Sinon.createStubInstance(OverlayFactory);
     bibleMenuFactory = Sinon.createStubInstance(BibleMenuFactory);
     bookMenuFactory = Sinon.createStubInstance(BookMenuFactory);
     chapterMenuFactory = Sinon.createStubInstance(ChapterMenuFactory);
+    sectionContext = Sinon.createStubInstance(SectionContext);
     loggerFactory = new TestLoggerFactory();
 
     bibleMenu = Sinon.createStubInstance(BibleMenu);
@@ -50,6 +59,9 @@ describe('StudySectionMenu', () => {
     (<Sinon.SinonStub>bibleMenu.onSelect).returns(onBibleSelectUnsubscribe);
     (<Sinon.SinonStub>bookMenu.onSelect).returns(onBookSelectUnsubscribe);
     (<Sinon.SinonStub>chapterMenu.onSelect).returns(onChapterSelectUnsubscribe);
+    (<Sinon.SinonStub>sectionContext.onCurrentBibleChange).returns(onCurrentBibleChangeUnsubscribe);
+    (<Sinon.SinonStub>sectionContext.onCurrentBookChange).returns(onCurrentBookChangeUnsubscribe);
+    (<Sinon.SinonStub>sectionContext.onCurrentChapterChange).returns(onCurrentChapterChangeUnsubscribe);
 
     overlay = Sinon.createStubInstance(BibleMenu);
 
@@ -152,6 +164,64 @@ describe('StudySectionMenu', () => {
     });
   });
 
+  describe('onCurrentDataChange', () => {
+    it('should register onCurrentBibleChange, onCurrentBookChange and onCurrentChapterChange', async() => {
+      // given
+      let callback = () => null;
+      studySectionMenu = createStudySectionMenu();
+
+      // when
+      studySectionMenu.onCurrentDataChange(callback);
+
+      // then
+      assert.isTrue((<Sinon.SinonStub>sectionContext.onCurrentBibleChange).calledWith(callback));
+      assert.isTrue((<Sinon.SinonStub>sectionContext.onCurrentBookChange).calledWith(callback));
+      assert.isTrue((<Sinon.SinonStub>sectionContext.onCurrentChapterChange).calledWith(callback));
+    });
+  });
+
+  describe('getCurrentBible', () => {
+    it('should return current bible', async() => {
+      // given
+      sectionContext = <any>{currentBible: {name: 'test'}};
+      studySectionMenu = createStudySectionMenu();
+
+      // when
+      let currentBible = studySectionMenu.getCurrentBible();
+
+      // then
+      assert.strictEqual(currentBible, sectionContext.currentBible);
+    });
+  });
+
+  describe('getCurrentBook', () => {
+    it('should return current book', async() => {
+      // given
+      sectionContext = <any>{currentBook: {name: 'test'}};
+      studySectionMenu = createStudySectionMenu();
+
+      // when
+      let currentBook = studySectionMenu.getCurrentBook();
+
+      // then
+      assert.strictEqual(currentBook, sectionContext.currentBook);
+    });
+  });
+
+  describe('getCurrentChapter', () => {
+    it('should return current book', async() => {
+      // given
+      sectionContext = <any>{currentChapter: {name: 'test'}};
+      studySectionMenu = createStudySectionMenu();
+
+      // when
+      let currentChapter = studySectionMenu.getCurrentChapter();
+
+      // then
+      assert.strictEqual(currentChapter, sectionContext.currentChapter);
+    });
+  });
+
   describe('unregister', () => {
     it('should unregister onSelect listener for bibleMenu', async() => {
       // given
@@ -185,10 +255,24 @@ describe('StudySectionMenu', () => {
       // then
       assert.isTrue((<Sinon.SinonStub>onChapterSelectUnsubscribe).calledOnce);
     });
+
+    it('should unregister onCurrentBibleChange, onCurrentBookChange and onCurrentChapterChange', async() => {
+      // given
+      studySectionMenu = createStudySectionMenu();
+      let unregister = studySectionMenu.onCurrentDataChange(() => null);
+
+      // when
+      unregister();
+
+      // then
+      assert.isTrue((<Sinon.SinonStub>onCurrentBibleChangeUnsubscribe).calledOnce);
+      assert.isTrue((<Sinon.SinonStub>onCurrentBookChangeUnsubscribe).calledOnce);
+      assert.isTrue((<Sinon.SinonStub>onCurrentChapterChangeUnsubscribe).calledOnce);
+    });
   });
 
   function createStudySectionMenu() {
-    return studySectionMenu = new StudySectionMenu(overlayFactory, bibleMenuFactory, bookMenuFactory, chapterMenuFactory, loggerFactory);
+    return studySectionMenu = new StudySectionMenu(overlayFactory, sectionContext, bibleMenuFactory, bookMenuFactory, chapterMenuFactory, loggerFactory);
   }
 
 });

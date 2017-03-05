@@ -2,26 +2,25 @@ import * as React from "react";
 import {StudySection} from "../studySection/StudySection";
 import {Workspace} from "./Workspace";
 import StudySectionComponent from "../studySection/StudySectionComponent";
-export interface BibleStudyProps {
+
+export interface WorkspaceProps {
   id: string;
   className?: string;
   workspace: Workspace;
 }
 
-export default class WorkspaceComponent extends React.Component<BibleStudyProps, Workspace> {
-  constructor(props: BibleStudyProps) {
+export default class WorkspaceComponent extends React.Component<WorkspaceProps, Workspace> {
+  constructor(props: WorkspaceProps) {
     super(props);
-
-    this.state = props.workspace;
   }
 
   render() {
-    const sections = this.state.sections.map((section: StudySection, index: number) => (
-      <StudySectionComponent id={`study-section-${index}:${this.props.id}`} key={`study-section-${index}`} studySection={section}/>
+    const sections = this.props.workspace.sections.map((section: StudySection, index: number) => (
+      <StudySectionComponent id={`${this.props.id}:study-section-${index}`} key={`study-section-${index}`} studySection={section}/>
     ));
 
     return (
-      <bc-workspace class={this.props.className}>
+      <bc-workspace id={this.props.id} class={this.props.className}>
         {sections}
       </bc-workspace>
     )
